@@ -16,5 +16,6 @@ struct AppThemeColors {
     static let SecondaryBGColor = UIColor(named: "SecondaryBGColor")!
     static let SecondaryButtonColor = UIColor(named: "SecondaryButtonColor")!
     static let SecondaryTextColor = UIColor(named: "SecondaryTextColor")!
+    static let ButtonTextColor = UIColor(named: "ButtonTextColor")!
     
 }

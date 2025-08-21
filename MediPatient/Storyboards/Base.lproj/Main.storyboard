@@ -83,14 +83,14 @@
                                                     <constraint firstAttribute="width" secondItem="gKd-Uk-2ro" secondAttribute="height" id="usi-gT-0Gv"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XuP-IZ-OeT">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XuP-IZ-OeT" customClass="PrimaryLabel">
                                                 <rect key="frame" x="24" y="324.33333333333331" width="153.66666666666666" height="28.666666666666686"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Coninue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40O-0O-J4V">
-                                                <rect key="frame" x="23.999999999999993" y="361" width="109.33333333333331" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40O-0O-J4V" customClass="DescriptionLabel" customModule="MediPatient" customModuleProvider="target">
+                                                <rect key="frame" x="24" y="361" width="114" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -121,6 +121,9 @@
                                                 <state key="normal" title="Sign In">
                                                     <color key="titleColor" name="PrimaryTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnSignInTapped:" destination="6wY-IG-9nc" eventType="touchUpInside" id="pau-jt-2bS"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bMu-zJ-bM7">
                                                 <rect key="frame" x="63.666666666666657" y="792" width="266" height="30"/>
@@ -141,6 +144,9 @@
                                                         <rect key="frame" x="139" y="0.0" width="127" height="30"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="Create an Account"/>
+                                                        <connections>
+                                                            <action selector="btnSignUpTapped:" destination="6wY-IG-9nc" eventType="touchUpInside" id="qnJ-3c-oDG"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -191,6 +197,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="JZX-5w-Tu4"/>
                     <connections>
+                        <outlet property="btnForgotPassword" destination="UeT-TH-yDX" id="bu1-Va-ClP"/>
+                        <outlet property="btnSignIn" destination="MLu-fE-CxB" id="nYN-D5-sR2"/>
+                        <outlet property="btnSignUp" destination="OPD-JB-Azd" id="OtI-mY-hUZ"/>
                         <outlet property="emailField" destination="kL3-3b-B9n" id="vOq-fp-dsO"/>
                         <outlet property="passwordField" destination="tRV-Ra-dJQ" id="eEs-Pt-bqX"/>
                     </connections>

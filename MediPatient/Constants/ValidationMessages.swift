@@ -30,6 +30,7 @@ struct ValidationMessages {
     static let username = "Please enter user name."
     static let password = "Please enter password."
     
+    
     //forgot password
     static let otp = "Please enter otp."
     static let validOtp = "Please enter valid otp."

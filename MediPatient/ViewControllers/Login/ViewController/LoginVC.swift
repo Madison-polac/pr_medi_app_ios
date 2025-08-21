@@ -10,94 +10,70 @@ import UIKit
 class LoginVC: UIViewController {
     
     // MARK: - Outlets
-   
     @IBOutlet weak var btnSignIn: UIButton!
     @IBOutlet weak var btnSignUp: UIButton!
     @IBOutlet weak var btnForgotPassword: UIButton!
-    
-    
-    
-  
-    // MARK: - Properties
-    private var isPasswordVisible = false
-    
     @IBOutlet weak var passwordField: StaticLabelTextFieldView!
     @IBOutlet weak var emailField: StaticLabelTextFieldView!
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        emailField.setTitle("Email")
-        emailField.textField.placeholder = "Enter your email"
-        passwordField.setTitle("Password")
-        passwordField.showsEyeButton = true
-        passwordField.textField.placeholder = "Enter your password"
+        initialization()
     }
     
     // MARK: - Initialization
     private func initialization() {
-//        btnSignUp.applySignUpStyle()
-//        btnForgotPassword.underlineTitle(color: .systemBlue)
+        btnSignIn.applyPrimaryStyle()
+        emailField.setTitle(Constant.email)
+        emailField.textField.placeholder = Constant.emailPlaceholder
+        passwordField.setTitle(Constant.password)
+        passwordField.showsEyeButton = true
+        passwordField.textField.placeholder = Constant.passwordPlaceholder
+    }
+    
+    // MARK: - Validation and Login
+    private func validateAndLogin() {
+        var isValid = true
         
+        // Email
+        let email = emailField.textField.text
+        if ValidationHelper.isEmpty(email) {
+            emailField.showError(Constant.emptyEmail)
+            isValid = false
+        } else if !ValidationHelper.isValidEmail(email) {
+            emailField.showError(Constant.invalidEmail)
+            isValid = false
+        } else {
+            emailField.hideError()
+        }
+        
+        // Password
+        let password = passwordField.textField.text
+        if ValidationHelper.isEmpty(password) {
+            passwordField.showError(Constant.emptyPassword)
+            isValid = false
+        } else if !ValidationHelper.isValidPassword(password) {
+            passwordField.showError(Constant.invalidPassword)
+            isValid = false
+        } else {
+            passwordField.hideError()
+        }
+        
+        if isValid {
+            // Proceed with login logic
+            print("All fields valid, login starts!")
+        }
     }
 }
-
 
 // MARK: - Actions
 extension LoginVC {
-    
-    @IBAction func btnLoginTapped(_ sender: UIButton) {
+    @IBAction func btnSignInTapped(_ sender: UIButton) {
         self.view.endEditing(true)
-       // validateAndLogin()
+        validateAndLogin()
     }
-    
     @IBAction func btnSignUpTapped(_ sender: UIButton) {
         print("Sign Up button tapped!")
     }
-    
-  
 }
-
-// MARK: - Custom Methods
-//extension LoginVC {
-//    
-////    private func validateAndLogin() {
-////        let email = tfUserName.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-////        let pass = tfPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-////
-////        guard !email.isEmpty else {
-////            showAlert(message: "Please enter your email.")
-////            return
-////        }
-////        guard ValidationHelper.isValidEmail(email) else {
-////            showAlert(message: "Please enter a valid email address.")
-////            return
-////        }
-////        guard !pass.isEmpty else {
-////            showAlert(message: "Please enter your Password.")
-////            return
-////        }
-////        guard ValidationHelper.isValidPassword(pass, minLength: 6) else {
-////            showAlert(message: "Password must be at least 6 characters long.")
-////            return
-////        }
-//
-//        // Passed all validations
-//        btnLogin.isEnabled = false
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            self.btnLogin.isEnabled = true
-//            self.showAlert(title: "Success", message: "Logged in successfully!")
-//        }
-//    }
-//
-//    
-//    private func showAlert(title: String = "Alert", message: String) {
-//        let alert = UIAlertController(title: title,
-//                                      message: message,
-//                                      preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "OK",
-//                                      style: .default))
-//        present(alert, animated: true)
-//    }
-//}
-//
