@@ -20,7 +20,7 @@ class HeadingLabel: UILabel {
     }
 
     private func applyPrimaryStyle() {
-        self.font = UIFont.boldSystemFont(ofSize: 28)
+        self.font = UIFont.ubuntuRegular(ofSize: 24)
         self.textColor = AppThemeColors.PrimaryTextColor
         self.textAlignment = .left
         self.numberOfLines = 0
@@ -40,7 +40,7 @@ class DescriptionLabel: UILabel {
     }
 
     private func applyPrimaryStyle() {
-        self.font = UIFont.boldSystemFont(ofSize: 14)
+        self.font = UIFont.ubuntuRegular(ofSize: 14)
         self.textColor = AppThemeColors.SecondaryTextColor
         self.textAlignment = .left
         self.numberOfLines = 0

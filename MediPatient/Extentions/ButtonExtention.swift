@@ -12,7 +12,7 @@ extension UIButton {
     func applyPrimaryStyle() {
         self.backgroundColor = AppThemeColors.PrimaryButtonColor // Or your brand color
         self.setTitleColor(AppThemeColors.ButtonTextColor, for: .normal)
-        self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        self.titleLabel?.font = UIFont.ubuntuBold(ofSize: 18)
         self.layer.cornerRadius = 14
         self.layer.masksToBounds = true
         self.layer.borderWidth = 0

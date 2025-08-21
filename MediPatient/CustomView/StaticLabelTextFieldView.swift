@@ -40,7 +40,7 @@ class StaticLabelTextFieldView: UIView {
         addSubview(borderView)
 
         // Title Label (left aligned, overlay border)
-        titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        titleLabel.font = UIFont.ubuntuRegular(ofSize: 14)
         titleLabel.textColor = .darkGray
         titleLabel.backgroundColor = .white
         titleLabel.textAlignment = .center
@@ -48,14 +48,14 @@ class StaticLabelTextFieldView: UIView {
         addSubview(titleLabel)
 
         // Text Field
-        textField.font = UIFont.systemFont(ofSize: 16)
+        textField.font = UIFont.ubuntuRegular(ofSize: 18)
         textField.borderStyle = .none
         textField.backgroundColor = .clear
         textField.translatesAutoresizingMaskIntoConstraints = false
         addSubview(textField)
 
         // Error Label
-        errorLabel.font = UIFont.systemFont(ofSize: 12)
+        errorLabel.font = UIFont.ubuntuRegular(ofSize: 14)
         errorLabel.textColor = .red
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.isHidden = true
