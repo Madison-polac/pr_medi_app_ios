@@ -1,0 +1,737 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		29C8671F29342F846FC76F84 /* Pods_MediPatientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F334CCED8B28A8C3CD5EA6 /* Pods_MediPatientTests.framework */; };
+		84D409593A66E0D88743B286 /* Pods_MediPatient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F783C6745896231EF85EB /* Pods_MediPatient.framework */; };
+		BCF89F06D1B576626DFA0014 /* Pods_MediPatient_MediPatientUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2F297783A199639733AA6D /* Pods_MediPatient_MediPatientUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6C158F612E4877DB00C0C085 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6C158F3F2E4877D900C0C085 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6C158F462E4877D900C0C085;
+			remoteInfo = MediPatient;
+		};
+		6C158F6B2E4877DB00C0C085 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6C158F3F2E4877D900C0C085 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6C158F462E4877D900C0C085;
+			remoteInfo = MediPatient;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		49F3D628A645A65FC9B99584 /* Pods-MediPatient-MediPatientUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediPatient-MediPatientUITests.release.xcconfig"; path = "Target Support Files/Pods-MediPatient-MediPatientUITests/Pods-MediPatient-MediPatientUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5BE99A5CAA40E28928AEE423 /* Pods-MediPatient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediPatient.release.xcconfig"; path = "Target Support Files/Pods-MediPatient/Pods-MediPatient.release.xcconfig"; sourceTree = "<group>"; };
+		65F334CCED8B28A8C3CD5EA6 /* Pods_MediPatientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediPatientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A2E21A230053AA65C892BEF /* Pods-MediPatientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediPatientTests.debug.xcconfig"; path = "Target Support Files/Pods-MediPatientTests/Pods-MediPatientTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6C158F472E4877D900C0C085 /* MediPatient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediPatient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C158F602E4877DB00C0C085 /* MediPatientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MediPatientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C158F6A2E4877DB00C0C085 /* MediPatientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MediPatientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D2F297783A199639733AA6D /* Pods_MediPatient_MediPatientUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediPatient_MediPatientUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C33F783C6745896231EF85EB /* Pods_MediPatient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediPatient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA285FF5480FA79127AAEE77 /* Pods-MediPatientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediPatientTests.release.xcconfig"; path = "Target Support Files/Pods-MediPatientTests/Pods-MediPatientTests.release.xcconfig"; sourceTree = "<group>"; };
+		EEE1244AA34E69290C61A4F2 /* Pods-MediPatient-MediPatientUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediPatient-MediPatientUITests.debug.xcconfig"; path = "Target Support Files/Pods-MediPatient-MediPatientUITests/Pods-MediPatient-MediPatientUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F715B05DCD7EDEF1EB8B5B8E /* Pods-MediPatient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediPatient.debug.xcconfig"; path = "Target Support Files/Pods-MediPatient/Pods-MediPatient.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6C158F722E4877DB00C0C085 /* Exceptions for "MediPatient" folder in "MediPatient" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 6C158F462E4877D900C0C085 /* MediPatient */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		6C158F492E4877D900C0C085 /* MediPatient */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6C158F722E4877DB00C0C085 /* Exceptions for "MediPatient" folder in "MediPatient" target */,
+			);
+			path = MediPatient;
+			sourceTree = "<group>";
+		};
+		6C158F632E4877DB00C0C085 /* MediPatientTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MediPatientTests;
+			sourceTree = "<group>";
+		};
+		6C158F6D2E4877DB00C0C085 /* MediPatientUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MediPatientUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6C158F442E4877D900C0C085 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84D409593A66E0D88743B286 /* Pods_MediPatient.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C158F5D2E4877DB00C0C085 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29C8671F29342F846FC76F84 /* Pods_MediPatientTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C158F672E4877DB00C0C085 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCF89F06D1B576626DFA0014 /* Pods_MediPatient_MediPatientUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F86BCB1166DC221E17CD926 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C33F783C6745896231EF85EB /* Pods_MediPatient.framework */,
+				7D2F297783A199639733AA6D /* Pods_MediPatient_MediPatientUITests.framework */,
+				65F334CCED8B28A8C3CD5EA6 /* Pods_MediPatientTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6C158F3E2E4877D900C0C085 = {
+			isa = PBXGroup;
+			children = (
+				6C158F492E4877D900C0C085 /* MediPatient */,
+				6C158F632E4877DB00C0C085 /* MediPatientTests */,
+				6C158F6D2E4877DB00C0C085 /* MediPatientUITests */,
+				6C158F482E4877D900C0C085 /* Products */,
+				FE1D2122BE0B40E3621BB46C /* Pods */,
+				4F86BCB1166DC221E17CD926 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6C158F482E4877D900C0C085 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6C158F472E4877D900C0C085 /* MediPatient.app */,
+				6C158F602E4877DB00C0C085 /* MediPatientTests.xctest */,
+				6C158F6A2E4877DB00C0C085 /* MediPatientUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE1D2122BE0B40E3621BB46C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F715B05DCD7EDEF1EB8B5B8E /* Pods-MediPatient.debug.xcconfig */,
+				5BE99A5CAA40E28928AEE423 /* Pods-MediPatient.release.xcconfig */,
+				EEE1244AA34E69290C61A4F2 /* Pods-MediPatient-MediPatientUITests.debug.xcconfig */,
+				49F3D628A645A65FC9B99584 /* Pods-MediPatient-MediPatientUITests.release.xcconfig */,
+				6A2E21A230053AA65C892BEF /* Pods-MediPatientTests.debug.xcconfig */,
+				EA285FF5480FA79127AAEE77 /* Pods-MediPatientTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6C158F462E4877D900C0C085 /* MediPatient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C158F732E4877DB00C0C085 /* Build configuration list for PBXNativeTarget "MediPatient" */;
+			buildPhases = (
+				027DED8A2809519BFCF12A12 /* [CP] Check Pods Manifest.lock */,
+				6C158F432E4877D900C0C085 /* Sources */,
+				6C158F442E4877D900C0C085 /* Frameworks */,
+				6C158F452E4877D900C0C085 /* Resources */,
+				EB12AFE5820384682D2EFCD3 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6C158F492E4877D900C0C085 /* MediPatient */,
+			);
+			name = MediPatient;
+			productName = MediPatient;
+			productReference = 6C158F472E4877D900C0C085 /* MediPatient.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6C158F5F2E4877DB00C0C085 /* MediPatientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C158F782E4877DB00C0C085 /* Build configuration list for PBXNativeTarget "MediPatientTests" */;
+			buildPhases = (
+				B71055CBDBC396003BAC3098 /* [CP] Check Pods Manifest.lock */,
+				6C158F5C2E4877DB00C0C085 /* Sources */,
+				6C158F5D2E4877DB00C0C085 /* Frameworks */,
+				6C158F5E2E4877DB00C0C085 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6C158F622E4877DB00C0C085 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6C158F632E4877DB00C0C085 /* MediPatientTests */,
+			);
+			name = MediPatientTests;
+			productName = MediPatientTests;
+			productReference = 6C158F602E4877DB00C0C085 /* MediPatientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6C158F692E4877DB00C0C085 /* MediPatientUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C158F7B2E4877DB00C0C085 /* Build configuration list for PBXNativeTarget "MediPatientUITests" */;
+			buildPhases = (
+				BD2ED1B833BE968FA9786D9D /* [CP] Check Pods Manifest.lock */,
+				6C158F662E4877DB00C0C085 /* Sources */,
+				6C158F672E4877DB00C0C085 /* Frameworks */,
+				6C158F682E4877DB00C0C085 /* Resources */,
+				AA1C2D66CB0C2419BC4C5570 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6C158F6C2E4877DB00C0C085 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6C158F6D2E4877DB00C0C085 /* MediPatientUITests */,
+			);
+			name = MediPatientUITests;
+			productName = MediPatientUITests;
+			productReference = 6C158F6A2E4877DB00C0C085 /* MediPatientUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6C158F3F2E4877D900C0C085 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1630;
+				LastUpgradeCheck = 1630;
+				TargetAttributes = {
+					6C158F462E4877D900C0C085 = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					6C158F5F2E4877DB00C0C085 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 6C158F462E4877D900C0C085;
+					};
+					6C158F692E4877DB00C0C085 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 6C158F462E4877D900C0C085;
+					};
+				};
+			};
+			buildConfigurationList = 6C158F422E4877D900C0C085 /* Build configuration list for PBXProject "MediPatient" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6C158F3E2E4877D900C0C085;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 6C158F482E4877D900C0C085 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6C158F462E4877D900C0C085 /* MediPatient */,
+				6C158F5F2E4877DB00C0C085 /* MediPatientTests */,
+				6C158F692E4877DB00C0C085 /* MediPatientUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6C158F452E4877D900C0C085 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C158F5E2E4877DB00C0C085 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C158F682E4877DB00C0C085 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		027DED8A2809519BFCF12A12 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MediPatient-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA1C2D66CB0C2419BC4C5570 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MediPatient-MediPatientUITests/Pods-MediPatient-MediPatientUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MediPatient-MediPatientUITests/Pods-MediPatient-MediPatientUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediPatient-MediPatientUITests/Pods-MediPatient-MediPatientUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B71055CBDBC396003BAC3098 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MediPatientTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD2ED1B833BE968FA9786D9D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MediPatient-MediPatientUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB12AFE5820384682D2EFCD3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MediPatient/Pods-MediPatient-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MediPatient/Pods-MediPatient-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediPatient/Pods-MediPatient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6C158F432E4877D900C0C085 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C158F5C2E4877DB00C0C085 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C158F662E4877DB00C0C085 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6C158F622E4877DB00C0C085 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6C158F462E4877D900C0C085 /* MediPatient */;
+			targetProxy = 6C158F612E4877DB00C0C085 /* PBXContainerItemProxy */;
+		};
+		6C158F6C2E4877DB00C0C085 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6C158F462E4877D900C0C085 /* MediPatient */;
+			targetProxy = 6C158F6B2E4877DB00C0C085 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6C158F742E4877DB00C0C085 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F715B05DCD7EDEF1EB8B5B8E /* Pods-MediPatient.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MediPatient/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vipulshiyal.MediPatient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6C158F752E4877DB00C0C085 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BE99A5CAA40E28928AEE423 /* Pods-MediPatient.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MediPatient/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vipulshiyal.MediPatient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6C158F762E4877DB00C0C085 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6C158F772E4877DB00C0C085 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6C158F792E4877DB00C0C085 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A2E21A230053AA65C892BEF /* Pods-MediPatientTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vipulshiyal.MediPatientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MediPatient.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MediPatient";
+			};
+			name = Debug;
+		};
+		6C158F7A2E4877DB00C0C085 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA285FF5480FA79127AAEE77 /* Pods-MediPatientTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vipulshiyal.MediPatientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MediPatient.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MediPatient";
+			};
+			name = Release;
+		};
+		6C158F7C2E4877DB00C0C085 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEE1244AA34E69290C61A4F2 /* Pods-MediPatient-MediPatientUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vipulshiyal.MediPatientUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MediPatient;
+			};
+			name = Debug;
+		};
+		6C158F7D2E4877DB00C0C085 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49F3D628A645A65FC9B99584 /* Pods-MediPatient-MediPatientUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vipulshiyal.MediPatientUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MediPatient;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6C158F422E4877D900C0C085 /* Build configuration list for PBXProject "MediPatient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C158F762E4877DB00C0C085 /* Debug */,
+				6C158F772E4877DB00C0C085 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6C158F732E4877DB00C0C085 /* Build configuration list for PBXNativeTarget "MediPatient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C158F742E4877DB00C0C085 /* Debug */,
+				6C158F752E4877DB00C0C085 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6C158F782E4877DB00C0C085 /* Build configuration list for PBXNativeTarget "MediPatientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C158F792E4877DB00C0C085 /* Debug */,
+				6C158F7A2E4877DB00C0C085 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6C158F7B2E4877DB00C0C085 /* Build configuration list for PBXNativeTarget "MediPatientUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C158F7C2E4877DB00C0C085 /* Debug */,
+				6C158F7D2E4877DB00C0C085 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6C158F3F2E4877D900C0C085 /* Project object */;
+}
