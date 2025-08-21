@@ -26,21 +26,18 @@ class LoginVC: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //initialization()
         
         emailField.setTitle("Email")
         emailField.textField.placeholder = "Enter your email"
         passwordField.setTitle("Password")
-        //passwordField.textField.isSecureTextEntry = true
         passwordField.showsEyeButton = true
         passwordField.textField.placeholder = "Enter your password"
     }
     
     // MARK: - Initialization
     private func initialization() {
-        btnSignUp.applySignUpStyle()
-        btnLogin.layer.cornerRadius = 8
-        btnForgotPassword.underlineTitle(color: .systemBlue)
+//        btnSignUp.applySignUpStyle()
+//        btnForgotPassword.underlineTitle(color: .systemBlue)
         
     }
 }

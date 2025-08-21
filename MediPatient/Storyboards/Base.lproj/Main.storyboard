@@ -111,8 +111,8 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLu-fE-CxB">
-                                                <rect key="frame" x="24" y="658" width="345" height="60"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLu-fE-CxB">
+                                                <rect key="frame" x="24" y="718" width="345" height="60"/>
                                                 <color key="backgroundColor" name="PrimaryButtonColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="bmA-B8-A2k"/>
@@ -122,17 +122,49 @@
                                                     <color key="titleColor" name="PrimaryTextColor"/>
                                                 </state>
                                             </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bMu-zJ-bM7">
+                                                <rect key="frame" x="63.666666666666657" y="792" width="266" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeT-TH-yDX">
+                                                        <rect key="frame" x="0.0" y="0.0" width="127" height="30"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Forgot Password ?"/>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7H-7X-9Am">
+                                                        <rect key="frame" x="131" y="0.0" width="4" height="30"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="AccentColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OPD-JB-Azd">
+                                                        <rect key="frame" x="139" y="0.0" width="127" height="30"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Create an Account"/>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="fju-fy-IkD"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" name="PrimaryBGColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="bMu-zJ-bM7" secondAttribute="bottom" constant="30" id="1D9-98-9XP"/>
                                             <constraint firstItem="gKd-Uk-2ro" firstAttribute="leading" secondItem="hg9-Fr-EWH" secondAttribute="leading" constant="100" id="5Bn-AY-Yam"/>
                                             <constraint firstItem="li6-pI-KwW" firstAttribute="leading" secondItem="hg9-Fr-EWH" secondAttribute="leading" constant="24" id="In4-zs-H4F"/>
+                                            <constraint firstItem="bMu-zJ-bM7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hg9-Fr-EWH" secondAttribute="leading" constant="22" id="LpR-mR-58k"/>
+                                            <constraint firstItem="MLu-fE-CxB" firstAttribute="leading" secondItem="hg9-Fr-EWH" secondAttribute="leading" constant="24" id="Srf-0v-4vO"/>
+                                            <constraint firstItem="bMu-zJ-bM7" firstAttribute="top" secondItem="MLu-fE-CxB" secondAttribute="bottom" constant="14" id="WK9-5Z-qbV"/>
                                             <constraint firstItem="XuP-IZ-OeT" firstAttribute="bottom" secondItem="gKd-Uk-2ro" secondAttribute="bottom" constant="60" id="XSb-T6-2qr"/>
+                                            <constraint firstAttribute="trailing" secondItem="MLu-fE-CxB" secondAttribute="trailing" constant="24" id="bEJ-eb-5IW"/>
                                             <constraint firstAttribute="trailing" secondItem="li6-pI-KwW" secondAttribute="trailing" constant="24" id="eEa-yo-r6H"/>
                                             <constraint firstAttribute="trailing" secondItem="gKd-Uk-2ro" secondAttribute="trailing" constant="100" id="eEb-Ci-vrQ"/>
                                             <constraint firstItem="XuP-IZ-OeT" firstAttribute="leading" secondItem="hg9-Fr-EWH" secondAttribute="leading" constant="24" id="gL7-c8-B9S"/>
                                             <constraint firstItem="40O-0O-J4V" firstAttribute="leading" secondItem="hg9-Fr-EWH" secondAttribute="leading" constant="24" id="i3a-mE-u1p"/>
                                             <constraint firstItem="li6-pI-KwW" firstAttribute="top" secondItem="40O-0O-J4V" secondAttribute="bottom" constant="26" id="i3u-2z-D6F"/>
+                                            <constraint firstItem="bMu-zJ-bM7" firstAttribute="centerX" secondItem="hg9-Fr-EWH" secondAttribute="centerX" id="nMg-Hm-dal"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bMu-zJ-bM7" secondAttribute="trailing" constant="22" id="ubD-RO-I8d"/>
                                             <constraint firstItem="gKd-Uk-2ro" firstAttribute="top" secondItem="hg9-Fr-EWH" secondAttribute="top" constant="100" id="vmw-m8-3JQ"/>
                                             <constraint firstItem="40O-0O-J4V" firstAttribute="top" secondItem="XuP-IZ-OeT" secondAttribute="bottom" constant="8" id="zNZ-Yb-QmK"/>
                                         </constraints>
@@ -170,6 +202,9 @@
     </scenes>
     <resources>
         <image name="logo" width="173" height="173"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="PrimaryBGColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
