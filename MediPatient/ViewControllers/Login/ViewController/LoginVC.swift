@@ -28,7 +28,7 @@ class LoginVC: UIViewController {
         emailField.setTitle(Constant.email)
         emailField.textField.placeholder = Constant.emailPlaceholder
         passwordField.setTitle(Constant.password)
-        passwordField.showsEyeButton = true
+        passwordField.trailingButtonType = .eye
         passwordField.textField.placeholder = Constant.passwordPlaceholder
     }
     

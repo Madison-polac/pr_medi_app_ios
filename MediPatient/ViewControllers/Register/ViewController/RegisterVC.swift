@@ -38,7 +38,7 @@ class RegisterVC: UIViewController {
         
         passwordField.setTitle(Constant.password)
         passwordField.textField.placeholder = Constant.createPasswordPlaceholder
-        passwordField.showsEyeButton = true
+        passwordField.trailingButtonType = .eye
     }
 
     // MARK: - Validation & Registration
@@ -107,6 +107,8 @@ extension RegisterVC {
     @IBAction func btnContinueTapped(_ sender: UIButton) {
         self.view.endEditing(true)
         validateAndRegister()
+        let vc =  self.storyboard?.instantiateViewController(identifier: "CompleteProfileVC") as! CompleteProfileVC
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func btnSignInTapped(_ sender: UIButton) {

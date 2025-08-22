@@ -27,8 +27,8 @@ class ForgotPasswordVC: UIViewController {
         passwordField2.setTitle(Constant.password)
         passwordField2.textField.placeholder = Constant.passwordPlaceholder
         passwordField.setTitle(Constant.password)
-        passwordField.showsEyeButton = true
-        passwordField2.showsEyeButton = true
+        passwordField.trailingButtonType = .eye
+        passwordField2.trailingButtonType = .eye
         passwordField.textField.placeholder = Constant.passwordPlaceholder
     }
     
