@@ -32,17 +32,17 @@ class StaticLabelTextFieldView: UIView {
 
     private func setup() {
         // Border View
-        borderView.backgroundColor = .white
+        borderView.backgroundColor = UIColor.primaryBG
         borderView.layer.cornerRadius = 14
         borderView.layer.borderWidth = 1
-        borderView.layer.borderColor = UIColor.gray.cgColor
+        borderView.layer.borderColor = UIColor(hex: "#1C1C1C")?.cgColor
         borderView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(borderView)
 
         // Title Label (left aligned, overlay border)
         titleLabel.font = UIFont.ubuntuRegular(ofSize: 14)
-        titleLabel.textColor = .darkGray
-        titleLabel.backgroundColor = .white
+        titleLabel.textColor = UIColor.primaryText
+        titleLabel.backgroundColor = UIColor.primaryBG
         titleLabel.textAlignment = .center
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
@@ -138,7 +138,7 @@ class StaticLabelTextFieldView: UIView {
 
     func hideError() {
         errorLabel.isHidden = true
-        borderView.layer.borderColor = UIColor.gray.cgColor
+        borderView.layer.borderColor = UIColor(hex: "#1C1C1C")?.cgColor
     }
 
     func setBorderColor(_ color: UIColor) {

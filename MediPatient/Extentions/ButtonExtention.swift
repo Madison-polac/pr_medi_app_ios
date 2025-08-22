@@ -20,3 +20,33 @@ extension UIButton {
         self.setTitleShadowColor(nil, for: .normal)
     }
 }
+
+class PrimaryLinkButton: UIButton {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        applyLinkStyle()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        applyLinkStyle()
+    }
+    
+    private func applyLinkStyle() {
+        // Set Ubuntu font or your theme font
+        self.titleLabel?.font = UIFont.ubuntuMedium(ofSize: 16)
+        // Remove background and border
+        self.backgroundColor = .clear
+        self.layer.borderWidth = 0
+        self.layer.cornerRadius = 0
+    }
+    
+    // If you want to allow text change after initialization and keep style:
+    override var isHighlighted: Bool {
+        didSet {
+            alpha = isHighlighted ? 0.7 : 1
+        }
+    }
+}
+

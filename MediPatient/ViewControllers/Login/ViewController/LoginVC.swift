@@ -11,14 +11,14 @@ class LoginVC: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var btnSignIn: UIButton!
-    @IBOutlet weak var btnSignUp: UIButton!
-    @IBOutlet weak var btnForgotPassword: UIButton!
     @IBOutlet weak var passwordField: StaticLabelTextFieldView!
     @IBOutlet weak var emailField: StaticLabelTextFieldView!
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         initialization()
     }
     
@@ -75,5 +75,14 @@ extension LoginVC {
     }
     @IBAction func btnSignUpTapped(_ sender: UIButton) {
         print("Sign Up button tapped!")
+    }
+    @IBAction func btnForgotPasswordTapped(_ sender: UIButton) {
+        let vc =  self.storyboard?.instantiateViewController(identifier: "ForgotPasswordVC") as! ForgotPasswordVC
+        self.navigationController?.pushViewController(vc, animated: true)
+
+    }
+    @IBAction func btnCreateAcountTapped(_ sender: UIButton) {
+        let vc =  self.storyboard?.instantiateViewController(identifier: "RegisterVC") as! RegisterVC
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
