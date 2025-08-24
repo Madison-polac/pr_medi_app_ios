@@ -93,10 +93,10 @@ class RegisterVC: UIViewController {
             passwordField.hideError()
         }
 
-        // Proceed with registration if all is valid
         if isValid {
             print("All fields valid, register user!")
-            // Add your registration API call or logic here
+            let vc =  self.storyboard?.instantiateViewController(identifier: "CompleteProfileVC") as! CompleteProfileVC
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
@@ -107,17 +107,13 @@ extension RegisterVC {
     @IBAction func btnContinueTapped(_ sender: UIButton) {
         self.view.endEditing(true)
         validateAndRegister()
-        let vc =  self.storyboard?.instantiateViewController(identifier: "CompleteProfileVC") as! CompleteProfileVC
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func btnSignInTapped(_ sender: UIButton) {
-        // Navigate to Sign In screen (pop or push)
         self.navigationController?.popViewController(animated: false)
     }
     
     @IBAction func btnCancelTapped(_ sender: UIButton) {
-        // Dismiss or pop
         self.navigationController?.popViewController(animated: true)
     }
 }

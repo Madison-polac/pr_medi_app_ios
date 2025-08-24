@@ -19,6 +19,17 @@ extension UIButton {
         self.layer.borderColor = nil
         self.setTitleShadowColor(nil, for: .normal)
     }
+    
+    func applySecondaryStyle() {
+        self.backgroundColor = AppThemeColors.SecondaryButtonColor // Or your brand color
+        self.setTitleColor(AppThemeColors.PrimaryTextColor, for: .normal)
+        self.titleLabel?.font = UIFont.ubuntuBold(ofSize: 18)
+        self.layer.cornerRadius = 14
+        self.layer.masksToBounds = true
+        self.layer.borderWidth = 0
+        self.layer.borderColor = nil
+        self.setTitleShadowColor(nil, for: .normal)
+    }
 }
 
 class PrimaryLinkButton: UIButton {

@@ -91,6 +91,8 @@ class StaticLabelTextFieldView: UIView {
         ])
     }
 
+    private var isDropdownExpanded = false
+
     private func configureTrailingButton(_ type: TrailingButtonType) {
         trailingButton?.removeFromSuperview()
         trailingButton = nil
@@ -123,10 +125,25 @@ class StaticLabelTextFieldView: UIView {
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             button.tintColor = .gray
             button.addTarget(self, action: #selector(dropdownButtonTapped), for: .touchUpInside)
+            isDropdownExpanded = false
         default:
             break
         }
     }
+
+    @objc private func dropdownButtonTapped() {
+        guard let button = trailingButton else { return }
+
+        // Toggle dropdown state
+        isDropdownExpanded.toggle()
+
+        let imageName = isDropdownExpanded ? "chevron.up" : "chevron.down"
+        button.setImage(UIImage(systemName: imageName), for: .normal)
+
+        // Call dropdown callback for your logic
+        dropdownTapCallback?()
+    }
+
 
     @objc private func togglePasswordVisibility() {
         textField.isSecureTextEntry.toggle()
@@ -138,9 +155,6 @@ class StaticLabelTextFieldView: UIView {
         calendarTapCallback?()
     }
 
-    @objc private func dropdownButtonTapped() {
-        dropdownTapCallback?()
-    }
 
     // MARK: - Public API
     func setTitle(_ title: String) {
@@ -176,61 +190,4 @@ extension String {
         return ceil(boundingBox.width)
     }
 }
-
-// MARK: - Example Usage
-
-class ExampleVC: UIViewController {
-    let passwordField = StaticLabelTextFieldView()
-    let dobField = StaticLabelTextFieldView()
-    let sexField = StaticLabelTextFieldView()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Password
-        passwordField.setTitle("Password")
-        passwordField.textField.placeholder = "Enter password"
-        passwordField.trailingButtonType = .eye
-
-        // Date of Birth
-        dobField.setTitle("Date of Birth")
-        dobField.textField.placeholder = "Mar 12, 1984"
-        dobField.trailingButtonType = .calendar
-        dobField.calendarTapCallback = {
-            print("Date Picker should show here.")
-        }
-
-        // Birth Sex
-        sexField.setTitle("Birth Sex")
-        sexField.textField.placeholder = "Select"
-        sexField.trailingButtonType = .dropdown
-        sexField.dropdownTapCallback = {
-            print("Dropdown Picker should show here.")
-        }
-
-        // Layout the views...
-        passwordField.translatesAutoresizingMaskIntoConstraints = false
-        dobField.translatesAutoresizingMaskIntoConstraints = false
-        sexField.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(passwordField)
-        view.addSubview(dobField)
-        view.addSubview(sexField)
-        
-        NSLayoutConstraint.activate([
-            passwordField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
-            passwordField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            passwordField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-
-            dobField.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 30),
-            dobField.leadingAnchor.constraint(equalTo: passwordField.leadingAnchor),
-            dobField.trailingAnchor.constraint(equalTo: passwordField.trailingAnchor),
-
-            sexField.topAnchor.constraint(equalTo: dobField.bottomAnchor, constant: 30),
-            sexField.leadingAnchor.constraint(equalTo: dobField.leadingAnchor),
-            sexField.trailingAnchor.constraint(equalTo: dobField.trailingAnchor),
-        ])
-    }
-}
-
 
