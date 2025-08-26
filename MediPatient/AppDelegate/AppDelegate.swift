@@ -21,7 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.isEnabled = true
         IQKeyboardToolbarManager.shared.isEnabled = true
         IQKeyboardManager.shared.resignOnTouchOutside = true
+        IQKeyboardManager.shared.deepResponderAllowedContainerClasses.append(UIStackView.self)
         return true
+        
     }
 
     // MARK: UISceneSession Lifecycle
