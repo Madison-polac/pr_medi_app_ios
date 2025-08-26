@@ -13,6 +13,7 @@ enum TrailingButtonType {
     case eye
     case calendar
     case dropdown
+    case down
 }
 
 // MARK: - StaticLabelTextFieldView
@@ -22,6 +23,12 @@ class StaticLabelTextFieldView: UIView {
     public let errorLabel = UILabel()
     private let borderView = UIView()
     private var trailingButton: UIButton?
+
+    // Validation configuration
+    public var isRequired: Bool = true
+    public var requiredMessage: String = "This field is required."
+    // Return nil when valid; otherwise return error message to show
+    public var customValidator: ((String?) -> String?)?
 
     public var trailingButtonType: TrailingButtonType = .none {
         didSet { configureTrailingButton(trailingButtonType) }
@@ -61,7 +68,11 @@ class StaticLabelTextFieldView: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         addSubview(textField)
 
-        errorLabel.font = UIFont.ubuntuRegular(ofSize: 14)
+        // Hook built-in validation
+        textField.addTarget(self, action: #selector(editingDidEnd), for: .editingDidEnd)
+        textField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+
+        errorLabel.font = UIFont.ubuntuRegular(ofSize: 12)
         errorLabel.textColor = .red
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.isHidden = true
@@ -124,22 +135,17 @@ class StaticLabelTextFieldView: UIView {
         case .dropdown:
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             button.tintColor = .gray
-            button.addTarget(self, action: #selector(dropdownButtonTapped), for: .touchUpInside)
+            button.addTarget(self, action: #selector(downButtonTapped), for: .touchUpInside)
             isDropdownExpanded = false
+        case .down:
+            button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            button.tintColor = .gray
+            button.addTarget(self, action: #selector(downButtonTapped), for: .touchUpInside)
         default:
             break
         }
     }
-
-    @objc private func dropdownButtonTapped() {
-        guard let button = trailingButton else { return }
-
-        // Toggle dropdown state
-        isDropdownExpanded.toggle()
-
-        let imageName = isDropdownExpanded ? "chevron.up" : "chevron.down"
-        button.setImage(UIImage(systemName: imageName), for: .normal)
-
+    @objc private func downButtonTapped() {
         // Call dropdown callback for your logic
         dropdownTapCallback?()
     }
@@ -176,6 +182,33 @@ class StaticLabelTextFieldView: UIView {
 
     func setBorderColor(_ color: UIColor) {
         borderView.layer.borderColor = color.cgColor
+    }
+}
+
+// MARK: - Built-in validation handlers
+extension StaticLabelTextFieldView {
+    @objc private func editingDidEnd() {
+        validate()
+    }
+
+    @objc private func editingChanged() {
+        // Optionally live-clear error when user starts typing
+        if let text = textField.text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            hideError()
+        }
+    }
+
+    public func validate() {
+        let value = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if isRequired && (value == nil || value!.isEmpty) {
+            showError(requiredMessage)
+            return
+        }
+        if let customValidator = customValidator, let message = customValidator(value) {
+            showError(message)
+            return
+        }
+        hideError()
     }
 }
 

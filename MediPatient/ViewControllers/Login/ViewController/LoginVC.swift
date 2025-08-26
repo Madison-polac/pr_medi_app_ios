@@ -27,6 +27,7 @@ class LoginVC: UIViewController {
         btnSignIn.applyPrimaryStyle()
         emailField.setTitle(Constant.email)
         emailField.textField.placeholder = Constant.emailPlaceholder
+        emailField.textField.keyboardType = .emailAddress
         passwordField.setTitle(Constant.password)
         passwordField.trailingButtonType = .eye
         passwordField.textField.placeholder = Constant.passwordPlaceholder

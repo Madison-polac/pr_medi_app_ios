@@ -17,7 +17,7 @@ struct ValidationMessages {
     static let email = "Please enter email."
     static let validEmail = "Please enter valid email."
     static let mobileNumber = "Please enter mobile number."
-    static let validMobileNumber = "Please enter valid mobile number."
+    static let validMobileNumber = "Enter valid mobile number."
     static let oldPassword = "Please enter old password."
     static let newPassword = "Please enter new password."
     static let validPassword = "Password must be atleast 8 characters long."

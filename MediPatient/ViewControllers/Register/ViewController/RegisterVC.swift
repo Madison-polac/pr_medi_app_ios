@@ -35,6 +35,7 @@ class RegisterVC: UIViewController {
         
         emailField.setTitle(Constant.email)
         emailField.textField.placeholder = Constant.emailPlaceholder
+        emailField.textField.keyboardType = .emailAddress
         
         passwordField.setTitle(Constant.password)
         passwordField.textField.placeholder = Constant.createPasswordPlaceholder
@@ -50,10 +51,7 @@ class RegisterVC: UIViewController {
         if ValidationHelper.isEmpty(firstName) {
             firstNameField.showError(Constant.emptyFirstName)
             isValid = false
-        } else if !ValidationHelper.isValidName(firstName) {
-            firstNameField.showError(Constant.invalidFirstName)
-            isValid = false
-        } else {
+        }  else {
             firstNameField.hideError()
         }
 
@@ -61,9 +59,6 @@ class RegisterVC: UIViewController {
         let lastName = lastNameField.textField.text
         if ValidationHelper.isEmpty(lastName) {
             lastNameField.showError(Constant.lastName)
-            isValid = false
-        } else if !ValidationHelper.isValidName(lastName) {
-            lastNameField.showError(Constant.invalidLastName)
             isValid = false
         } else {
             lastNameField.hideError()

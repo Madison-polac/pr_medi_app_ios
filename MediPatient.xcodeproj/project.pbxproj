@@ -65,11 +65,15 @@
 		};
 		6C158F632E4877DB00C0C085 /* MediPatientTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = MediPatientTests;
 			sourceTree = "<group>";
 		};
 		6C158F6D2E4877DB00C0C085 /* MediPatientUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = MediPatientUITests;
 			sourceTree = "<group>";
 		};
@@ -155,8 +159,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6C158F732E4877DB00C0C085 /* Build configuration list for PBXNativeTarget "MediPatient" */;
 			buildPhases = (
-				8DEDCF5A60F2AA7032877BEF /* Build Target Dependencies */,
 				027DED8A2809519BFCF12A12 /* [CP] Check Pods Manifest.lock */,
+				8DEDCF5A60F2AA7032877BEF /* Build Target Dependencies */,
 				6C158F432E4877D900C0C085 /* Sources */,
 				6C158F442E4877D900C0C085 /* Frameworks */,
 				6C158F452E4877D900C0C085 /* Resources */,
@@ -338,13 +342,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MediPatient-MediPatientUITests/Pods-MediPatient-MediPatientUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MediPatient-MediPatientUITests/Pods-MediPatient-MediPatientUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -403,13 +403,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MediPatient/Pods-MediPatient-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MediPatient/Pods-MediPatient-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
