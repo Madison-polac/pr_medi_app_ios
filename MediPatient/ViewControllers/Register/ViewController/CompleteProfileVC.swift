@@ -15,7 +15,6 @@ class CompleteProfileVC: UIViewController {
     @IBOutlet weak var isdCodeField: StaticLabelTextFieldView!
     @IBOutlet weak var mobileField: StaticLabelTextFieldView!
     @IBOutlet weak var dobField: StaticLabelTextFieldView!
-    @IBOutlet weak var sexField: StaticLabelTextFieldView!
     @IBOutlet weak var btnSignUp: UIButton!
     @IBOutlet weak var imgMale: UIImageView!
     @IBOutlet weak var btnMale: UIButton!
@@ -89,16 +88,9 @@ class CompleteProfileVC: UIViewController {
                 self.dobField.hideError()
             }
         }
-
-
-        // Birth Sex as dropdown
-        sexField.setTitle("Birth Sex")
-        sexField.textField.placeholder = "Select"
-        sexField.trailingButtonType = .dropdown
-        sexField.requiredMessage = "Birth sex required"
-        sexField.dropdownTapCallback = { [weak self] in
-            self?.genderStack.isHidden.toggle()
-        }
+        
+        clearAllBorders()
+        setSelectedBorder(for: imgMale)
 
     }
     
@@ -151,16 +143,10 @@ extension CompleteProfileVC {
         switch sender {
         case btnMale:
             setSelectedBorder(for: imgMale)
-            sexField.textField.text = "Male"
-            sexField.hideError()
         case btnFemale:
             setSelectedBorder(for: imgFemale)
-            sexField.textField.text = "Female"
-            sexField.hideError()
         case btnOther:
             setSelectedBorder(for: imgOther)
-            sexField.textField.text = "Prefer not to say"
-            sexField.hideError()
         default:
             break
         }
@@ -183,8 +169,7 @@ extension CompleteProfileVC {
         isdCodeField.validate()
         mobileField.validate()
         dobField.validate()
-        sexField.validate()
-        let allValid = isdCodeField.errorLabel.isHidden && mobileField.errorLabel.isHidden && dobField.errorLabel.isHidden && sexField.errorLabel.isHidden
+        let allValid = isdCodeField.errorLabel.isHidden && mobileField.errorLabel.isHidden && dobField.errorLabel.isHidden
         if allValid {
             print("All fields valid!")
         } else {

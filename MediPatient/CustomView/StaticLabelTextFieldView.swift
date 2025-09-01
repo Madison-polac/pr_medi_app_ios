@@ -124,10 +124,14 @@ class StaticLabelTextFieldView: UIView {
 
         switch type {
         case .eye:
-            button.setImage(UIImage(systemName: textField.isSecureTextEntry ? "eye" : "eye.slash"), for: .normal)
+            button.setImage(UIImage(systemName: textField.isSecureTextEntry ? "eye.slash" : "eye"), for: .normal)
             button.tintColor = .gray
             button.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
             textField.isSecureTextEntry = true
+            textField.textContentType = .password
+            textField.autocorrectionType = .no
+            textField.spellCheckingType = .no
+            textField.autocapitalizationType = .none
         case .calendar:
             button.setImage(UIImage(systemName: "calendar"), for: .normal)
             button.tintColor = .gray
