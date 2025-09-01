@@ -74,16 +74,12 @@ extension LoginVC {
         self.view.endEditing(true)
         validateAndLogin()
     }
-    @IBAction func btnSignUpTapped(_ sender: UIButton) {
-        print("Sign Up button tapped!")
-    }
+    
     @IBAction func btnForgotPasswordTapped(_ sender: UIButton) {
-        let vc =  self.storyboard?.instantiateViewController(identifier: "ForgotPasswordVC") as! ForgotPasswordVC
-        self.navigationController?.pushViewController(vc, animated: true)
-
+        Redirect.to("ForgotPasswordVC", from: self) // push
     }
+    
     @IBAction func btnCreateAcountTapped(_ sender: UIButton) {
-        let vc =  self.storyboard?.instantiateViewController(identifier: "RegisterVC") as! RegisterVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        Redirect.to("RegisterVC", from: self) // push
     }
 }

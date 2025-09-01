@@ -169,12 +169,12 @@ extension CompleteProfileVC {
     
     
     @IBAction func btnPrivacyTapped(_ sender: UIButton) {
-        let vc =  self.storyboard?.instantiateViewController(identifier: "TermsVC") as! TermsVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        Redirect.to("TermsVC", from: self)
 
     }
     @IBAction func btnBackTapped(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        Redirect.pop(from: self)
     }
     
     @IBAction func btnSignUpTapped(_ sender: UIButton) {

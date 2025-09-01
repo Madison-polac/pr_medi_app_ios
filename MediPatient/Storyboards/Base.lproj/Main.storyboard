@@ -7,6 +7,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,12 +21,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="6wY-IG-9nc" kind="relationship" relationship="rootViewController" id="bc7-wR-JOt"/>
+                        <segue destination="kTt-r2-KQZ" kind="relationship" relationship="rootViewController" id="k6s-i7-2Ct"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xox-Kr-wkB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="861.83206106870227" y="-839.43661971830988"/>
+            <point key="canvasLocation" x="202" y="-839"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="1yB-7e-jH7">
@@ -318,7 +319,6 @@
                                                 <state key="normal" title="Create an Account"/>
                                                 <connections>
                                                     <action selector="btnCreateAcountTapped:" destination="6wY-IG-9nc" eventType="touchUpInside" id="7K3-rR-aPX"/>
-                                                    <action selector="btnSignUpTapped:" destination="6wY-IG-9nc" eventType="touchUpInside" id="DpE-DK-GT0"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1006,8 +1006,153 @@ No Medical Advice and No Doctor-Patient Relationship    Lorem Ipsum is simp
             </objects>
             <point key="canvasLocation" x="4407" y="-839"/>
         </scene>
+        <!--IntroVC-->
+        <scene sceneID="UDQ-LA-WiS">
+            <objects>
+                <viewController storyboardIdentifier="IntroVC" id="kTt-r2-KQZ" customClass="IntroVC" customModule="demo3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zIu-cZ-JSw">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9l9-9G-3g0" customClass="ProgressButton" customModule="MediPatient" customModuleProvider="target">
+                                <rect key="frame" x="153.66666666666666" y="715" width="86" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="VgY-a0-6H7"/>
+                                    <constraint firstAttribute="width" constant="86" id="rQV-wt-tPW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="tintColor" name="PrimaryTextColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="progressButtonTapped:" destination="kTt-r2-KQZ" eventType="touchUpInside" id="lcA-BG-3vu"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="neP-x5-91b">
+                                <rect key="frame" x="24" y="115" width="345" height="590"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="stA-YJ-H8d">
+                                    <size key="itemSize" width="345" height="562"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IntroCell" id="GHt-UZ-OJy" customClass="IntroCell" customModule="demo3" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="14" width="345" height="562"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uf7-PA-DUT">
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="562"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlF-IF-BFf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="345" height="562"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x62-vb-I1G">
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="562"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyz-Op-mFx">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Instant Consult From Your Preferred Doctor " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reJ-Le-f1d" customClass="HeadlineLabel" customModule="MediPatient" customModuleProvider="target">
+                                                                            <rect key="frame" x="30" y="0.0" width="285" height="50"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="50" id="QE6-1r-cef"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="reJ-Le-f1d" firstAttribute="leading" secondItem="qyz-Op-mFx" secondAttribute="leading" constant="30" id="Naf-iO-GGd"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="reJ-Le-f1d" secondAttribute="trailing" constant="30" id="mZo-UM-KU7"/>
+                                                                        <constraint firstItem="reJ-Le-f1d" firstAttribute="top" secondItem="qyz-Op-mFx" secondAttribute="top" id="pvS-8d-1Be"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="reJ-Le-f1d" secondAttribute="bottom" id="rG2-gc-Qdc"/>
+                                                                    </constraints>
+                                                                </view>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now you can speak to your preferred doctor within 1 minute through chat/voice call/ video call" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9G-OD-Now" customClass="DescriptionLabel" customModule="MediPatient" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="60" width="345" height="61"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="61" id="f6a-dX-pQf"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="76E-iT-Cq3">
+                                                                    <rect key="frame" x="0.0" y="131" width="345" height="431"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="12"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </imageView>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" name="PrimaryBGColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="x62-vb-I1G" firstAttribute="leading" secondItem="dlF-IF-BFf" secondAttribute="leading" id="I0c-dh-Iuk"/>
+                                                        <constraint firstItem="x62-vb-I1G" firstAttribute="top" secondItem="dlF-IF-BFf" secondAttribute="top" id="agg-Jy-WJI"/>
+                                                        <constraint firstAttribute="trailing" secondItem="x62-vb-I1G" secondAttribute="trailing" id="ePn-9K-FxX"/>
+                                                        <constraint firstAttribute="bottom" secondItem="x62-vb-I1G" secondAttribute="bottom" id="nBM-x5-EG4"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dlF-IF-BFf" firstAttribute="top" secondItem="uf7-PA-DUT" secondAttribute="top" id="8NQ-2o-0wM"/>
+                                                <constraint firstAttribute="bottom" secondItem="dlF-IF-BFf" secondAttribute="bottom" id="CUZ-cE-Td2"/>
+                                                <constraint firstAttribute="trailing" secondItem="dlF-IF-BFf" secondAttribute="trailing" id="X7H-mC-JYa"/>
+                                                <constraint firstItem="dlF-IF-BFf" firstAttribute="leading" secondItem="uf7-PA-DUT" secondAttribute="leading" id="XBz-zH-Idf"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="345" height="562"/>
+                                        <connections>
+                                            <outlet property="descLabel" destination="v9G-OD-Now" id="CRr-EO-QR5"/>
+                                            <outlet property="imageView" destination="76E-iT-Cq3" id="ire-RA-FGC"/>
+                                            <outlet property="titleLabel" destination="reJ-Le-f1d" id="WKN-HG-f0o"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sld-D5-vIY" customClass="PrimaryLinkButton" customModule="MediPatient" customModuleProvider="target">
+                                <rect key="frame" x="339" y="69" width="30" height="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Skip"/>
+                                <connections>
+                                    <action selector="skipTapped:" destination="kTt-r2-KQZ" eventType="touchUpInside" id="rW4-Yw-rav"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YYJ-x4-eyE"/>
+                        <color key="backgroundColor" name="PrimaryBGColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="9l9-9G-3g0" secondAttribute="bottom" constant="51" id="1Ab-cq-gy1"/>
+                            <constraint firstItem="Sld-D5-vIY" firstAttribute="top" secondItem="zIu-cZ-JSw" secondAttribute="top" constant="69" id="21E-ZD-jtr"/>
+                            <constraint firstAttribute="trailing" secondItem="Sld-D5-vIY" secondAttribute="trailing" constant="24" id="Ei5-d2-wTF"/>
+                            <constraint firstItem="9l9-9G-3g0" firstAttribute="centerX" secondItem="zIu-cZ-JSw" secondAttribute="centerX" id="pnc-a0-thp"/>
+                            <constraint firstItem="YYJ-x4-eyE" firstAttribute="trailing" secondItem="neP-x5-91b" secondAttribute="trailing" constant="24" id="qbe-aL-OxC"/>
+                            <constraint firstItem="neP-x5-91b" firstAttribute="leading" secondItem="YYJ-x4-eyE" secondAttribute="leading" constant="24" id="qyx-Qp-Yye"/>
+                            <constraint firstItem="9l9-9G-3g0" firstAttribute="top" secondItem="neP-x5-91b" secondAttribute="bottom" constant="10" id="tic-1n-4BH"/>
+                            <constraint firstItem="neP-x5-91b" firstAttribute="top" secondItem="Sld-D5-vIY" secondAttribute="bottom" constant="16" id="zdE-jc-S36"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8Lu-fh-Nda"/>
+                    <connections>
+                        <outlet property="collectionView" destination="neP-x5-91b" id="8wl-J7-9yM"/>
+                        <outlet property="progressButton" destination="9l9-9G-3g0" id="gDi-GX-xvJ"/>
+                        <outlet property="skipButton" destination="Sld-D5-vIY" id="iun-68-liy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dWa-U3-aWR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="915" y="-839"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="banner" width="803" height="779"/>
         <image name="icMale" width="125" height="125.33333587646484"/>
         <image name="ic_Back" width="24" height="24"/>
         <image name="ic_Female" width="125" height="125.33333587646484"/>
