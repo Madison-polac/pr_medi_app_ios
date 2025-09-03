@@ -65,7 +65,7 @@ class LoginVC: UIViewController {
             // Proceed with login logic
             print("All fields valid, login starts!")
             //API call ...
-            self.doLogin(username: email, password: password)
+            self.doLogin(username: email ?? "", password: password ?? "")
         }
     }
     
@@ -77,21 +77,21 @@ class LoginVC: UIViewController {
         params["appleId"] = ""
       
         //params["ClientKey"] = CLIENT_KEY
-        self.startAnimatingWithIgnoringInteraction()
+       // self.startAnimatingWithIgnoringInteraction()
         
         AuthController.getLogin(param: params) { (success,response,message,statusCode) in
             DispatchQueue.main.async {
                 if success {
-                    self.stopAnimatingWithIgnoringInteraction()
+         //           self.stopAnimatingWithIgnoringInteraction()
                     if (success) {
                         print(response)
                         let userObj = response as! User
-                        print(userObj.firstName)
+                        print(userObj.userName)
                     }
                 } else {
-                    self.stopAnimatingWithIgnoringInteraction()
+                    //self.stopAnimatingWithIgnoringInteraction()
                     let invalidMsg = LocalizedString(message: "login.invalidUP.alert")
-                    self.showAlert(message: invalidMsg)
+                    //self.showAlert(message: invalidMsg)
                 }
             }
         }

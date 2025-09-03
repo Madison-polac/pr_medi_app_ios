@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-//import ObjectMapper
+import ObjectMapper
 
 class AuthController {
     
@@ -48,12 +48,12 @@ class AuthController {
     
     static func forgotPassword(param:Dictionary<String, Any>,callback:@escaping (Bool,Any?,String,Int) -> Void) -> Void {
         _ = GlobalUtils.getInstance().getHeaderParam();
-        ServiceManager.post(method: POST_FORGOTPW, param: param, callback: { (success, response, message, statusCode) in
+        ServiceManager.post(method: ForgotPassword, param: param, callback: { (success, response, message, statusCode) in
             callback(success, response, message, statusCode)
         })
     }
     
-    static func changePassword(param:Dictionary<String, Any>,callback:@escaping (Bool,Any?,String,Int) -> Void) -> Void {
+    /*static func changePassword(param:Dictionary<String, Any>,callback:@escaping (Bool,Any?,String,Int) -> Void) -> Void {
         ServiceManager.post(method: POST_CHANGEPW, param: param, callback: { (success, response, message, statusCode) in
                 callback(success, response, message, statusCode)
         })
@@ -86,6 +86,6 @@ class AuthController {
                 callback(success, response, message, statusCode)
             }
         })
-    }
+    }*/
 
 }

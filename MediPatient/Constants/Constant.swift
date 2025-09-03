@@ -18,6 +18,8 @@ import UIKit
 
 //API
 let LOGIN = "Login"
+let ForgotPassword = "ForgotPassword"
+
 
 
 let kAppDelegate = UIApplication.shared.delegate as! AppDelegate;
