@@ -390,14 +390,14 @@
                                             <constraint firstAttribute="height" constant="112" id="rR5-89-JMx"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrx-jB-HDD" customClass="PrimaryLabel">
-                                        <rect key="frame" x="24" y="274.66666666666669" width="164.33333333333334" height="28.666666666666686"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insert email for verification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrx-jB-HDD" customClass="PrimaryLabel">
+                                        <rect key="frame" x="24" y="274.66666666666669" width="270.33333333333331" height="28.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ts8-Ui-yfW">
-                                        <rect key="frame" x="24" y="335.33333333333331" width="366" height="170"/>
+                                        <rect key="frame" x="24" y="335.33333333333331" width="366" height="85"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1o3-ip-YTv" customClass="StaticLabelTextFieldView" customModule="MediPatient" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="366" height="85"/>
@@ -405,10 +405,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="85" id="TXD-Gz-gld"/>
                                                 </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nif-G3-GVe" customClass="StaticLabelTextFieldView" customModule="MediPatient" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="85" width="366" height="85"/>
-                                                <color key="backgroundColor" name="PrimaryBGColor"/>
                                             </view>
                                         </subviews>
                                     </stackView>
@@ -455,12 +451,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password must be at least 8 characters long and include a number, lowercase, uppercase letter, and special character" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0E8-2g-oyM" customClass="DescriptionLabel" customModule="MediPatient" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="525.33333333333337" width="366" height="50.333333333333371"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAR-ES-K35" customClass="PrimaryLinkButton" customModule="MediPatient" customModuleProvider="target">
                                         <rect key="frame" x="24" y="63.333333333333343" width="48" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -483,14 +473,11 @@
                                     <constraint firstItem="Ts8-Ui-yfW" firstAttribute="leading" secondItem="uT5-ii-2Dp" secondAttribute="leading" constant="24" id="GSK-pY-lci"/>
                                     <constraint firstItem="rXX-kd-zd7" firstAttribute="leading" secondItem="uT5-ii-2Dp" secondAttribute="leading" constant="24" id="JaM-eH-6PO"/>
                                     <constraint firstItem="9LF-hI-2yt" firstAttribute="centerX" secondItem="uT5-ii-2Dp" secondAttribute="centerX" id="LJC-G0-uBd"/>
-                                    <constraint firstAttribute="trailing" secondItem="0E8-2g-oyM" secondAttribute="trailing" constant="24" id="MoR-bd-qBQ"/>
                                     <constraint firstItem="rXX-kd-zd7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ts8-Ui-yfW" secondAttribute="bottom" constant="44" id="OJt-6x-bl3"/>
                                     <constraint firstItem="wrx-jB-HDD" firstAttribute="leading" secondItem="uT5-ii-2Dp" secondAttribute="leading" constant="24" id="WaL-0j-tTV"/>
-                                    <constraint firstItem="0E8-2g-oyM" firstAttribute="leading" secondItem="uT5-ii-2Dp" secondAttribute="leading" constant="24" id="XPk-O3-oQ7"/>
                                     <constraint firstItem="W6j-vU-TgN" firstAttribute="top" secondItem="rXX-kd-zd7" secondAttribute="bottom" constant="14" id="Xxl-h1-9ex"/>
                                     <constraint firstAttribute="trailing" secondItem="Ts8-Ui-yfW" secondAttribute="trailing" constant="24" id="YEW-cm-MmT"/>
                                     <constraint firstItem="W6j-vU-TgN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uT5-ii-2Dp" secondAttribute="leading" constant="22" id="aPX-4i-yV4"/>
-                                    <constraint firstItem="0E8-2g-oyM" firstAttribute="top" secondItem="Ts8-Ui-yfW" secondAttribute="bottom" constant="20" id="eay-Yk-dTh"/>
                                     <constraint firstItem="jAR-ES-K35" firstAttribute="centerY" secondItem="ECW-cN-RKC" secondAttribute="centerY" id="gAY-AG-cF5"/>
                                     <constraint firstItem="W6j-vU-TgN" firstAttribute="centerX" secondItem="uT5-ii-2Dp" secondAttribute="centerX" id="pfV-jY-2Ho"/>
                                     <constraint firstAttribute="bottom" secondItem="W6j-vU-TgN" secondAttribute="bottom" constant="30" id="xSF-LH-KBq"/>
@@ -509,8 +496,7 @@
                     <navigationItem key="navigationItem" id="HVK-es-0Oy"/>
                     <connections>
                         <outlet property="btnSendReset" destination="rXX-kd-zd7" id="m8I-iy-C3x"/>
-                        <outlet property="passwordField" destination="Nif-G3-GVe" id="mAF-mG-Rbf"/>
-                        <outlet property="passwordField2" destination="1o3-ip-YTv" id="0fs-pH-qfS"/>
+                        <outlet property="tfEmail" destination="1o3-ip-YTv" id="0fs-pH-qfS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTI-3e-dYM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

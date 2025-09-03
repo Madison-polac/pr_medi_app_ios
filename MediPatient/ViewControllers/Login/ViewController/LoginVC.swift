@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class LoginVC: UIViewController {
     
@@ -31,6 +32,10 @@ class LoginVC: UIViewController {
         passwordField.setTitle(Constant.password)
         passwordField.trailingButtonType = .eye
         passwordField.textField.placeholder = Constant.passwordPlaceholder
+#if DEBUG
+        emailField.textField.text = DebugCredentials.email
+        passwordField.textField.text = DebugCredentials.password
+#endif
     }
     
     // MARK: - Validation and Login
@@ -75,12 +80,14 @@ class LoginVC: UIViewController {
         params["userName"] = username
         params["password"] = password
         params["appleId"] = ""
+        params["isFromMobile"] = true
       
         //params["ClientKey"] = CLIENT_KEY
-       // self.startAnimatingWithIgnoringInteraction()
+       HUD.show(on: self.view)
         
         AuthController.getLogin(param: params) { (success,response,message,statusCode) in
             DispatchQueue.main.async {
+                HUD.hide(from: self.view)
                 if success {
          //           self.stopAnimatingWithIgnoringInteraction()
                     if (success) {
@@ -90,8 +97,11 @@ class LoginVC: UIViewController {
                     }
                 } else {
                     //self.stopAnimatingWithIgnoringInteraction()
-                    let invalidMsg = LocalizedString(message: "login.invalidUP.alert")
-                    //self.showAlert(message: invalidMsg)
+                    let fallbackMsg = LocalizedString(message: "login.invalidUP.alert")
+                    let displayMsg = message.isEmpty ? fallbackMsg : message
+                    print(displayMsg)
+                  //  self.showAlert(message: displayMsg)
+                    self.view.makeToast(displayMsg)
                 }
             }
         }

@@ -9,7 +9,8 @@ class ServiceHelper {
         var success = true
         let error = response?.error
         if (error != nil ) {
-            callback(false, nil, "The operation couldn't be completed, because of service error", 0)
+            let msg = error?.localizedDescription ?? "The operation couldn't be completed, because of service error"
+            callback(false, nil, msg, 0)
         }
         
         let resData = response?.resData
@@ -57,7 +58,8 @@ class ServiceHelper {
                     callback(false, data, message, statusCode)
                 }
             } catch {
-                callback(false, nil, "No Data Found", 0)
+                let raw = response?.resData.flatMap { String(data: $0, encoding: .utf8) } ?? "No Data Found"
+                callback(false, nil, raw, 0)
             }
         }
     }

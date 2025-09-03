@@ -47,8 +47,10 @@ class AuthController {
 
     
     static func forgotPassword(param:Dictionary<String, Any>,callback:@escaping (Bool,Any?,String,Int) -> Void) -> Void {
-        _ = GlobalUtils.getInstance().getHeaderParam();
-        ServiceManager.post(method: ForgotPassword, param: param, callback: { (success, response, message, statusCode) in
+        let emailValue: String = (param["emailId"] as? String) ?? (param["email"] as? String) ?? ""
+        let encodedEmail = emailValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let methodWithQuery = "\(ForgotPassword)?emailId=\(encodedEmail)"
+        ServiceManager.post(method: methodWithQuery, param: [:], callback: { (success, response, message, statusCode) in
             callback(success, response, message, statusCode)
         })
     }

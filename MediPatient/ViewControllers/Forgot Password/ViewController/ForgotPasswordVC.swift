@@ -6,12 +6,12 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class ForgotPasswordVC: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var passwordField2: StaticLabelTextFieldView!
-    @IBOutlet weak var passwordField: StaticLabelTextFieldView!
+    @IBOutlet weak var tfEmail: StaticLabelTextFieldView!
     @IBOutlet weak var btnSendReset: UIButton!
  
     
@@ -24,25 +24,39 @@ class ForgotPasswordVC: UIViewController {
     // MARK: - Initialization
     private func initialization() {
         btnSendReset.applyPrimaryStyle()
-        passwordField2.setTitle(Constant.password)
-        passwordField2.textField.placeholder = Constant.passwordPlaceholder
-        passwordField.setTitle(Constant.password)
-        passwordField.trailingButtonType = .eye
-        passwordField2.trailingButtonType = .eye
-        passwordField.textField.placeholder = Constant.passwordPlaceholder
+        tfEmail.setTitle(Constant.email)
+        tfEmail.textField.placeholder = Constant.emailPlaceholder
     }
     
-    // MARK: - Validation and Reset
+    // MARK: - Validation
     private func validateAndSendReset() {
-        let pass = passwordField2.textField.text
-        if ValidationHelper.isEmpty(pass) {
-            passwordField2.showError(Constant.emptyPassword)
-        } else if !ValidationHelper.isValidPassword(pass) {
-            passwordField2.showError(Constant.invalidPassword)
+        var isValid = true
+        let email = tfEmail.textField.text
+        if ValidationHelper.isEmpty(email) {
+            tfEmail.showError(Constant.emptyEmail)
+            isValid = false
+        } else if !ValidationHelper.isValidEmail(email) {
+            tfEmail.showError(Constant.invalidEmail)
+            isValid = false
         } else {
-            passwordField2.hideError()
-            // Proceed with sending password reset logic
-            print("Sending password reset to: \(pass ?? "")")
+            tfEmail.hideError()
+        }
+        
+        if isValid {
+            HUD.show(on: self.view)
+            sendReset(email: email ?? "")
+        }
+    }
+    
+    private func sendReset(email: String) {
+        let params: Dictionary<String, Any> = ["emailId": email]
+        AuthController.forgotPassword(param: params) { success, response, message, statusCode in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                HUD.hide(from: self.view)
+                let displayMsg = message.isEmpty ? Constant.success : message
+                self.view.makeToast(displayMsg)
+            }
         }
     }
 }

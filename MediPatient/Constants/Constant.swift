@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Base URL
 
-    let BASE_URL = "http://securemedsoft.com/api/patients/Auth/"
+    let BASE_URL = "https://securemedsoft.com/api/patients/Auth/"
 
 //Live
 //  let BASE_URL = "https://account.uat.splashtrack.com/api/"
@@ -95,4 +95,13 @@ struct Constant {
     
     //Create a Password
     static let createPasswordPlaceholder = "Create a password"
+    
+    static let success = "Success!"
 }
+
+#if DEBUG
+struct DebugCredentials {
+    static let email = "jon.mac@yopmail.com"
+    static let password = "Jon@1234"
+}
+#endif

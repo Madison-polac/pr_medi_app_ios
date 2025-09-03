@@ -308,6 +308,7 @@ class GlobalUtils {
     
     func getHeaderParam() -> Dictionary<String,String> {
             var headerParam =  [CONTENT_TYPE: CONTENTTYPE_VALUE]
+            headerParam["accept"] = "text/plain"
             
             let apiSecret = GlobalUtils.getInstance().APISecret()
             let userId = GlobalUtils.getInstance().userDetailID()
@@ -321,9 +322,11 @@ class GlobalUtils {
             }
         
             let accessToken = GlobalUtils.getInstance().accessToken()
-            let authorizationHeader = String("Bearer \(accessToken)")
-            headerParam ["Authorization"] = authorizationHeader
-            print("Header: " + authorizationHeader)
+            if accessToken.count > 0 {
+                let authorizationHeader = String("Bearer \(accessToken)")
+                headerParam ["Authorization"] = authorizationHeader
+                print("Header: " + authorizationHeader)
+            }
 
             return headerParam
         }
