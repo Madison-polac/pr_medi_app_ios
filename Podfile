@@ -1,3 +1,4 @@
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '13.0'
 
 target 'MediPatient' do
@@ -5,9 +6,10 @@ target 'MediPatient' do
   use_frameworks!
 
   # Pods for MediPatient
-pod 'MBProgressHUD', '~> 1.2.0'
-pod 'IQKeyboardManagerSwift'
+  pod 'MBProgressHUD', '~> 1.2.0'
+  pod 'IQKeyboardManagerSwift'
   pod 'CountryPickerView'
+  pod 'ObjectMapper', '~> 3.5'	
   
   target 'MediPatientTests' do
     inherit! :search_paths

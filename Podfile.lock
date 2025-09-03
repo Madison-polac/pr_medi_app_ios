@@ -41,13 +41,17 @@ PODS:
   - IQTextView (1.0.5):
     - IQKeyboardToolbar/Placeholderable
   - MBProgressHUD (1.2.0)
+  - ObjectMapper (3.5.3)
 
 DEPENDENCIES:
   - CountryPickerView
   - IQKeyboardManagerSwift
   - MBProgressHUD (~> 1.2.0)
+  - ObjectMapper (~> 3.5)
 
 SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - ObjectMapper
   trunk:
     - CountryPickerView
     - IQKeyboardCore
@@ -71,7 +75,8 @@ SPEC CHECKSUMS:
   IQTextInputViewNotification: f5e954d8881fd9808b744e49e024cc0d4bcfe572
   IQTextView: ae13b4922f22e6f027f62c557d9f4f236b19d5c7
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
 
-PODFILE CHECKSUM: b8e7ea6fd789a128482946b673e2209320ec4a9c
+PODFILE CHECKSUM: 0fb958532625c0291e1078e48d6094991d119a7b
 
 COCOAPODS: 1.16.2
