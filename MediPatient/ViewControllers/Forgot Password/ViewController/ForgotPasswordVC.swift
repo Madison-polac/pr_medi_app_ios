@@ -44,18 +44,23 @@ class ForgotPasswordVC: UIViewController {
         
         if isValid {
             HUD.show(on: self.view)
-            sendReset(email: email ?? "")
+            sentResetLink(email: email ?? "")
         }
     }
     
-    private func sendReset(email: String) {
+    private func sentResetLink(email: String) {
         let params: Dictionary<String, Any> = ["emailId": email]
         AuthController.forgotPassword(param: params) { success, response, message, statusCode in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 HUD.hide(from: self.view)
-                let displayMsg = message.isEmpty ? Constant.success : message
-                self.view.makeToast(displayMsg)
+                if success {
+                    let displayMsg = message.isEmpty ? Constant.success : message
+                    self.view.makeToast(displayMsg)
+                } else {
+                    let errorMsg = message.isEmpty ? "Something went wrong" : message
+                    self.view.makeToast(errorMsg)
+                }
             }
         }
     }
