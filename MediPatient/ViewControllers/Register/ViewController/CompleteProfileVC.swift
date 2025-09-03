@@ -10,12 +10,19 @@ import UIKit
 import CountryPickerView
 
 class CompleteProfileVC: UIViewController {
-
-    // MARK: - Outlets (Connect these in Storyboard or Init)
+    
+    // MARK: - Incoming from RegisterVC
+    var initialFirstName: String = ""
+    var initialLastName: String = ""
+    var initialEmail: String = ""
+    var initialPassword: String = ""
+    
+    // MARK: - Outlets
     @IBOutlet weak var isdCodeField: StaticLabelTextFieldView!
     @IBOutlet weak var mobileField: StaticLabelTextFieldView!
     @IBOutlet weak var dobField: StaticLabelTextFieldView!
     @IBOutlet weak var btnSignUp: UIButton!
+    
     @IBOutlet weak var imgMale: UIImageView!
     @IBOutlet weak var btnMale: UIButton!
     @IBOutlet weak var imgFemale: UIImageView!
@@ -24,96 +31,85 @@ class CompleteProfileVC: UIViewController {
     @IBOutlet weak var btnOther: UIButton!
     @IBOutlet weak var genderStack: UIStackView!
     
-    // Country picker
-    private let countryPickerView = CountryPickerView()
-    
     @IBOutlet weak var btnPrivacy: UIButton!
     @IBOutlet weak var btnMarketing: UIButton!
     
+    // MARK: - Properties
+    private let countryPickerView = CountryPickerView()
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialization()
+        setupUI()
     }
-
-    private func initialization() {
-        
+}
+ 
+// MARK: - UI Setup
+extension CompleteProfileVC {
+    private func setupUI() {
         btnSignUp.applyPrimaryStyle()
         
-        // ISD code field as dropdown
+        // ISD Code
         isdCodeField.setTitle("ISD Code")
         isdCodeField.textField.placeholder = "+1"
         isdCodeField.textField.isEnabled = false
+        isdCodeField.textField.isUserInteractionEnabled = false
         isdCodeField.trailingButtonType = .down
-        isdCodeField.dropdownTapCallback = { [weak self] in
-            self?.showISDPicker()
-        }
-        // Prepare left view for flag display
         isdCodeField.textField.rightViewMode = .always
+        isdCodeField.dropdownTapCallback = { [weak self] in self?.isdTapped() }
+        isdCodeField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(isdTapped)))
         
-        // Configure CountryPickerView
+        // Date of Birth
+        dobField.setTitle("Date of Birth")
+        dobField.textField.placeholder = "12 Mar 1984"
+        dobField.textField.isUserInteractionEnabled = false
+        dobField.trailingButtonType = .calendar
+        dobField.calendarTapCallback = { [weak self] in self?.dobTapped() }
+        dobField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dobTapped)))
+        
+        // Country Picker
         countryPickerView.delegate = self
         countryPickerView.dataSource = self
         countryPickerView.showPhoneCodeInView = true
-        // Set default selection
-        if let current = countryPickerView.getCountryByCode(Locale.current.regionCode ?? "") ?? countryPickerView.getCountryByName("United States") {
+        if let current = countryPickerView.getCountryByCode(Locale.current.regionCode ?? "")
+            ?? countryPickerView.getCountryByName("United States") {
             applyCountrySelection(current)
         }
-
-        // Mobile phone
+        
+        // Mobile
         mobileField.setTitle("Mobile phone")
         mobileField.textField.placeholder = "9876543210"
         mobileField.textField.keyboardType = .numberPad
         mobileField.requiredMessage = ValidationMessages.mobileNumber
         mobileField.customValidator = { text in
             guard let t = text, !t.isEmpty else { return nil }
-            return ValidationHelper.isValidMobileNumber(t, minLength: 8, maxLength: 15) ? nil : ValidationMessages.validMobileNumber
-        }
-
-        // Date of Birth
-        dobField.setTitle("Date of Birth")
-        dobField.textField.placeholder = "12 Mar 1984"
-        dobField.trailingButtonType = .calendar
-        dobField.requiredMessage = ValidationMessages.dob
-        dobField.calendarTapCallback = { [weak self] in
-            guard let self = self else { return }
-            DatePickerHelper.show(
-                in: self,
-                title: "Select Date of Birth",
-                mode: .date,
-                maximumDate: Date()
-            ) { pickedDate in
-                let formatter = DateFormatter()
-                formatter.dateStyle = .medium
-                self.dobField.textField.text = formatter.string(from: pickedDate)
-                self.dobField.hideError()
-            }
+            return ValidationHelper.isValidMobileNumber(t, minLength: 8, maxLength: 15)
+                ? nil : ValidationMessages.validMobileNumber
         }
         
         clearAllBorders()
         setSelectedBorder(for: imgMale)
-
     }
-    
+}
+
+// MARK: - Helpers
+extension CompleteProfileVC {
     private func clearAllBorders() {
         [imgMale, imgFemale, imgOther].forEach {
             $0?.layer.borderWidth = 0
             $0?.layer.borderColor = nil
         }
     }
-
+    
     private func setSelectedBorder(for imageView: UIImageView) {
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor(hex: "#329F94")?.cgColor
         imageView.layer.cornerRadius = 24
         imageView.clipsToBounds = true
     }
-
     
-    // Helper to apply selection to ISD field
     private func applyCountrySelection(_ country: Country) {
-        // Set code text first
         isdCodeField.textField.text = country.phoneCode
-        // Put flag on the right side
         let imageView = UIImageView(image: country.flag)
         imageView.contentMode = .scaleAspectFit
         imageView.frame = CGRect(x: 0, y: 0, width: 28, height: 20)
@@ -122,70 +118,104 @@ class CompleteProfileVC: UIViewController {
         container.addSubview(imageView)
         isdCodeField.textField.rightView = container
     }
+    
+    @objc private func isdTapped() {
+        countryPickerView.showCountriesList(from: self)
+    }
+    
+    @objc private func dobTapped() {
+        DatePickerHelper.show(
+            in: self,
+            title: "Select Date of Birth",
+            mode: .date,
+            maximumDate: Date()
+        ) { [weak self] pickedDate in
+            guard let self = self else { return }
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            self.dobField.textField.text = formatter.string(from: pickedDate)
+            self.dobField.hideError()
+        }
+    }
 }
 
+// MARK: - API
+extension CompleteProfileVC {
+    private func performUnifiedRegister() {
+        let isdCode = isdCodeField.textField.text ?? ""
+        let phone = mobileField.textField.text ?? ""
+        let dob = dobField.textField.text ?? ""
+        
+        var gender = "Male"
+        if imgFemale.layer.borderWidth > 0 { gender = "Female" }
+        if imgOther.layer.borderWidth > 0 { gender = "Other" }
+        
+        var params: [String: Any] = GlobalUtils.getInstance().getBodyParams()
+        params["firstName"] = initialFirstName
+        params["lastName"] = initialLastName
+        params["emailId"] = initialEmail
+        params["password"] = initialPassword
+        params["isdCode"] = isdCode
+        params["mobileNo"] = phone
+        params["dob"] = dob
+        params["gender"] = gender
+        
+        HUD.show(on: view)
+        AuthController.register(param: params) { success, _, message, _ in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                HUD.hide(from: self.view)
+                let displayMsg = message.isEmpty ? (success ? Constant.success : "Something went wrong") : message
+                self.view.makeToast(displayMsg)
+                if success { Redirect.pop(from: self) }
+            }
+        }
+    }
+}
 
 // MARK: - Actions
 extension CompleteProfileVC {
-    
-    
-    
     @IBAction func checkboxTapped(_ sender: UIButton) {
         sender.isSelected.toggle()
         let imageName = sender.isSelected ? "ic_Checked" : "ic_Unchecked"
         sender.setImage(UIImage(named: imageName), for: .normal)
     }
-
     
     @IBAction func genderButtonTapped(_ sender: UIButton) {
         clearAllBorders()
-        
         switch sender {
-        case btnMale:
-            setSelectedBorder(for: imgMale)
-        case btnFemale:
-            setSelectedBorder(for: imgFemale)
-        case btnOther:
-            setSelectedBorder(for: imgOther)
-        default:
-            break
+        case btnMale: setSelectedBorder(for: imgMale)
+        case btnFemale: setSelectedBorder(for: imgFemale)
+        case btnOther: setSelectedBorder(for: imgOther)
+        default: break
         }
     }
-
-    
     
     @IBAction func btnPrivacyTapped(_ sender: UIButton) {
-        
         Redirect.to("TermsVC", from: self)
-
     }
+    
     @IBAction func btnBackTapped(_ sender: UIButton) {
         Redirect.pop(from: self)
     }
     
     @IBAction func btnSignUpTapped(_ sender: UIButton) {
-        self.view.endEditing(true)
-        // Validate using built-in field validators
+        view.endEditing(true)
         isdCodeField.validate()
         mobileField.validate()
         dobField.validate()
-        let allValid = isdCodeField.errorLabel.isHidden && mobileField.errorLabel.isHidden && dobField.errorLabel.isHidden
+        
+        let allValid = isdCodeField.errorLabel.isHidden
+                    && mobileField.errorLabel.isHidden
+                    && dobField.errorLabel.isHidden
+        
         if allValid {
-            print("All fields valid!")
+            performUnifiedRegister()
         } else {
             print("Validation failed, some fields are missing!")
         }
     }
-
-    
-    // MARK: - Pickers
-    private func showISDPicker() {
-        countryPickerView.showCountriesList(from: self)
-    }
-
 }
-
-// No per-field delegate needed; StaticLabelTextFieldView handles end-edit validation
 
 // MARK: - CountryPickerViewDelegate & DataSource
 extension CompleteProfileVC: CountryPickerViewDelegate, CountryPickerViewDataSource {
@@ -193,11 +223,11 @@ extension CompleteProfileVC: CountryPickerViewDelegate, CountryPickerViewDataSou
         applyCountrySelection(country)
         isdCodeField.hideError()
     }
-
+    
     func navigationTitle(in countryPickerView: CountryPickerView) -> String? {
         return "Select Country"
     }
-
+    
     func showPhoneCodeInList(in countryPickerView: CountryPickerView) -> Bool {
         return true
     }

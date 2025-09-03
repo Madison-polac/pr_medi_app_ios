@@ -8,7 +8,7 @@
 import UIKit
 
 class RegisterVC: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var btnContinue: UIButton!
     @IBOutlet weak var firstNameField: StaticLabelTextFieldView!
@@ -19,12 +19,13 @@ class RegisterVC: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialization()
+        setupUI()
     }
+}
 
-    // MARK: - Initialization
-    private func initialization() {
-       
+// MARK: - UI Setup
+private extension RegisterVC {
+    func setupUI() {
         btnContinue.applyPrimaryStyle()
         
         firstNameField.setTitle(Constant.firstName)
@@ -41,21 +42,23 @@ class RegisterVC: UIViewController {
         passwordField.textField.placeholder = Constant.createPasswordPlaceholder
         passwordField.trailingButtonType = .eye
     }
+}
 
-    // MARK: - Validation & Registration
-    private func validateAndRegister() {
+// MARK: - Validation & Navigation
+private extension RegisterVC {
+    func validateAndRegister() {
         var isValid = true
-
+        
         // First Name
         let firstName = firstNameField.textField.text
         if ValidationHelper.isEmpty(firstName) {
             firstNameField.showError(Constant.emptyFirstName)
             isValid = false
-        }  else {
+        } else {
             firstNameField.hideError()
         }
-
-        // Last Name (optional, but you can enforce if you wish)
+        
+        // Last Name
         let lastName = lastNameField.textField.text
         if ValidationHelper.isEmpty(lastName) {
             lastNameField.showError(Constant.lastName)
@@ -63,7 +66,7 @@ class RegisterVC: UIViewController {
         } else {
             lastNameField.hideError()
         }
-
+        
         // Email
         let email = emailField.textField.text
         if ValidationHelper.isEmpty(email) {
@@ -75,7 +78,7 @@ class RegisterVC: UIViewController {
         } else {
             emailField.hideError()
         }
-
+        
         // Password
         let password = passwordField.textField.text
         if ValidationHelper.isEmpty(password) {
@@ -87,28 +90,40 @@ class RegisterVC: UIViewController {
         } else {
             passwordField.hideError()
         }
-
+        
+        // Navigation
         if isValid {
-            print("All fields valid, register user!")
-            let vc =  self.storyboard?.instantiateViewController(identifier: "CompleteProfileVC") as! CompleteProfileVC
-            self.navigationController?.pushViewController(vc, animated: true)
+            navigateToCompleteProfile(
+                firstName: firstName ?? "",
+                lastName: lastName ?? "",
+                email: email ?? "",
+                password: password ?? ""
+            )
         }
+    }
+    
+    func navigateToCompleteProfile(firstName: String, lastName: String, email: String, password: String) {
+        guard let vc = storyboard?.instantiateViewController(identifier: "CompleteProfileVC") as? CompleteProfileVC else { return }
+        vc.initialFirstName = firstName
+        vc.initialLastName = lastName
+        vc.initialEmail = email
+        vc.initialPassword = password
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 // MARK: - Actions
 extension RegisterVC {
-    
     @IBAction func btnContinueTapped(_ sender: UIButton) {
-        self.view.endEditing(true)
+        view.endEditing(true)
         validateAndRegister()
     }
     
     @IBAction func btnSignInTapped(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: false)
+        navigationController?.popViewController(animated: false)
     }
     
     @IBAction func btnCancelTapped(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }

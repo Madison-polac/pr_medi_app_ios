@@ -13,25 +13,29 @@ class ForgotPasswordVC: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var tfEmail: StaticLabelTextFieldView!
     @IBOutlet weak var btnSendReset: UIButton!
- 
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialization()
+        setupUI()
     }
-    
-    // MARK: - Initialization
-    private func initialization() {
+}
+
+// MARK: - UI Setup
+private extension ForgotPasswordVC {
+    func setupUI() {
         btnSendReset.applyPrimaryStyle()
         tfEmail.setTitle(Constant.email)
         tfEmail.textField.placeholder = Constant.emailPlaceholder
     }
-    
-    // MARK: - Validation
-    private func validateAndSendReset() {
+}
+
+// MARK: - Validation & API
+private extension ForgotPasswordVC {
+    func validateAndSendReset() {
         var isValid = true
         let email = tfEmail.textField.text
+        
         if ValidationHelper.isEmpty(email) {
             tfEmail.showError(Constant.emptyEmail)
             isValid = false
@@ -43,24 +47,24 @@ class ForgotPasswordVC: UIViewController {
         }
         
         if isValid {
-            HUD.show(on: self.view)
-            sentResetLink(email: email ?? "")
+            HUD.show(on: view)
+            sendResetLink(email: email ?? "")
         }
     }
     
-    private func sentResetLink(email: String) {
-        let params: Dictionary<String, Any> = ["emailId": email]
-        AuthController.forgotPassword(param: params) { success, response, message, statusCode in
+    func sendResetLink(email: String) {
+        let params: [String: Any] = ["emailId": email]
+        
+        AuthController.forgotPassword(param: params) { success, _, message, _ in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 HUD.hide(from: self.view)
-                if success {
-                    let displayMsg = message.isEmpty ? Constant.success : message
-                    self.view.makeToast(displayMsg)
-                } else {
-                    let errorMsg = message.isEmpty ? "Something went wrong" : message
-                    self.view.makeToast(errorMsg)
-                }
+                
+                let displayMsg = message.isEmpty
+                    ? (success ? Constant.success : "Something went wrong")
+                    : message
+                
+                self.view.makeToast(displayMsg)
             }
         }
     }
@@ -69,16 +73,17 @@ class ForgotPasswordVC: UIViewController {
 // MARK: - Actions
 extension ForgotPasswordVC {
     @IBAction func btnSendResetTapped(_ sender: UIButton) {
-        self.view.endEditing(true)
+        view.endEditing(true)
         validateAndSendReset()
     }
+    
     @IBAction func btnCancelTapped(_ sender: UIButton) {
-        self.view.endEditing(true)
-        self.navigationController?.popViewController(animated: true)
-    }
-    @IBAction func btnSignInTapped(_ sender: UIButton) {
-        self.view.endEditing(true)
-        self.navigationController?.popViewController(animated: false)
+        view.endEditing(true)
+        navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func btnSignInTapped(_ sender: UIButton) {
+        view.endEditing(true)
+        navigationController?.popViewController(animated: false)
+    }
 }

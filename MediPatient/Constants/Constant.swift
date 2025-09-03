@@ -19,6 +19,7 @@ import UIKit
 //API
 let LOGIN = "Login"
 let ForgotPassword = "ForgotPassword"
+let REGISTER = "Register"
 
 
 

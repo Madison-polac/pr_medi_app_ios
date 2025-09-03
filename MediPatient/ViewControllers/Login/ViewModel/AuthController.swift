@@ -54,6 +54,19 @@ class AuthController {
             callback(success, response, message, statusCode)
         })
     }
+
+    // MARK: - Unified Register
+    static func register(param:Dictionary<String, Any>,callback:@escaping (Bool,Any?,String,Int) -> Void) -> Void {
+        ServiceManager.post(method: REGISTER, param: param, callback: { (success, response, message, statusCode) in
+            let mes = message
+            if (success) {
+                let response = response as? [String:Any] ?? [:]
+                self.convertResponsetoUserObj(response, statusCode: statusCode, message: mes, callback: callback);
+            } else {
+                callback(success, response, message, statusCode)
+            }
+        })
+    }
     
     /*static func changePassword(param:Dictionary<String, Any>,callback:@escaping (Bool,Any?,String,Int) -> Void) -> Void {
         ServiceManager.post(method: POST_CHANGEPW, param: param, callback: { (success, response, message, statusCode) in
