@@ -1,0 +1,605 @@
+/* 
+  Localizable.strings
+  SplashTrack
+
+  Created by VM on 02/01/19.
+  Copyright © 2019 Prompt. All rights reserved.
+*/
+
+
+//-----------------------------------
+// App Specific
+//-----------------------------------
+
+"internet.alert" = "Please check internet connection";
+"moduleAccess.permission.alert" = "You don't have permission to access";
+"action.hide.text" = "Hide Conversation";
+"action.edit.text" = "Edit";
+"action.delete.text" = "Delete";
+"action.cancel.text" = "Cancel";
+"action.settings.text" = "Settings";
+"action.appsettings.text" = "Go to Settings";
+"action.no.text" = "No";
+"action.yes.text" = "Yes";
+"declined.text" = "Declined";
+"action.ok.text" = "Ok";
+"action.done.text" = "Done";
+"creationDate.text" = "creationDate";
+"action.save.text" = "Save";
+"action.confirm.text" = "Confirm";
+"delete.alert.text" = "Are you sure you want to remove this item?";
+"action.capture.text" = "Capture From Camera";
+"action.record.text" = "Record From Camera";
+"cb.selectFromGallery.text" = "Select From Gallery";
+"settingsAlert.title.text" = "Photo Library Access Denied";
+"settingsAlert.message.text" = "Photo Asset Loader needs access to your photo library. Without it you will not be able to access any of your images. Please go into your app privacy settings and allow access.";
+
+"cp.invalid.alert" = "Password should have atleast one uppercase, one lowercase, one special character and length should be between 8-15 characters.";
+"version.update.alert" = "Please update the application to get the best features and improvements. The new update brings bug fixes and a better user experience. You can update the application from the AppStore.";
+"access.permission.alert" = "Enable access so that you can share photos and videos";
+
+//-----------------------------------
+// Walkthrough Pagge
+//-----------------------------------
+
+"walkthrough.page1.title" = "Welcome to Culture Board";
+"walkthrough.page2.title" = "Human Resources";
+"walkthrough.page3.title" = "Goals & Scorecard";
+//"walkthrough.page3.title" = "Hours & Wages";
+
+"walkthrough.page1.details" = "Join the conversation! Share ideas, praise and pictures with your colleagues. Create groups for your team to collaborate.";
+"walkthrough.page2.details" = "Manage your work life on the go! View balances for FSA, 401k, paid time off, and manage your direct deposits.";
+"walkthrough.page3.details" = "Are you winning at work? With transparent goals and scorecards to track progress, you always know how you're performing.";
+//"walkthrough.page3.details" = "Your pay stub, broken down. See a history of earnings, hours and deductions by pay period or year-to-date.";
+"walkthrough.getstarted.button" = "Get Started!";
+"walkthrough.next.button" = "Next";
+
+//-------------------- Login module --------------------
+"login.inactivity.alert" = "For your security, you have been logged out of SplashTrack mobile due to inactivity.";
+"login.noClient.alert" = "No client available for the current user";
+"login.invalidUP.alert" = "Invalid Username or Password";
+"login.authenticationRequired.alert" = "Authentication is needed to login into splashtrack";
+"login.authenticationFailed.alert" = "The user failed to provide valid credentials";
+"login.passcodeNotSet.alert" = "Passcode is not set on the device";
+"login.authenticationCancelled.alert" = "Authentication was cancelled by the system";
+"login.touchIdNotAvailable.alert" = "TouchID is not available on the device";
+"login.userCancel.alert" = "The user did cancel";
+"login.fallback.alert" = "The user chose to use the fallback";
+
+//-------------------- Culture Board Module ---------------------
+//Menu
+"cb.menu.cultureboard" = "Culture Board";
+"cb.menu.birthdays" = "Birthdays";
+"cb.menu.recentArrivals" = "Recent Arrivals";
+"cb.menu.outOfOffice" = "Out of Office";
+"cb.menu.workAnniversary" = "Work Anniversaries";
+
+//Culture Board
+"cb.deleteFeed.alert" = "Are you sure you want to delete this newsfeed?";
+"cb.declineFeed.alert" = "Are you sure you want to decline this newsfeed?";
+"cb.all.title" = "All";
+"cb.following.title" = "Following";
+"cb.pendingApprovals.title" = "Pending Approvals";
+"cb.pendingFeeds.title" = "My Pending Feeds";
+"cb.noFeeds.alert" = "No Feeds available";
+"cb.loadingPost.text" = "Loading Posts";
+"cb.noPendingApprovals.alert" = "No pending approvals available";
+"cb.noPendingFeeds.alert" = "No pending feeds available";
+
+//Add Post
+"cb.addPost.title" = "Add post";
+"cb.editPost.title" = "Edit post";
+"cb.addPost.textViewPlaceholder" = "Write Something Here...";
+"cb.addPost.maxImagesAlert" = "You can upload max 10 images in a post";
+"cb.addPost.emptyPostAlert" = "Please add something to the post";
+"cb.addPost.uploadVideoSizeAlert" = "Please upload a video that's smaller than 30MB";
+"cb.addPost.noCameraTitle" = "No Camera";
+"cb.addPost.noCameraAlert" = "Device has no camera";
+"cb.addPost.fileSizeAlert" = "The file size of the compressed file is: ";
+"cb.addPost.videoOutputReaderError" = "Couldn't add video output reader";
+"cb.addPost.audioOutputReaderError" = "Couldn't add audio output reader";
+
+//Comment List
+"cb.commentList.title" = "Comments";
+"cb.commentList.deleteAlert" = "Are you sure you want to delete this comment?";
+"cb.noComments.alert" = "No comments available";
+"refreshing.text" = "Refreshing";
+
+//Add Comment
+"cb.addComment.placeholder" = "Add Comment here...";
+"cb.addReply.placeholder" = "Add Reply here...";
+"cb.addComment.title" = "Add Comment";
+"cb.editComment.title" = "Edit Comment";
+"cb.editReply.title" = "Edit Reply";
+"cb.addReply.title" = "Add Reply";
+"cb.emptyComment.alert" = "Please enter comment";
+
+// Liked User List
+"likedList.title.text" = "Post Likes";
+"likedList.noLikes.alert" = "No likes available";
+
+// My Inbox
+"myInbox.title.text" = "My Inbox";
+
+// Email / Share
+"email.title.text" = "Email";
+"share.title.text" = "Share";
+"email.selectUser.alert" = "Please select at least one user";
+"email.toUserId.text" = "ToUserId";
+"email.total.text" = "Total: ";
+"email.selected.text" = "Selected: ";
+
+// Widgets
+"widget.picker.next10days" = "Next 10 days";
+"widget.picker.next15days" = "Next 15 days";
+"widget.picker.next20days" = "Next 20 days";
+"widget.picker.next25days" = "Next 25 days";
+"widget.picker.next30days" = "Next 30 days";
+"widget.picker.next45days" = "Next 45 days";
+
+"widget.picker.last10days" = "Last 10 days";
+"widget.picker.last15days" = "Last 15 days";
+"widget.picker.last20days" = "Last 20 days";
+"widget.picker.last25days" = "Last 25 days";
+"widget.picker.last30days" = "Last 30 days";
+
+"loading.text" = "Loading...";
+"widgets.noBirthdays.alert" = "No birthdays available";
+"widgets.noArrivals.alert" = "No recent arrivals";
+"widgets.noOutOfOffice.alert" = "There are no employees out of office";
+"widgets.noAnniversary.alert" = "No work anniversaries found";
+"wa.postTime.text" = "will be completed";
+"oo.leave.text" = "Leave";
+"oo.fullDay.text" = " (Full Day)";
+"oo.returns.text" = "returns";
+
+
+//-------------------- Stratus.hr module --------------------
+
+"shr.loading.text" = "Loading";
+
+//Dashboard
+"dashboard.title.text" = "Employee Portal";
+"dashboard.labelArray.hw" = "Hours & Wages";
+"dashboard.labelArray.dd" = "Direct Deposit";
+"dashboard.labelArray.benefits" = "Benefits";
+"dashboard.labelArray.pto" = "PTO";
+"dashboard.labelArray.fsa" = "FSA";
+"dashboard.labelArray.401k" = "401(k)";
+"dashboard.labelArray.finances" = "Finances";
+"dashboard.labelArray.wc" = "Workers' Comp";
+"dashboard.labelArray.doc" = "Documents";
+"dashboard.labelArray.rb" = "Refer Business";
+"dashboard.labelArray.tax" = "Taxes";
+"dashboard.labelArray.estimate.comp" = "Estimated Comp";
+
+// Direct Deposit
+"dd.remainder.first.alert" = "Remainder account can not be at first priority";
+"dd.addMaximumAccounts.alert" = "You can not add more than 10 accounts";
+"dd.hsaInfo.text" = "If you would like to make changes to your HSA deposit, please contact the benefits department at 801.984.1326 or benefits@stratus.hr.";
+"dd.deactivatePermission.alert" = "Are you sure you want to Deactivate this Deposit Account?";
+"dd.activatePermission.alert" = "Are you sure you want to activate this Deposit Account?";
+"dd.unselectRemainder.alert" = "To activate this account please unselect remainder from another account";
+"dd.reducePercentage.alert" = "You can not activate this account, unless you reduce amount of any of the active account(s) with % so that total % amount does not go beyond 100.";
+"dd.title.text" = "Direct Deposit";
+"dd.noAccounts.alert" = "No accounts available";
+
+"dd.firstPriority.text" = "Deposit Account (First Priority)";
+"dd.secondPriority.text" = "Deposit Account (Second Priority)";
+"dd.thirdPriority.text" = "Deposit Account (Third Priority)";
+"dd.fourthPriority.text" = "Deposit Account (Fourth Priority)";
+"dd.fifthPriority.text" = "Deposit Account (Fifth Priority)";
+"dd.sixthPriority.text" = "Deposit Account (Sixth Priority)";
+"dd.seventhPriority.text" = "Deposit Account (Seventh Priority)";
+"dd.eighthPriority.text" = "Deposit Account (Eighth Priority)";
+"dd.ninthPriority.text" = "Deposit Account (Ninth Priority)";
+"dd.tenthPriority.text" = "Deposit Account (Tenth Priority)";
+
+//Account Details
+"ad.combination.alert" = "Please enter unique combination of ABA/Routing Number - Account Number - Account Type";
+"ad.emptyRoutingNo.alert" = "Please enter routing number";
+"ad.emptyAccNo.alert" = "Please enter account number";
+"ad.invalidAccNo.alert" = "Invalid Account Number";
+"ad.emptyAccType.alert" = "Please select account type";
+"ad.emptyUnit.alert" = "Please select deposit amount unit";
+"ad.invalidPercent.alert" = "Invalid % value";
+"ad.emptyAmount.alert" = "Please enter deposit amount";
+"ad.invalidAmount.alert" = "Please enter valid deposit amount";
+"ad.invalidSum.alert" = "Sum of % of all accounts can not be greater than 100";
+"ad.invalidRoutingNo.alert" = "Please enter valid routing number";
+"ad.title.editAccount" = "Edit Account";
+"ad.title.addAccount" = "Add Account";
+
+//Workers Comp
+"wc.initialTextFieldDescription.text" = "Enter Description of Incident";
+"wc.date.alert" = "Please select date of incident";
+"wc.invalidDescription.alert" = "Please enter description of incident";
+"wc.successfulClaim.alert" = "Compentation claim submitted successfully";
+"wc.title.text" = "Workers' Compensation";
+
+//H&W
+"hw.title.text" = "Hours & Wages";
+"noRecords.alert" = "No records found";
+
+// Benefits
+"benefits.title.text" = "Benefits";
+"benefits.medical.text" = "Medical";
+"benefits.dental.text" = "Dental";
+"benefits.vision.text" = "Vision";
+"benefits.life.text" = "Life";
+"benefits.lifeInsurance.text" = "Life Insurance";
+"benefits.noBenefits.alert" = "No benefits available";
+
+//Refer Business
+"rb.emptyCompanyText.alert" = "Please enter company name";
+"rb.emptyContactPerson.alert" = "Please enter contact person";
+"rb.emptyContactTitle.alert" = "Please enter contact title";
+"rb.emptyPhone.alert" = "Please enter phone";
+"rb.invalidPhoneNo.alert" = "Please enter valid phone";
+"rb.emptyEmail.alert" = "Please enter contact email address";
+"rb.invalidEmail.alert" = "Please enter valid contact email address";
+"rb.emptyNoOfEmployee.alert" = "Please enter no.of employees";
+"rb.title.text" = "Refer a Business";
+
+//FSA
+"fsa.noAccounts.alert" = "You do not have a Flexible Spending Account in our records.";
+"fsa.title.text" = "Flexible Spending Account Balance";
+"fsa.text" = "FSA";
+
+//401K
+"401k.noAccounts.alert" = "You do not have a 401K Account in our records.";
+"401k.noteString.text" = "NOTE: This information represents your account with Stratus.hr's MEP. If your employer has a plan that is administered separately, the balances will not be displayed here. For details about your company's plan, please contact your supervisor.";
+"401k.title.text" = "401K Account Balance";
+"401k.text" = "401K";
+
+//Finances
+"finance.emptyPW.alert" = "Password can not be blank";
+"finance.emptyCPW.alert" = "Confirm Password can not be blank";
+"finance.comparePW.alert" = "Password and Confirm password should be same";
+"finance.pwLength.alert" = "Password should have atleast 8 characters";
+"finance.successfulSubmission.alert" = "Finance request submitted successfully";
+"finance.emptyName.alert" = "Please enter Contact Name";
+"finance.emptyEmail.alert" = "Please insert email";
+"finance.invalidEmail.alert" = "Please enter valid email address";
+"finance.securePDF.msg" = "Enter the password to secure your pdf file";
+"finance.title.text" = "Personal Finance";
+"finances.text" = "Finances";
+"pdf.text" = "-W-2.pdf";
+"pdf" = "PDF";
+"finance.request.text" = "Finance Request";
+"finance.password.text" = "Password";
+"finance.confirmp.text" = "Confirm Password";
+
+//PTO
+"pto.title.text" = "Paid Time Off";
+"pto.noPto.alert" = "No Paid Time Off available";
+
+//Documents
+"doc.title.text" = "Documents";
+"doc.noDoc.alert" = "No documents available";
+
+
+//-------------------- Goals & Scorecard module --------------------
+
+// G&S Menu Items
+"gs.menu.gAndS" = "Goals & Scorecards";
+"gs.goals.title" = "Goals";
+
+// Scorecard log
+"sc.metric.log.value.alert" = "The value must be between -2147483648 to 99999999999999";
+"sc.metric.log.decimal.value.alert" = "The value must be between -2147483648 to 9999999999999999.9999";
+
+// Select Date Range
+"dr.title.text" = "Select Date Range";
+
+// LeaderBoard
+"lb.title.text" = "Leaderboard";
+"lb.selectGoal.alert" = "Please select goal";
+"lb.selectJobTitle.alert" = "Please select job title";
+"lb.selectBusinessUnit.alert" = "Please select business unit";
+"lb.selectDateRange.alert" = "Please select date range";
+"lb.to.text" = " to ";
+"lb.selected.text" = " selected.";
+"lb.selectGoal.jobTitleId" = "JobTitleId";
+"lb.selectGoal.jobTitleName" = "JobTitleName";
+"lb.businessUnitId.text" = "BusinessUnitId";
+"lb.businessUnitName.text" = "BusinessUnitName";
+"lb.goalName.text" = "GoalName";
+"lb.selectGoal.title" = "Select Goal";
+"lb.searchGoals.text" = "Search Goals";
+"lb.selectJobTitle.title" = "Select Job Title";
+"lb.searchJobTitle.text" = "Search Job Title";
+"lb.selectBU.title" = "Select Business Unit";
+"lb.searchBU.text" = "Search Business Unit";
+"lb.noLB.text" = "No leaderboard found";
+"lb.goalValue.text" = "Goal Value : ";
+"lb.achievedValue.text" = "Achieved Value : ";
+"lb.jobTitle.text" = "Job Title : ";
+"lb.bu.text" = "Business Unit : ";
+"lb.loadingLB.text" = "Loading leaderboard";
+"lb.noJobTitles.text" = "No Job Titles";
+"lb.noBusinessUnit.text" = "No Business Units";
+
+// EmployeeForGoals
+"efg.title.text" = "Select Employee";
+"employeeName.text" =  "Employee: ";
+"efg.me.text" = "<< Me >>";
+
+// Goal List
+"gl.noGoals.alert" = "No Goals available";
+"gl.loadingGoals.text" = "Loading Goals";
+"gl.to.text" = " to ";
+"gl.%.text" = "%";
+
+// GoalHistory
+"gh.title.text" = "Goal Progress History";
+"gh.deleteGoalProgressLog.alert" = "Are you sure you want to delete this Goal progress Log?";
+"gh.progressDeleted.alert" = "Goal progress is deleted successfully";
+"gh.noGoalHistory.alert" = "No Goal History found";
+"gh.loading.text" = "Loading Goal History..";
+
+// Goal Details
+"gd.title.text" = "Goal Details";
+"gd.employee.text" = "Employee";
+"gd.frequency.text" = "Frequency";
+"gd.period.text" = "Period";
+"gd.noDetail.alert" = "No Goal Details available";
+"gd.addGoalProgress.text" = "Add Goal Progress";
+"gd.noOfEmp.text" = "No. of Emp";
+"gd.$.text" = "$";
+
+// Goal Progress
+"gp.title.text" = "Goal Progress";
+"gp.selectDate.alert" = "Please Select Date";
+"gp.actualValue.alert" = "Please Enter Actual Value";
+"gp.goalValue.text" = "Goal Value (%)*";
+"gp.achievedValue.text" = "Achieved Value (%)";
+"gp.actualValue.text" = "Actual Value (%)";
+"gp.maintainValue.text" = "Maintain Value (%)";
+
+// Scorecard Detail
+"scd.title.text" = "Scorecard Metric Log";
+"scd.enterDate.alert" = "Please enter date";
+"scd.enterMetricValue.alert" = "Please enter metric value";
+"scd.logSaved.alert" = "Scorecard metric log saved successfully";
+"scd.datePerformed.text" = "Date Performed*";
+"scd.metricValue.text" = "Metric Value*";
+"scd.pleaseEnter.text" = "Please enter ";
+"scd.*.text" = "*";
+
+// Scorecard overview
+"so.creator.text" = "Creator";
+"so.employee.text" = "Employee";
+"so.metricLog.text" = "Metric Log";
+"so.logHistory.text" = "Metric Log History ";
+
+// OverViewLineGraph
+"olg.title.text" = "Rolling Five Chart";
+
+// Scorecard Instance list
+"scil.title.text" = "Master Scorecard Instances";
+"scil.noInstance.alert" = "Master scorecard instances not available";
+"scil.loading.text" = "Loading scorecard instances";
+
+// Employee list
+"el.title.text" = "Employee";
+
+// Manage scorecard
+"msc.title.text" = "Manage Scorecard";
+
+// Scorecard Filters
+"sf.yes.text" = "Yes";
+"sf.no.text" = "No";
+
+// Scorecard History
+"sch.deleteLog.alert" = "Are you sure you want to delete this history log?";
+"sch.logDeleted.alert" = "Scorecard metric log is deleted successfully";
+"sch.title.text" = "Scorecard Metric Log History";
+"sch.deleteMetricLog.alert" = "Are you sure you want to delete Metric Log?";
+"sch.deleteLog.title" = "Delete Metric Log";
+"sch.noHistory.alert" = "No scorecard metric log history found";
+"sch.loadingHistory.text" = "Loading Metric Log History..";
+
+// Scorecard Activities
+"sca.title.text" = "Activities";
+"sca.noActivities.text" = "No activities found";
+"sca.loadingActivities.text" = "Loading Activities";
+
+// Reviews
+"review.title.text" = "Reviews";
+"review.scnotes.text" = "Scorecard Notes : ";
+"review.generalNotes.text" = "General Notes : ";
+"review.goalNotes.text" = "Goal Notes : ";
+"review.wow.text" = "Wow!  ";
+"review.noReview.text" = "No reviews found";
+"review.loading.text" = "Loading Reviews";
+
+// Activity Log History
+"alh.title.text" = "Activities Log History";
+"alh.deleteHistory.alert" = "Are you sure you want to delete this history?";
+"alh.logDeleted.alert" = "Scorecard activity log is deleted successfully";
+"alh.deleteLog.alert" = "Are you sure you want to delete Activity Log?";
+"alh.deleteLog.title" = "Delete Activity Log";
+"alh.noHistoryLog.text" = "No Activities Log History found";
+"alh.loading.text" = "Loading Activities Log History..";
+"alh.counts.text" = " Counts";
+
+// Filter Date
+"fd.enterStartDate.alert" =  "Please enter start date";
+"fd.enterEndDate.alert" = "Please enter end date";
+"fd.enterValidDates.alert" = "Please enter valid start and end date";
+"fd.title.text" = "Date Range";
+"fd.startDate.text" = "StartDate";
+"fd.endDate.text" = "EndDate";
+
+// Scorecard Activities Logs
+"scal.enterLogCount.alert" = "Enter Log count for atleast one activity";
+"scal.activityLogSaved.alert" = "Scorecard activites log saved successfully";
+
+// Activity List
+"al.noActivities.text" = "No Activities available";
+"al.loading.text" = "Loading Activities";
+
+// Edit Activity Log
+"eal.title.text" = "Edit Activity Log";
+"eal.enterLogCount.alert" = "Enter log count for activity";
+"eal.updated.alert" = "Activity log updated succesfully";
+
+// Scorecard list
+"scl.title.text" = "Scorecards";
+"scl.masterSc.titleText" = "Master Scorecards";
+"scl.goal.text" = "Goal : ";
+"scl.noScorecards.text" = "No Scorecards available";
+"scl.loadingSC.text" = "Loading Scorecards";
+
+// ------------------- Account Management -----------------
+
+// State
+"state.title.text" = "State";
+
+// Side Menu
+"sm.settings.text" = "Settings";
+"sm.changePassword.text" = "Change Password";
+"sm.logout.text" = "Log Out";
+"sm.logout.alert" = "Are you sure you want to logout?";
+"sm.module.payroll" = "Payroll";
+"sm.module.g&s" = "GoalsAndScorecards";
+"sm.myInbox.text" = "My Inbox";
+"sm.myInfo.text" = "My Info";
+"sm.contactUs.text" = "Contact Us";
+
+// Contact Us
+"cu.header1.text" = "STRATUS.HR HEADQUARTERS";
+"cu.header2.text" = "CONTACT US BY DEPARTMENT";
+
+// Client Selection
+"cs.title.text" = "Select Company";
+"cs.selectCompany.alert" = "Please select company name";
+
+// Forgot Password
+"fp.title.text" = "Forgot Password?";
+"fp.invalidEmail.alert" = "Please enter valid email address";
+
+// Change Password
+"cp.changed.alert" = "Password Changed Successfully";
+"cp.invalid.alert" = "Password should have atleast one uppercase, one lowercase, one special character and length should be between 8-15 characters.";
+"cp.emptyOldPW.alert" = "Please enter old password";
+"cp.emptyNewPW.alert" = "Please enter new password";
+"cp.emptyConfirmPW.alert" = "Please enter confirm password";
+"cp.pwMatch.alert" = "Password and confirm password should be same";
+
+// General Info
+"gi.title.text" = "General Information";
+"gi.email.text" = "Email";
+"gi.birthDate.text" = "Birth Date";
+"gi.homeAdd.text" = "Home Address";
+"gi.mailingAdd.text" = "Mailing Address";
+"gi.emergencyContact.text" = "Emergency Contact";
+"gi.payDetails.text" = "Pay Details";
+"gi.payRate.text" = "Pay Rate: ";
+"gi.annualSalary.text" = "Annual Salary: ";
+"gi.payType.text" = "Pay Type: ";
+"gi.payFrequency.text" = "Pay Frequency: ";
+
+// Company Info
+"ci.title.text" = "Company Information";
+"ci.role.text" = "Role";
+"ci.jobTitle.text" = "Job Title";
+"ci.workPhone.text" = "Work Phone";
+"ci.hireDate.text" = "Original Hire Date";
+"ci.reportsTo.text" = "Reports To";
+"ci.coach.text" = "Coach";
+"ci.empId.text" = "Employee ID";
+"ci.businessUnit.text" = "Business Unit";
+"ci.workEmail.text" = "Work Email";
+
+// User Profile
+"up.title.text" = "My Info";
+
+// Refer Business Details
+"rbd.enterFN.alert" = "Please enter first name";
+"rbd.enterEmail.alert" = "Please enter email address";
+"rbd.invalidEmail.alert" = "Please enter valid email address";
+"rbd.enterPhone.alert" = "Please enter phone number";
+"rbd.invalidPhone.alert" = "Please enter valid phone number";
+"rbd.enterCompany.alert" = "Please enter company name";
+"rbd.enterEmployees.alert" = "Please enter no of employees";
+"rbd.enterState.alert" = "Please enter state from which business operates";
+"rbd.title.text" = "Want to Refer Business";
+"rbd.resMsg.text" = "Thank you for your business referral. We are so pleased that you are satisfied with our services enough to recommend us to a valued friend or associate. We will notify you if your referral becomes a client and of your potential bonus. Thanks!";
+
+// Want to refer business
+"wrb.web.text" = "Web";
+"wrb.business.text" = "Business";
+"wrb.phoneBook.text" = "Phone Book";
+"wrb.ad.text" = "Commercial or Ad";
+"wrb.assoc.text" = "Utah State Bar Assoc.";
+"wrb.eHealthApp.text" = "eHealthApp";
+"wrb.other.text" = "Other";
+"wrb.enterRelationShip.alert" = "Please enter relationship";
+
+// Edit Profile
+"ep.title.text" = "Edit My Info";
+
+"ep.emptyAddress.alert" = "Please enter home address";
+"ep.emptyAddress2.alert" = "Please enter home address line 2";
+"ep.enterCity.alert" = "Please enter home city";
+"ep.enterState.alert" = "Please enter home state";
+"ep.enterZip.alert" = "Please enter home zip code";
+"ep.enterValidZip.alert" = "Please enter valid home zip code";
+
+"ep.emptyAddressMail.alert" = "Please enter mail address";
+"ep.emptyAddressMail2.alert" = "Please enter mail address line 2";
+"ep.enterCityMail.alert" = "Please enter mail city";
+"ep.enterStateMail.alert" = "Please enter mail state";
+"ep.enterZipMail.alert" = "Please enter mail zip code";
+"ep.enterValidZipMail.alert" = "Please enter valid mail zip code";
+
+"ep.enterValidPhone.alert" = "Please enter valid phone";
+"ep.selectMaritalStatus.alert" = "Please select marital status";
+"ep.sessionExpired.alert" = "Your session has been expired, Please log in again";
+
+// W4 Info
+"taxes.title.text" = "Taxes";
+"w4.selectFederalStatus.alert" = "Please select Federal Status";
+"w4.enterAllowances.alert" = "Please enter number of allowances";
+"w4.federalStatus.text" = "Federal Status";
+"w4.allowances.text" = "Total number of allowances";
+"w4.additionalAmount.text" = "Additional amount";
+"w4.link.text" = "Here is link to the file sent by IRS based on which your W4 is locked.";
+"w4.title.text" = "W4 Tax Info";
+"w2.title.text" = "W2 Tax Info";
+"w4.edit.title.text" = "Edit Tax Info";
+"w4.info.title.text" = "Taxes (W4-Info)";
+"w4.federal.status.single" = "Single or Married filling separately";
+"w4.federal.status.married" = "Married filling jointly (or Qualifying widow(er))";
+"w4.federal.status.household" = "Head of household (Check only if you're unmarried and pay more than half the costs of keeping up a home for yourself and a qualifying individual.)";
+"w4.federal.status.nonresidentalian" = "Nonresident Alien";
+"w4.federal.status.exempt" = "Exempt";
+"w4.document.locked.message" = "W4 is locked, if you have any query please contact your payroll manager.";
+
+
+//-------------------- Touch ID module --------------------
+"touchID.alert" = "Please authenticate your account with your Username and Password to use fingerprint Sign In.";
+
+//-----------------------------------
+// Settings
+//-----------------------------------
+"settings.page.title" = "Settings";
+"settings.page.section" = "Select your default ranges for each section. This determines how many days in the future or past you will see results in each section.";
+"settings.birthdate.title" = "Birthdays";
+"settings.arrivals.title" = "Recent Arrivals";
+"settings.anniversary.title" = "Work Anniversaries";
+"settings.outofoffice.title" = "Out of Office";
+"settings.show.username.title" = "Username is visible";
+"settings.show.birthdate.title" = "Birthday is visible";
+"settings.default.days.title" = "Scorecards";
+
+"settings.birthdate.detail" = "Show co-workers who have birthdays in the next";
+"settings.arrivals.detail" = "Show new hires who have started in the last";
+"settings.anniversary.detail" = "Show co-workers who have employment anniversaries in the next";
+"settings.outofoffice.detail" = "See who’s out of the office for the next";
+"settings.show.username.detail" = "Show my username in the Culture Board’s User Directory";
+"settings.show.birthdate.detail" = "Show my birthday (day and month only) in the Culture Board";
+"settings.default.days.detail" = "Display Scorecard data beginning";
+"settings.valid.days.alert" = "Enter valid days";

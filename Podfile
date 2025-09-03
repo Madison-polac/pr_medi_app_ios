@@ -8,7 +8,7 @@ target 'MediPatient' do
 pod 'MBProgressHUD', '~> 1.2.0'
 pod 'IQKeyboardManagerSwift'
   pod 'CountryPickerView'
-
+  
   target 'MediPatientTests' do
     inherit! :search_paths
     # Pods for testing

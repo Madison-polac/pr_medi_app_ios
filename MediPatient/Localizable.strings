@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+
+ */
+
+
+//-----------------------------------
+// App Specific
+//-----------------------------------
+
+"internet.alert" = "Please check internet connection";
+"moduleAccess.permission.alert" = "You don't have permission to access";
+"action.hide.text" = "Hide Conversation";
+"action.edit.text" = "Edit";
+"action.delete.text" = "Delete";
+"action.cancel.text" = "Cancel";
+"action.settings.text" = "Settings";
+"action.appsettings.text" = "Go to Settings";
+"action.no.text" = "No";
+"action.yes.text" = "Yes";
+"declined.text" = "Declined";
+"action.ok.text" = "Ok";
+"action.done.text" = "Done";
+"creationDate.text" = "creationDate";
+"action.save.text" = "Save";
+"action.confirm.text" = "Confirm";
+"delete.alert.text" = "Are you sure you want to remove this item?";
+"action.capture.text" = "Capture From Camera";
+"action.record.text" = "Record From Camera";
+"cb.selectFromGallery.text" = "Select From Gallery";
+"settingsAlert.title.text" = "Photo Library Access Denied";
+"settingsAlert.message.text" = "Photo Asset Loader needs access to your photo library. Without it you will not be able to access any of your images. Please go into your app privacy settings and allow access.";
+
+"cp.invalid.alert" = "Password should have atleast one uppercase, one lowercase, one special character and length should be between 8-15 characters.";
+"version.update.alert" = "Please update the application to get the best features and improvements. The new update brings bug fixes and a better user experience. You can update the application from the AppStore.";
+"access.permission.alert" = "Enable access so that you can share photos and videos";
+

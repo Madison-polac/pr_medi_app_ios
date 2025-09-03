@@ -64,8 +64,39 @@ class LoginVC: UIViewController {
         if isValid {
             // Proceed with login logic
             print("All fields valid, login starts!")
+            //API call ...
+            self.doLogin(username: email, password: password)
         }
     }
+    
+    //MARK: - WEBSERVICE methods
+    func doLogin(username:String,password:String) {
+        var params : Dictionary<String,Any> = GlobalUtils.getInstance().getBodyParams()
+        params["userName"] = username
+        params["password"] = password
+        params["appleId"] = ""
+      
+        //params["ClientKey"] = CLIENT_KEY
+        self.startAnimatingWithIgnoringInteraction()
+        
+        AuthController.getLogin(param: params) { (success,response,message,statusCode) in
+            DispatchQueue.main.async {
+                if success {
+                    self.stopAnimatingWithIgnoringInteraction()
+                    if (success) {
+                        print(response)
+                        let userObj = response as! User
+                        print(userObj.firstName)
+                    }
+                } else {
+                    self.stopAnimatingWithIgnoringInteraction()
+                    let invalidMsg = LocalizedString(message: "login.invalidUP.alert")
+                    self.showAlert(message: invalidMsg)
+                }
+            }
+        }
+    }
+
 }
 
 // MARK: - Actions
@@ -73,6 +104,7 @@ extension LoginVC {
     @IBAction func btnSignInTapped(_ sender: UIButton) {
         self.view.endEditing(true)
         validateAndLogin()
+        
     }
     
     @IBAction func btnForgotPasswordTapped(_ sender: UIButton) {
