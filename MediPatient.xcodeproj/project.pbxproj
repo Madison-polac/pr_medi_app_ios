@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		29C8671F29342F846FC76F84 /* Pods_MediPatientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F334CCED8B28A8C3CD5EA6 /* Pods_MediPatientTests.framework */; };
+		6CFC2C222E69A3E6000ED3EE /* RappleProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 6CFC2C212E69A3E6000ED3EE /* RappleProgressHUD */; };
 		84D409593A66E0D88743B286 /* Pods_MediPatient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F783C6745896231EF85EB /* Pods_MediPatient.framework */; };
 		BCF89F06D1B576626DFA0014 /* Pods_MediPatient_MediPatientUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2F297783A199639733AA6D /* Pods_MediPatient_MediPatientUITests.framework */; };
 /* End PBXBuildFile section */
@@ -45,7 +46,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		6C158F722E4877DB00C0C085 /* Exceptions for "MediPatient" folder in "MediPatient" target */ = {
+		6CFC2B762E6962EA000ED3EE /* Exceptions for "MediPatient" folder in "MediPatient" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -58,22 +59,18 @@
 		6C158F492E4877D900C0C085 /* MediPatient */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				6C158F722E4877DB00C0C085 /* Exceptions for "MediPatient" folder in "MediPatient" target */,
+				6CFC2B762E6962EA000ED3EE /* Exceptions for "MediPatient" folder in "MediPatient" target */,
 			);
 			path = MediPatient;
 			sourceTree = "<group>";
 		};
 		6C158F632E4877DB00C0C085 /* MediPatientTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = MediPatientTests;
 			sourceTree = "<group>";
 		};
 		6C158F6D2E4877DB00C0C085 /* MediPatientUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = MediPatientUITests;
 			sourceTree = "<group>";
 		};
@@ -85,6 +82,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84D409593A66E0D88743B286 /* Pods_MediPatient.framework in Frameworks */,
+				6CFC2C222E69A3E6000ED3EE /* RappleProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +253,9 @@
 			);
 			mainGroup = 6C158F3E2E4877D900C0C085;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6CFC2C202E69A3CF000ED3EE /* XCRemoteSwiftPackageReference "RappleProgressHUD" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6C158F482E4877D900C0C085 /* Products */;
 			projectDirPath = "";
@@ -342,9 +343,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MediPatient-MediPatientUITests/Pods-MediPatient-MediPatientUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MediPatient-MediPatientUITests/Pods-MediPatient-MediPatientUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -403,9 +408,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MediPatient/Pods-MediPatient-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MediPatient/Pods-MediPatient-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -755,6 +764,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6CFC2C202E69A3CF000ED3EE /* XCRemoteSwiftPackageReference "RappleProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rjeprasad/RappleProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6CFC2C212E69A3E6000ED3EE /* RappleProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6CFC2C202E69A3CF000ED3EE /* XCRemoteSwiftPackageReference "RappleProgressHUD" */;
+			productName = RappleProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6C158F3F2E4877D900C0C085 /* Project object */;
 }

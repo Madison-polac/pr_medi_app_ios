@@ -28,21 +28,21 @@ class AppViewController: UIViewController {
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.backgroundColor = UIColor.barColor()
-            appearance.titleTextAttributes =  [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.navTitleFont(size: 18)]
+            appearance.titleTextAttributes =  [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.ubuntuBold(ofSize: 18)]
             self.navigationController?.navigationBar.standardAppearance = appearance
             self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
         } else {
             self.navigationController?.navigationBar.barTintColor = UIColor.barColor()
             self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.white,
-                  NSAttributedString.Key.font: UIFont.navTitleFont(size: 18)]
+             NSAttributedString.Key.font: UIFont.ubuntuBold(ofSize: 18)]
         }
        
         self.navigationController?.navigationBar.tintColor = UIColor.navTintColor
         refreshControl.tintColor = UIColor.themeColor
                 
         var style = ToastStyle()
-        style.messageFont = UIFont.normalFont(size: 16)
+        style.messageFont = UIFont.ubuntuMedium(ofSize: 16)
         style.messageColor = UIColor.navTintColor
         ToastManager.shared.isTapToDismissEnabled = false
         ToastManager.shared.style = style
@@ -253,7 +253,7 @@ class AppViewController: UIViewController {
     
     func reutnMutableString(legth:Int,plainString:String) -> NSMutableAttributedString {
         var goalnameMutable = NSMutableAttributedString()
-        goalnameMutable = NSMutableAttributedString(string: plainString as String as String, attributes: [NSAttributedString.Key.font:UIFont.normalFont(size: 16)])
+        goalnameMutable = NSMutableAttributedString(string: plainString as String as String, attributes: [NSAttributedString.Key.font:UIFont.ubuntuRegular(ofSize:  16)])
         goalnameMutable.addAttribute(NSAttributedString.Key.foregroundColor, value:  UIColor.gray, range: NSRange(location:0,length:legth))
         return goalnameMutable
     }

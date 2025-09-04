@@ -7,8 +7,9 @@
 
 import UIKit
 import MBProgressHUD
+import RappleProgressHUD
 
-class LoginVC: UIViewController {
+class LoginVC: AppViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var btnSignIn: UIButton!
@@ -87,12 +88,15 @@ extension LoginVC {
         params["appleId"] = ""
         params["isFromMobile"] = true
 
-        HUD.show(on: view)
+       // HUD.show(on: view)
+        RappleActivityIndicatorView.startAnimating()
+        //self.startAnimatingWithIgnoringInteraction()
         AuthController.getLogin(param: params) { [weak self] success, response, message, statusCode in
             DispatchQueue.main.async {
                 guard let self = self else { return }
-                HUD.hide(from: self.view)
-                
+               // HUD.hide(from: self.view)
+                RappleActivityIndicatorView.stopAnimation()
+               // self.startAnimatingWithIgnoringInteraction()
                 if success, let userObj = response as? User {
                     print("Login successful for: \(userObj.userName)")
                 } else {
