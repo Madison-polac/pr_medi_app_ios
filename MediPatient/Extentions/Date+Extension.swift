@@ -1,624 +1,208 @@
+
 import Foundation
 
 public extension Date {
     
-    func getDateFromDays(days: Int) -> Date {
-        var component = DateComponents()
-        component.day = days
-        let calendar = Calendar.current
-        return calendar.date(byAdding: component, to: Date()) ?? Date()
+    // MARK: - Simple Date Calculations
+    func dateByAdding(days: Int) -> Date {
+        return Calendar.current.date(byAdding: .day, value: days, to: self) ?? self
     }
     
-    // Get dates difference in seconds, minutes, hours, days, months and year string format
     func offset(from date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = SERVER_LONG_DATE_FORMAT
-        dateFormatter.timeZone = (NSTimeZone(abbreviation: "GMT")! as TimeZone)
-        
-        let todayDateString = dateFormatter.string(from: Date())
-        let endDate = dateFormatter.date(from: todayDateString)!
-
-        let dateComponentsFormatter = DateComponentsFormatter()
-        dateComponentsFormatter.allowedUnits = [.year,.month,.weekOfMonth,.day,.hour,.minute,.second]
-        dateComponentsFormatter.maximumUnitCount = 1
-        dateComponentsFormatter.unitsStyle = .full
-        let dateString = dateComponentsFormatter.string(from: date, to: endDate)  // "1 month"
-        return "\(String(describing: dateString!)) ago"
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.year, .month, .weekOfMonth, .day, .hour, .minute, .second]
+        formatter.maximumUnitCount = 1
+        formatter.unitsStyle = .full
+        let endDate = Date()
+        return (formatter.string(from: date, to: endDate) ?? "") + " ago"
     }
     
-    //MARK:- Day methods
-    /// Weekday.
-    var weekday: Int {
-        return calendar.component(.weekday, from: self)
-    }
-    var day: Int {
-        get {
-            return calendar.component(.day, from: self)
-        }
-        set {
-            self = Date(calendar: calendar, timeZone: timeZone, era: era, year: year, month: month, day: newValue, hour: hour, minute: minute, second: second, nanosecond: nanosecond)
-        }
-    }
-    
-    /// User’s current calendar.
+    // MARK: - Components
     var calendar: Calendar {
-        var calendar = Calendar.current
-        calendar.timeZone = (NSTimeZone(abbreviation: "GMT")! as TimeZone)
-        return calendar
+        var cal = Calendar.current
+        cal.timeZone = TimeZone(abbreviation: "GMT") ?? .current
+        return cal
     }
     
-    /// Era.
-    var era: Int {
-        return calendar.component(.era, from: self)
-    }
+    var era: Int { calendar.component(.era, from: self) }
+    var year: Int { calendar.component(.year, from: self) }
+    var month: Int { calendar.component(.month, from: self) }
+    var day: Int { calendar.component(.day, from: self) }
+    var hour: Int { calendar.component(.hour, from: self) }
+    var minute: Int { calendar.component(.minute, from: self) }
+    var second: Int { calendar.component(.second, from: self) }
+    var nanosecond: Int { calendar.component(.nanosecond, from: self) }
+    var weekday: Int { calendar.component(.weekday, from: self) }
+    var quarter: Int { calendar.component(.quarter, from: self) }
+    var weekOfYear: Int { calendar.component(.weekOfYear, from: self) }
+    var weekOfMonth: Int { calendar.component(.weekOfMonth, from: self) }
     
-    /// Year.
-    var year: Int {
-        get {
-            return calendar.component(.year, from: self)
-        }
-        set {
-            self = Date(calendar: calendar, timeZone: timeZone, era: era, year: newValue, month: month, day: day, hour: hour, minute: minute, second: second, nanosecond: nanosecond)
-        }
-    }
+    // MARK: - Checks
+    var isInFuture: Bool { self > Date() }
+    var isInPast: Bool { self < Date() }
+    var isInToday: Bool { calendar.isDateInToday(self) }
     
-    /// Quarter.
-    var quarter: Int {
-        return calendar.component(.quarter, from: self)
-    }
-    
-    /// Month.
-    var month: Int {
-        get {
-            return calendar.component(.month, from: self)
-        }
-        set {
-            self = Date(calendar: calendar, timeZone: timeZone, era: era, year: year, month: newValue, day: day, hour: hour, minute: minute, second: second, nanosecond: nanosecond)
-        }
-    }
-    
-    /// Week of year.
-    var weekOfYear: Int {
-        return calendar.component(.weekOfYear, from: self)
-    }
-    
-    /// Week of month.
-    var weekOfMonth: Int {
-        return calendar.component(.weekOfMonth, from: self)
-    }
-    
-    /// Hour.
-    var hour: Int {
-        get {
-            return calendar.component(.hour, from: self)
-        }
-        set {
-            self = Date(calendar: calendar, timeZone: timeZone, era: era, year: year, month: month, day: day, hour: newValue, minute: minute, second: second, nanosecond: nanosecond)
-        }
-    }
-    
-    /// Minutes.
-    var minute: Int {
-        get {
-            return calendar.component(.minute, from: self)
-        }
-        set {
-            self = Date(calendar: calendar, timeZone: timeZone, era: era, year: year, month: month, day: day, hour: hour, minute: newValue, second: second, nanosecond: nanosecond)
-        }
-    }
-    
-    /// Seconds.
-    var second: Int {
-        get {
-            return calendar.component(.second, from: self)
-        }
-        set {
-            self = Date(calendar: calendar, timeZone: timeZone, era: era, year: year, month: month, day: day, hour: hour, minute: minute, second: newValue, nanosecond: nanosecond)
-        }
-    }
-    
-    /// Nanoseconds.
-    var nanosecond: Int {
-        return calendar.component(.nanosecond, from: self)
-    }
-    
-    /// Check if date is in future.
-    var isInFuture: Bool {
-        return self > Date()
-    }
-    
-    /// Check if date is in past.
-    var isInPast: Bool {
-        return self < Date()
-    }
-    
-    /// Check if date is in today.
-    var isInToday: Bool {
-        return self.day == Date().day && self.month == Date().month && self.year == Date().year
-    }
-    
-    /// ISO8601 string of format (yyyy-MM-dd'T'HH:mm:ss.SSS) from date.
+    // MARK: - ISO & Timestamp
     var iso8601String: String {
-        // https://github.com/justinmakaila/NSDate-ISO-8601/blob/master/NSDateISO8601.swift
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-        
-        return dateFormatter.string(from: self).appending("Z")
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        formatter.timeZone = TimeZone(abbreviation: "GMT")
+        return formatter.string(from: self)
     }
     
-    /// Nearest five minutes to date.
-    var nearestFiveMinutes: Date {
-        var components = Calendar.current.dateComponents([.year, .month , .day , .hour , .minute], from: self)
-        guard let min = components.minute else {
-            return self
-        }
-        components.minute! = min % 5 < 3 ? min - min % 5 : min + 5 - (min % 5)
-        components.second = 0
-        if min > 57 {
-            components.hour? += 1
-        }
-        return Calendar.current.date(from: components) ?? Date()
+    var unixTimestamp: Double { timeIntervalSince1970 }
+    var millisecondsSince1970: Int64 { Int64((timeIntervalSince1970 * 1000).rounded()) }
+    
+    // MARK: - Nearest Rounded Time
+    private func rounded(minuteInterval: Int) -> Date {
+        var comps = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self)
+        guard let minute = comps.minute else { return self }
+        let remainder = minute % minuteInterval
+        comps.minute! = remainder < minuteInterval / 2 ? minute - remainder : minute + (minuteInterval - remainder)
+        comps.second = 0
+        return calendar.date(from: comps) ?? self
     }
     
-    /// Nearest ten minutes to date.
-    var nearestTenMinutes: Date {
-        var components = Calendar.current.dateComponents([.year, .month , .day , .hour , .minute], from: self)
-        guard let min = components.minute else {
-            return self
-        }
-        components.minute! = min % 10 < 6 ? min - min % 10 : min + 10 - (min % 10)
-        components.second = 0
-        if min > 55 {
-            components.hour? += 1
-        }
-        return Calendar.current.date(from: components) ?? Date()
-    }
+    var nearestFiveMinutes: Date { rounded(minuteInterval: 5) }
+    var nearestTenMinutes: Date { rounded(minuteInterval: 10) }
+    var nearestHalfHour: Date { rounded(minuteInterval: 30) }
+    var nearestHourQuarter: Date { rounded(minuteInterval: 15) }
     
-    /// Nearest quarter to date.
-    var nearestHourQuarter: Date {
-        var components = Calendar.current.dateComponents([.year, .month , .day , .hour , .minute], from: self)
-        guard let min = components.minute else {
-            return self
-        }
-        components.minute! = min % 15 < 8 ? min - min % 15 : min + 15 - (min % 15)
-        components.second = 0
-        if min > 52 {
-            components.hour? += 1
-        }
-        return Calendar.current.date(from: components) ?? Date()
-    }
+    var timeZone: TimeZone { calendar.timeZone }
     
-    /// Nearest half hour to date.
-    var nearestHalfHour: Date {
-        var components = Calendar.current.dateComponents([.year, .month , .day , .hour , .minute], from: self)
-        guard let min = components.minute else {
-            return self
-        }
-        components.minute! = min % 30 < 15 ? min - min % 30 : min + 30 - (min % 30)
-        components.second = 0
-        if min > 30 {
-            components.hour? += 1
-        }
-        return Calendar.current.date(from: components) ?? Date()
-    }
-    
-    /// Time zone used by system.
-    var timeZone: TimeZone {
-        return self.calendar.timeZone
-    }
-    
-    /// UNIX timestamp from date.
-    var unixTimestamp: Double {
-        return timeIntervalSince1970
-    }
-    
-}
-
-
-// MARK: - Methods
-public extension Date {
-    
-    /// Add calendar component to date.
-    ///
-    /// - Parameters:
-    ///   - component: component type.
-    ///   - value: multiples of compnenet to add.
+    // MARK: - Add / Change Components
     mutating func add(_ component: Calendar.Component, value: Int) {
-        switch component {
-        case .second:
-            self = calendar.date(byAdding: .second, value: value, to: self) ?? self
-            break
-            
-        case .minute:
-            self = calendar.date(byAdding: .minute, value: value, to: self) ?? self
-            break
-            
-        case .hour:
-            self = calendar.date(byAdding: .hour, value: value, to: self) ?? self
-            break
-            
-        case .day:
-            self = calendar.date(byAdding: .day, value: value, to: self) ?? self
-            break
-            
-        case .weekOfYear, .weekOfMonth:
-            self = calendar.date(byAdding: .day, value: value * 7, to: self) ?? self
-            break
-            
-        case .month:
-            self = calendar.date(byAdding: .month, value: value, to: self) ?? self
-            break
-            
-        case .year:
-            self = calendar.date(byAdding: .year, value: value, to: self) ?? self
-            break
-            
-        default:
-            break
-        }
+        self = calendar.date(byAdding: component, value: value, to: self) ?? self
     }
     
-    /// Date by adding multiples of calendar component.
-    ///
-    /// - Parameters:
-    ///   - component: component type.
-    ///   - value: multiples of compnenets to add.
-    /// - Returns: original date + multiples of compnenet added.
     func adding(_ component: Calendar.Component, value: Int) -> Date {
-        switch component {
-        case .second:
-            return calendar.date(byAdding: .second, value: value, to: self) ?? self
-            
-        case .minute:
-            return calendar.date(byAdding: .minute, value: value, to: self) ?? self
-            
-        case .hour:
-            return calendar.date(byAdding: .hour, value: value, to: self) ?? self
-            
-        case .day:
-            return calendar.date(byAdding: .day, value: value, to: self) ?? self
-            
-        case .weekOfYear, .weekOfMonth:
-            return calendar.date(byAdding: .day, value: value * 7, to: self) ?? self
-            
-        case .month:
-            return calendar.date(byAdding: .month, value: value, to: self) ?? self
-            
-        case .year:
-            return calendar.date(byAdding: .year, value: value, to: self) ?? self
-            
-        default:
-            return self
-        }
+        return calendar.date(byAdding: component, value: value, to: self) ?? self
     }
     
-    /// Date by changing value of calendar component.
-    ///
-    /// - Parameters:
-    ///   - component: component type.
-    ///   - value: new value of compnenet to change.
-    /// - Returns: original date + multiples of compnenets added.
     func changing(_ component: Calendar.Component, value: Int) -> Date {
+        var date = self
         switch component {
-        case .second:
-            var date = self
-            date.second = value
-            return date
-            
-        case .minute:
-            var date = self
-            date.minute = value
-            return date
-            
-        case .hour:
-            var date = self
-            date.hour = value
-            return date
-            
-        case .day:
-            var date = self
-            date.day = value
-            return date
-            
-        case .month:
-            var date = self
-            date.month = value
-            return date
-            
-        case .year:
-            var date = self
-            date.year = value
-            return date
-            
-        default:
-            return self
+        case .second: date = calendar.date(bySetting: .second, value: value, of: self) ?? self
+        case .minute: date = calendar.date(bySetting: .minute, value: value, of: self) ?? self
+        case .hour: date = calendar.date(bySetting: .hour, value: value, of: self) ?? self
+        case .day: date = calendar.date(bySetting: .day, value: value, of: self) ?? self
+        case .month: date = calendar.date(bySetting: .month, value: value, of: self) ?? self
+        case .year: date = calendar.date(bySetting: .year, value: value, of: self) ?? self
+        default: break
         }
+        return date
     }
     
-    /// Data at the beginning of calendar component.
-    ///
-    /// - Parameter component: calendar component to get date at the beginning of.
-    /// - Returns: date at the beginning of calendar component (if applicable).
     func beginning(of component: Calendar.Component) -> Date? {
         switch component {
-        case .second:
-            return calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self))
-            
-        case .minute:
-            return calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self))
-            
-        case .hour:
-            return calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour], from: self))
-            
-        case .day:
-            return self.calendar.startOfDay(for: self)
-            
-        case .weekOfYear, .weekOfMonth:
+        case .second: return calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self))
+        case .minute: return calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self))
+        case .hour: return calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour], from: self))
+        case .day: return calendar.startOfDay(for: self)
+        case .weekOfMonth, .weekOfYear:
             return calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))
-            
-        case .month:
-            return calendar.date(from: calendar.dateComponents([.year, .month], from: self))
-            
-        case .year:
-            return calendar.date(from: calendar.dateComponents([.year], from: self))
-            
-        default:
-            return nil
+        case .month: return calendar.date(from: calendar.dateComponents([.year, .month], from: self))
+        case .year: return calendar.date(from: calendar.dateComponents([.year], from: self))
+        default: return nil
         }
     }
     
-    /// Date at the end of calendar component.
-    ///
-    /// - Parameter component: calendar component to get date at the end of.
-    /// - Returns: date at the end of calendar component (if applicable).
     func end(of component: Calendar.Component) -> Date? {
+        guard let start = beginning(of: component) else { return nil }
         switch component {
-        case .second:
-            var date = self.adding(.second, value: 1)
-            guard let after = calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)) else {
-                return nil
-            }
-            date = after
-            date.add(.second, value: -1)
-            return date
-            
-        case .minute:
-            var date = self.adding(.minute, value: 1)
-            guard let after = calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date)) else {
-                return nil
-            }
-            date = after.adding(.second, value: -1)
-            return date
-            
-        case .hour:
-            var date = self.adding(.hour, value: 1)
-            guard let after = calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour], from: self)) else {
-                return nil
-            }
-            date = after.adding(.second, value: -1)
-            return date
-            
-        case .day:
-            var date = self.adding(.day, value: 1)
-            date = date.calendar.startOfDay(for: date)
-            date.add(.second, value: -1)
-            return date
-            
-        case .weekOfYear, .weekOfMonth:
-            var date = self
-            guard let beginningOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else {
-                return nil
-            }
-            date = beginningOfWeek.adding(.day, value: 7).adding(.second, value: -1)
-            return date
-            
-        case .month:
-            var date = self.adding(.month, value: 1)
-            guard let after = calendar.date(from: calendar.dateComponents([.year, .month], from: self)) else {
-                return nil
-            }
-            date = after.adding(.second, value: -1)
-            return date
-            
-        case .year:
-            var date = self.adding(.year, value: 1)
-            guard let after = calendar.date(from: calendar.dateComponents([.year], from: self)) else {
-                return nil
-            }
-            date = after.adding(.second, value: -1)
-            return date
-            
-        default:
-            return nil
+        case .second: return start.adding(.second, value: 1).adding(.second, value: -1)
+        case .minute: return start.adding(.minute, value: 1).adding(.second, value: -1)
+        case .hour: return start.adding(.hour, value: 1).adding(.second, value: -1)
+        case .day: return calendar.date(byAdding: .day, value: 1, to: start)?.adding(.second, value: -1)
+        case .weekOfMonth, .weekOfYear: return calendar.date(byAdding: .day, value: 7, to: start)?.adding(.second, value: -1)
+        case .month: return calendar.date(byAdding: .month, value: 1, to: start)?.adding(.second, value: -1)
+        case .year: return calendar.date(byAdding: .year, value: 1, to: start)?.adding(.second, value: -1)
+        default: return nil
         }
     }
     
-    /// Date string from date.
-    ///
-    /// - Parameter style: DateFormatter style (default is .medium)
-    /// - Returns: date string
+    // MARK: - String Formatting
     func dateString(ofStyle style: DateFormatter.Style = .medium) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .none
-        dateFormatter.dateStyle = style
-        return dateFormatter.string(from: self)
+        let formatter = DateFormatter()
+        formatter.dateStyle = style
+        formatter.timeStyle = .none
+        return formatter.string(from: self)
     }
     
-    func dateString(ofFormat: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = ofFormat;
-        return dateFormatter.string(from: self)
+    func dateString(ofFormat format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
     }
     
-    /// Date and time string from date.
-    ///
-    /// - Parameter style: DateFormatter style (default is .medium)
-    /// - Returns: date and time string
     func dateTimeString(ofStyle style: DateFormatter.Style = .medium) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = style
-        dateFormatter.dateStyle = style
-        return dateFormatter.string(from: self)
+        let formatter = DateFormatter()
+        formatter.dateStyle = style
+        formatter.timeStyle = style
+        return formatter.string(from: self)
     }
     
-    /// Check if date is in current given calendar component.
-    ///
-    /// - Parameter component: calendar componenet to check.
-    /// - Returns: true if date is in current given calendar component.
+    func timeString(ofStyle style: DateFormatter.Style = .medium) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = style
+        return formatter.string(from: self)
+    }
+    
     func isInCurrent(_ component: Calendar.Component) -> Bool {
         switch component {
-        case .second:
-            return second == Date().second && minute == Date().minute && hour == Date().hour && day == Date().day
-                && month == Date().month && year == Date().year && era == Date().era
-            
-        case .minute:
-            return minute == Date().minute && hour == Date().hour && day == Date().day && month == Date().month
-                && year == Date().year && era == Date().era
-            
-        case .hour:
-            return hour == Date().hour && day == Date().day && month == Date().month && year == Date().year
-                && era == Date().era
-            
-        case .day:
-            return day == Date().day && month == Date().month && year == Date().year && era == Date().era
-            
-        case .weekOfYear, .weekOfMonth:
-            let beginningOfWeek = Date().beginning(of: .weekOfMonth)!
-            let endOfWeek = Date().end(of: .weekOfMonth)!
-            return self >= beginningOfWeek && self <= endOfWeek
-            
-        case .month:
-            return month == Date().month && year == Date().year && era == Date().era
-            
-        case .year:
-            return year == Date().year && era == Date().era
-            
-        case .era:
-            return era == Date().era
-            
-        default:
-            return false
+        case .day: return calendar.isDateInToday(self)
+        case .weekOfMonth, .weekOfYear:
+            guard let start = Date().beginning(of: .weekOfMonth), let end = Date().end(of: .weekOfMonth) else { return false }
+            return self >= start && self <= end
+        case .month: return month == Date().month && year == Date().year
+        case .year: return year == Date().year
+        default: return false
         }
     }
     
-    /// Time string from date
-    func timeString(ofStyle style: DateFormatter.Style = .medium) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = style
-        dateFormatter.dateStyle = .none
-        return dateFormatter.string(from: self)
-    }
-    
-}
-
-
-// MARK: - Initializers
-public extension Date {
-    
-    /// Create a new date form calendar components.
-    ///
-    /// - Parameters:
-    ///   - calendar: Calendar (default is current).
-    ///   - timeZone: TimeZone (default is current).
-    ///   - era: Era (default is current era).
-    ///   - year: Year (default is current year).
-    ///   - month: Month (default is current month).
-    ///   - day: Day (default is today).
-    ///   - hour: Hour (default is current hour).
-    ///   - minute: Minute (default is current minute).
-    ///   - second: Second (default is current second).
-    ///   - nanosecond: Nanosecond (default is current nanosecond).
-    init(
-        calendar: Calendar? = Calendar.current,
-        timeZone: TimeZone? = TimeZone.current,
-        era: Int? = Date().era,
-        year: Int? = Date().year,
-        month: Int? = Date().month,
-        day: Int? = Date().day,
-        hour: Int? = Date().hour,
-        minute: Int? = Date().minute,
-        second: Int? = Date().second,
-        nanosecond: Int? = Date().nanosecond) {
-        
+    // MARK: - Random Dates
+    static func randomWithinDaysBeforeToday(_ days: Int) -> Date {
+        let today = Date()
+        let dayOffset = Int.random(in: 0..<days)
+        let hourOffset = Int.random(in: 0..<24)
+        let minuteOffset = Int.random(in: 0..<60)
+        let secondOffset = Int.random(in: 0..<60)
         var components = DateComponents()
-        components.calendar = calendar
-        components.timeZone = timeZone
-        components.era = era
-        components.year = year
-        components.month = month
-        components.day = day
-        components.hour = hour
-        components.minute = minute
-        components.second = second
-        components.nanosecond = nanosecond
-        
-        self = calendar?.date(from: components) ?? Date()
+        components.day = -dayOffset
+        components.hour = hourOffset
+        components.minute = minuteOffset
+        components.second = secondOffset
+        return Calendar.current.date(byAdding: components, to: today) ?? today
     }
     
-    /// Create date object from ISO8601 string.
-    ///
-    /// - Parameter iso8601String: ISO8601 string of format (yyyy-MM-dd'T'HH:mm:ss.SSSZ).
+    static func random() -> Date {
+        return Date(timeIntervalSince1970: TimeInterval(UInt32.random(in: 0...UInt32.max)))
+    }
+    
+    init(milliseconds: Int64) {
+        self.init(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
+    }
+    
     init(iso8601String: String) {
-        // https://github.com/justinmakaila/NSDate-ISO-8601/blob/master/NSDateISO8601.swift
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.timeZone = TimeZone.current
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        self = dateFormatter.date(from: iso8601String) ?? Date()
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        self = formatter.date(from: iso8601String) ?? Date()
     }
     
-    /// Create new date object from UNIX timestamp.
-    ///
-    /// - Parameter unixTimestamp: UNIX timestamp.
     init(unixTimestamp: Double) {
         self.init(timeIntervalSince1970: unixTimestamp)
     }
-    
 }
 
-public extension Date {
-    
-    static func dateByAddingDays(days : Int) -> Date {
-        return Calendar.current.date(byAdding: .day, value: days, to: Date())!
-    }
-    
-    /// SwiftRandom extension
-    static func randomWithinDaysBeforeToday(_ days: Int) -> Date {
-        let today = Date()
-        let gregorian = Calendar(identifier: Calendar.Identifier.gregorian)
-        
-        let r1 = arc4random_uniform(UInt32(days))
-        let r2 = arc4random_uniform(UInt32(23))
-        let r3 = arc4random_uniform(UInt32(59))
-        let r4 = arc4random_uniform(UInt32(59))
-        
-        var offsetComponents = DateComponents()
-        offsetComponents.day = Int(r1) * -1
-        offsetComponents.hour = Int(r2)
-        offsetComponents.minute = Int(r3)
-        offsetComponents.second = Int(r4)
-        
-        guard let rndDate1 = gregorian.date(byAdding: offsetComponents, to: today) else {
-            print("randoming failed")
-            return today
-        }
-        return rndDate1
-    }
-    
-    /// SwiftRandom extension
-    static func random() -> Date {
-        let randomTime = TimeInterval(arc4random_uniform(UInt32.max))
-        return Date(timeIntervalSince1970: randomTime)
-    }
-    
-    var millisecondsSince1970: Int64 {
-        return Int64((self.timeIntervalSince1970 * 1000.0).rounded())
-        //RESOLVED CRASH HERE
-    }
-    
-    init(milliseconds:Int) {
-        self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
-    }
+// MARK: - DateFormatter helper for DOB
+extension DateFormatter {
+    static let dobFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
 }
+
+

@@ -16,6 +16,7 @@ enum TrailingButtonType {
     case down
 }
 
+
 // MARK: - StaticLabelTextFieldView
 class StaticLabelTextFieldView: UIView {
     public let titleLabel = UILabel()
@@ -37,6 +38,7 @@ class StaticLabelTextFieldView: UIView {
     // Callbacks
     public var calendarTapCallback: (() -> Void)?
     public var dropdownTapCallback: (() -> Void)?
+    public var textChangedCallback: ((String?) -> Void)?   // ✅ added
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -136,24 +138,19 @@ class StaticLabelTextFieldView: UIView {
             button.setImage(UIImage(systemName: "calendar"), for: .normal)
             button.tintColor = .gray
             button.addTarget(self, action: #selector(calendarButtonTapped), for: .touchUpInside)
-        case .dropdown:
+        case .dropdown, .down:
             button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
             button.tintColor = .gray
             button.addTarget(self, action: #selector(downButtonTapped), for: .touchUpInside)
             isDropdownExpanded = false
-        case .down:
-            button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-            button.tintColor = .gray
-            button.addTarget(self, action: #selector(downButtonTapped), for: .touchUpInside)
         default:
             break
         }
     }
+
     @objc private func downButtonTapped() {
-        // Call dropdown callback for your logic
         dropdownTapCallback?()
     }
-
 
     @objc private func togglePasswordVisibility() {
         textField.isSecureTextEntry.toggle()
@@ -164,7 +161,6 @@ class StaticLabelTextFieldView: UIView {
     @objc private func calendarButtonTapped() {
         calendarTapCallback?()
     }
-
 
     // MARK: - Public API
     func setTitle(_ title: String) {
@@ -196,6 +192,9 @@ extension StaticLabelTextFieldView {
     }
 
     @objc private func editingChanged() {
+        // Notify callback every time text changes ✅
+        textChangedCallback?(textField.text)
+
         // Optionally live-clear error when user starts typing
         if let text = textField.text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             hideError()

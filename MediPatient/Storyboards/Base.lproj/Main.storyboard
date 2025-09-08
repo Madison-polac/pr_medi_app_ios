@@ -21,7 +21,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="kTt-r2-KQZ" kind="relationship" relationship="rootViewController" id="Qu1-hY-B6V"/>
+                        <segue destination="kTt-r2-KQZ" kind="relationship" relationship="rootViewController" id="8Q5-Pw-N8u"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xox-Kr-wkB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgH-jE-FaW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2963" y="-788"/>
+            <point key="canvasLocation" x="2944" y="-732"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="Giz-AZ-1bV">
@@ -501,7 +501,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTI-3e-dYM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2276" y="-839"/>
+            <point key="canvasLocation" x="2275" y="-840"/>
         </scene>
         <!--Complete ProfileVC-->
         <scene sceneID="Wbx-6a-sPw">
@@ -899,7 +899,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57f-Q1-pLv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3615.9420289855075" y="-707.60869565217399"/>
+            <point key="canvasLocation" x="3599" y="-651"/>
         </scene>
         <!--TermsVC-->
         <scene sceneID="I4g-vW-QPZ">
@@ -993,7 +993,7 @@ No Medical Advice and No Doctor-Patient Relationship    Lorem Ipsum is simp
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GpP-hI-8lm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4407" y="-839"/>
+            <point key="canvasLocation" x="5704" y="-840"/>
         </scene>
         <!--IntroVC-->
         <scene sceneID="UDQ-LA-WiS">
@@ -1144,6 +1144,338 @@ No Medical Advice and No Doctor-Patient Relationship    Lorem Ipsum is simp
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWa-U3-aWR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="913.74045801526711" y="-839.43661971830988"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="nKd-e0-FDO">
+            <objects>
+                <viewController id="XLm-DD-rJl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ckZ-Rq-eoj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0U-Ps-UQs">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="icI-lz-VF8">
+                                        <rect key="frame" x="24" y="65" width="366" height="671"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieK-EO-wsw">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9r-LJ-lZl" customClass="PrimaryLabel">
+                                                        <rect key="frame" x="129.66666666666666" y="0.0" width="106.66666666666666" height="26.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kli-S0-TAf" customClass="PrimaryLinkButton" customModule="MediPatient" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="-1.6666666666666643" width="48" height="30"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Cancel"/>
+                                                        <connections>
+                                                            <action selector="btnCancelTapped:" destination="XLm-DD-rJl" eventType="touchUpInside" id="8Nq-6C-1tZ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" name="PrimaryBGColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="3Hj-VP-xpG"/>
+                                                    <constraint firstItem="Q9r-LJ-lZl" firstAttribute="top" secondItem="ieK-EO-wsw" secondAttribute="top" id="3WT-wp-0Fm"/>
+                                                    <constraint firstItem="Q9r-LJ-lZl" firstAttribute="centerX" secondItem="ieK-EO-wsw" secondAttribute="centerX" id="aCa-tr-ZaY"/>
+                                                    <constraint firstItem="Kli-S0-TAf" firstAttribute="centerY" secondItem="Q9r-LJ-lZl" secondAttribute="centerY" id="pkv-cW-kxe"/>
+                                                    <constraint firstItem="Kli-S0-TAf" firstAttribute="leading" secondItem="ieK-EO-wsw" secondAttribute="leading" id="qos-r5-Ftf"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOt-0z-tQZ">
+                                                <rect key="frame" x="0.0" y="40" width="366" height="160"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="g8O-JH-iNB">
+                                                        <rect key="frame" x="127" y="24" width="112" height="112"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="112" id="3sH-MC-0Q8"/>
+                                                            <constraint firstAttribute="height" constant="112" id="WTb-HC-aFp"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="160" id="DHL-RE-kS5"/>
+                                                    <constraint firstItem="g8O-JH-iNB" firstAttribute="centerX" secondItem="NOt-0z-tQZ" secondAttribute="centerX" id="xGi-vi-Oul"/>
+                                                    <constraint firstItem="g8O-JH-iNB" firstAttribute="centerY" secondItem="NOt-0z-tQZ" secondAttribute="centerY" id="yfu-vM-g25"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="eIL-Tu-4Ex">
+                                                <rect key="frame" x="0.0" y="200" width="366" height="471"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="GsQ-ta-54o">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="69.333333333333329"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your verification code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyl-Qu-1qM" customClass="PrimaryLabel">
+                                                                <rect key="frame" x="0.0" y="0.0" width="353" height="28.666666666666668"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                                <color key="textColor" name="PrimaryTextColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A 6-digit verification code has been sent to your email address l******e@x**.com" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4TJ-0f-ZSm" customClass="TitleLabel" customModule="MediPatient" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="35.666666666666686" width="353" height="33.666666666666657"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <color key="textColor" name="PrimaryTextColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpF-2v-h13" customClass="StaticLabelTextFieldView" customModule="MediPatient" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="101.33333333333331" width="366" height="85"/>
+                                                        <color key="backgroundColor" name="PrimaryBGColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="85" id="8cN-WK-zu0"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4q-0d-z6y">
+                                                        <rect key="frame" x="0.0" y="218.33333333333329" width="240" height="88.666666666666657"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VO-Dt-tiL">
+                                                        <rect key="frame" x="0.0" y="339" width="366" height="60"/>
+                                                        <color key="backgroundColor" name="PrimaryButtonColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="yxe-cm-KmU"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Verify">
+                                                            <color key="titleColor" name="PrimaryTextColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnVerifyTapped:" destination="XLm-DD-rJl" eventType="touchUpInside" id="lbY-Um-J8V"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FqH-TY-row">
+                                                        <rect key="frame" x="0.0" y="431" width="366" height="40"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="wre-PF-4RC">
+                                                                <rect key="frame" x="36.666666666666657" y="0.0" width="292.66666666666674" height="30"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resend Code in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXb-vc-tdt">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="119.66666666666667" height="30"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" red="0.16078431369999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVQ-7Z-sk0" customClass="PrimaryLinkButton" customModule="MediPatient" customModuleProvider="target">
+                                                                        <rect key="frame" x="123.66666666666669" y="0.0" width="169" height="30"/>
+                                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                        <state key="normal" title="Resend verification code"/>
+                                                                        <connections>
+                                                                            <action selector="btnResendTapped:" destination="XLm-DD-rJl" eventType="touchUpInside" id="R1V-j5-3W4"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="GoK-tc-MzY"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="HSS-Cf-vIN"/>
+                                                            <constraint firstItem="wre-PF-4RC" firstAttribute="top" secondItem="FqH-TY-row" secondAttribute="top" id="LSE-Uk-uqp"/>
+                                                            <constraint firstItem="wre-PF-4RC" firstAttribute="centerX" secondItem="FqH-TY-row" secondAttribute="centerX" id="jVf-wE-LyQ"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="FqH-TY-row" firstAttribute="leading" secondItem="eIL-Tu-4Ex" secondAttribute="leading" id="1zB-b1-sUP"/>
+                                                    <constraint firstAttribute="trailing" secondItem="6VO-Dt-tiL" secondAttribute="trailing" id="VIp-eU-Hob"/>
+                                                    <constraint firstAttribute="bottom" secondItem="FqH-TY-row" secondAttribute="bottom" id="Y4G-4W-tis"/>
+                                                    <constraint firstAttribute="trailing" secondItem="tpF-2v-h13" secondAttribute="trailing" id="dDA-We-OYd"/>
+                                                    <constraint firstItem="tpF-2v-h13" firstAttribute="leading" secondItem="eIL-Tu-4Ex" secondAttribute="leading" id="jk4-NQ-OoB"/>
+                                                    <constraint firstItem="6VO-Dt-tiL" firstAttribute="leading" secondItem="eIL-Tu-4Ex" secondAttribute="leading" id="lPV-Zd-Xgz"/>
+                                                    <constraint firstAttribute="trailing" secondItem="FqH-TY-row" secondAttribute="trailing" id="xfe-oh-7d4"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="eIL-Tu-4Ex" firstAttribute="top" secondItem="NOt-0z-tQZ" secondAttribute="bottom" id="mLG-Og-nqU"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="icI-lz-VF8" secondAttribute="bottom" id="1pA-YH-8U3"/>
+                                    <constraint firstItem="icI-lz-VF8" firstAttribute="top" secondItem="u0U-Ps-UQs" secondAttribute="top" constant="65" id="JMh-HZ-Bjm"/>
+                                    <constraint firstItem="icI-lz-VF8" firstAttribute="leading" secondItem="u0U-Ps-UQs" secondAttribute="leading" constant="24" id="adA-2K-y9s"/>
+                                    <constraint firstAttribute="trailing" secondItem="icI-lz-VF8" secondAttribute="trailing" constant="24" id="yco-Tl-AT3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Lhm-ss-73I"/>
+                        <color key="backgroundColor" name="PrimaryBGColor"/>
+                        <constraints>
+                            <constraint firstItem="u0U-Ps-UQs" firstAttribute="leading" secondItem="Lhm-ss-73I" secondAttribute="leading" id="3M0-0o-GKP"/>
+                            <constraint firstItem="u0U-Ps-UQs" firstAttribute="top" secondItem="ckZ-Rq-eoj" secondAttribute="top" id="9bz-3f-3qk"/>
+                            <constraint firstItem="u0U-Ps-UQs" firstAttribute="trailing" secondItem="Lhm-ss-73I" secondAttribute="trailing" id="beE-Tl-VvO"/>
+                            <constraint firstItem="u0U-Ps-UQs" firstAttribute="bottom" secondItem="Lhm-ss-73I" secondAttribute="bottom" id="dlQ-WM-7DD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="coj-6e-Fxd"/>
+                    <connections>
+                        <outlet property="btnResend" destination="xVQ-7Z-sk0" id="8La-m3-Beh"/>
+                        <outlet property="btnVerify" destination="6VO-Dt-tiL" id="8HS-E7-vO6"/>
+                        <outlet property="lblInfo" destination="4TJ-0f-ZSm" id="pLD-eq-Kq5"/>
+                        <outlet property="lblTimer" destination="TXb-vc-tdt" id="bPA-nU-8IZ"/>
+                        <outlet property="otpField" destination="tpF-2v-h13" id="ehz-mX-igA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nYM-Xr-p8T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4296" y="-732"/>
+        </scene>
+        <!--VerifyOTPVC-->
+        <scene sceneID="eoX-OS-41P">
+            <objects>
+                <viewController storyboardIdentifier="VerifyOTPVC" id="x33-5r-rEY" customClass="VerifyOTPVC" customModule="MediPatient" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xR5-jn-JaL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y8D-l5-YRV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="zlC-c3-Xy1">
+                                        <rect key="frame" x="151" y="131.33333333333334" width="112" height="112"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="112" id="Rcg-6w-Q01"/>
+                                            <constraint firstAttribute="width" constant="112" id="cZN-Kb-xYk"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kOz-mY-sXt">
+                                        <rect key="frame" x="24" y="275.33333333333331" width="366" height="62.333333333333314"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your verification code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLB-VS-dew" customClass="PrimaryLabel">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="28.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A 6-digit verification code has been sent to your email address l******e@x**.com" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFJ-wZ-pD7" customClass="TitleLabel" customModule="MediPatient" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28.666666666666682" width="366" height="33.666666666666657"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="PrimaryTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fdY-PI-Mui">
+                                        <rect key="frame" x="24" y="369.66666666666669" width="366" height="85"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rPQ-TE-8Rj" customClass="StaticLabelTextFieldView" customModule="MediPatient" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="85"/>
+                                                <color key="backgroundColor" name="PrimaryBGColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="85" id="g40-Yr-Eqx"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3N-Ub-s7x">
+                                        <rect key="frame" x="24" y="602" width="366" height="60"/>
+                                        <color key="backgroundColor" name="PrimaryButtonColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="jef-HM-tkx"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Verify">
+                                            <color key="titleColor" name="PrimaryTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnVerifyTapped:" destination="x33-5r-rEY" eventType="touchUpInside" id="lWi-g9-8uQ"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="jii-Jk-O36">
+                                        <rect key="frame" x="60.666666666666657" y="676" width="292.66666666666674" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resend Code in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWu-CP-NtP">
+                                                <rect key="frame" x="0.0" y="0.0" width="119.66666666666667" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.16078431369999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABy-eM-tIO" customClass="PrimaryLinkButton" customModule="MediPatient" customModuleProvider="target">
+                                                <rect key="frame" x="123.66666666666669" y="0.0" width="169" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Resend verification code"/>
+                                                <connections>
+                                                    <action selector="btnResendTapped:" destination="x33-5r-rEY" eventType="touchUpInside" id="9Ks-8E-26v"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ml2-vU-N1k"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlQ-JN-fV0" customClass="HeadingLabel" customModule="MediPatient" customModuleProvider="target">
+                                        <rect key="frame" x="153.66666666666666" y="65" width="106.66666666666666" height="26.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgY-8u-e6x" customClass="PrimaryLinkButton" customModule="MediPatient" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="63.333333333333343" width="48" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="btnCancelTapped:" destination="x33-5r-rEY" eventType="touchUpInside" id="CxA-N7-lBu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="PrimaryBGColor"/>
+                                <constraints>
+                                    <constraint firstItem="kOz-mY-sXt" firstAttribute="leading" secondItem="Y8D-l5-YRV" secondAttribute="leading" constant="24" id="2nZ-9O-LV9"/>
+                                    <constraint firstAttribute="bottom" secondItem="jii-Jk-O36" secondAttribute="bottom" constant="30" id="90B-HR-sQE"/>
+                                    <constraint firstAttribute="trailing" secondItem="kOz-mY-sXt" secondAttribute="trailing" constant="24" id="DkC-1v-ebG"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jii-Jk-O36" secondAttribute="trailing" constant="22" id="E6v-hJ-xTl"/>
+                                    <constraint firstItem="j3N-Ub-s7x" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fdY-PI-Mui" secondAttribute="bottom" constant="44" id="IZ6-Ld-epm"/>
+                                    <constraint firstAttribute="trailing" secondItem="j3N-Ub-s7x" secondAttribute="trailing" constant="24" id="LjW-gA-ic7"/>
+                                    <constraint firstItem="cgY-8u-e6x" firstAttribute="centerY" secondItem="hlQ-JN-fV0" secondAttribute="centerY" id="O96-1j-Xd9"/>
+                                    <constraint firstItem="hlQ-JN-fV0" firstAttribute="centerX" secondItem="Y8D-l5-YRV" secondAttribute="centerX" id="X9z-rg-Day"/>
+                                    <constraint firstItem="fdY-PI-Mui" firstAttribute="leading" secondItem="Y8D-l5-YRV" secondAttribute="leading" constant="24" id="YEb-3D-DZn"/>
+                                    <constraint firstItem="j3N-Ub-s7x" firstAttribute="leading" secondItem="Y8D-l5-YRV" secondAttribute="leading" constant="24" id="YfF-Oo-Ch7"/>
+                                    <constraint firstItem="cgY-8u-e6x" firstAttribute="leading" secondItem="Y8D-l5-YRV" secondAttribute="leading" constant="24" id="aNg-nv-9xk"/>
+                                    <constraint firstItem="jii-Jk-O36" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y8D-l5-YRV" secondAttribute="leading" constant="22" id="hvK-Qu-haI"/>
+                                    <constraint firstItem="zlC-c3-Xy1" firstAttribute="centerX" secondItem="Y8D-l5-YRV" secondAttribute="centerX" id="k7r-Qb-Vmm"/>
+                                    <constraint firstItem="hlQ-JN-fV0" firstAttribute="top" secondItem="Y8D-l5-YRV" secondAttribute="top" constant="65" id="l8O-Ld-JV5"/>
+                                    <constraint firstItem="jii-Jk-O36" firstAttribute="top" secondItem="j3N-Ub-s7x" secondAttribute="bottom" constant="14" id="lbX-cY-ijB"/>
+                                    <constraint firstItem="jii-Jk-O36" firstAttribute="centerX" secondItem="Y8D-l5-YRV" secondAttribute="centerX" id="mpR-Yu-8nf"/>
+                                    <constraint firstItem="zlC-c3-Xy1" firstAttribute="top" secondItem="hlQ-JN-fV0" secondAttribute="bottom" constant="40" id="pBq-vn-TPA"/>
+                                    <constraint firstItem="kOz-mY-sXt" firstAttribute="top" secondItem="zlC-c3-Xy1" secondAttribute="bottom" constant="32" id="qzY-3Z-3L2"/>
+                                    <constraint firstAttribute="trailing" secondItem="fdY-PI-Mui" secondAttribute="trailing" constant="24" id="viR-qd-mzN"/>
+                                    <constraint firstItem="fdY-PI-Mui" firstAttribute="top" secondItem="kOz-mY-sXt" secondAttribute="bottom" constant="32" id="x4J-2D-S6C"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="b0V-zy-rAH"/>
+                        <color key="backgroundColor" name="PrimaryBGColor"/>
+                        <constraints>
+                            <constraint firstItem="Y8D-l5-YRV" firstAttribute="trailing" secondItem="b0V-zy-rAH" secondAttribute="trailing" id="K2B-dd-HE9"/>
+                            <constraint firstAttribute="bottom" secondItem="Y8D-l5-YRV" secondAttribute="bottom" id="Ngf-Ni-0X8"/>
+                            <constraint firstItem="Y8D-l5-YRV" firstAttribute="leading" secondItem="b0V-zy-rAH" secondAttribute="leading" id="bHb-Ng-d4f"/>
+                            <constraint firstItem="Y8D-l5-YRV" firstAttribute="top" secondItem="xR5-jn-JaL" secondAttribute="top" id="eBH-e2-f2x"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Noe-x1-GYW"/>
+                    <connections>
+                        <outlet property="btnResend" destination="ABy-eM-tIO" id="xeJ-PD-Hec"/>
+                        <outlet property="btnVerify" destination="j3N-Ub-s7x" id="YhX-eQ-sEF"/>
+                        <outlet property="lblInfo" destination="hFJ-wZ-pD7" id="qBZ-ZA-MKz"/>
+                        <outlet property="lblTimer" destination="jWu-CP-NtP" id="NC5-vN-9d9"/>
+                        <outlet property="otpField" destination="rPQ-TE-8Rj" id="Yal-AD-1eM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CzY-X7-4q8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4964" y="-732"/>
         </scene>
     </scenes>
     <resources>

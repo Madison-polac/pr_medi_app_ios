@@ -9,26 +9,38 @@
 import UIKit
 
 class Redirect {
-    // Push navigation
-    static func to(_ identifier: String, from vc: UIViewController, animated: Bool = true) {
-        guard let targetVC = vc.storyboard?.instantiateViewController(identifier: identifier) else { return }
+    // Push with configuration
+    static func to<T: UIViewController>(
+        _ identifier: String,
+        from vc: UIViewController,
+        animated: Bool = true,
+        configure: ((T) -> Void)? = nil
+    ) {
+        guard let targetVC = vc.storyboard?.instantiateViewController(identifier: identifier) as? T else { return }
+        configure?(targetVC)   // ✅ pass values here
         vc.navigationController?.pushViewController(targetVC, animated: animated)
     }
-    
-    // Present modally
-    static func present(_ identifier: String, from vc: UIViewController, animated: Bool = true) {
-        guard let targetVC = vc.storyboard?.instantiateViewController(identifier: identifier) else { return }
+
+    // Present with configuration
+    static func present<T: UIViewController>(
+        _ identifier: String,
+        from vc: UIViewController,
+        animated: Bool = true,
+        configure: ((T) -> Void)? = nil
+    ) {
+        guard let targetVC = vc.storyboard?.instantiateViewController(identifier: identifier) as? T else { return }
+        configure?(targetVC)   // ✅ pass values here
         vc.present(targetVC, animated: animated)
     }
-    
-    // Pop to previous
+
+    // Pop
     static func pop(from vc: UIViewController, animated: Bool = true) {
         vc.navigationController?.popViewController(animated: animated)
     }
-    
-    // Pop to root
+
     static func popToRoot(from vc: UIViewController, animated: Bool = true) {
         vc.navigationController?.popToRootViewController(animated: animated)
     }
 }
+
 

@@ -19,8 +19,9 @@ import UIKit
 //API
 let LOGIN = "Login"
 let ForgotPassword = "ForgotPassword"
-let REGISTER = "Register"
-
+let SignUp = "SignUp"
+let ResendOtp = "ResendOtp"
+let VerifyOtp = "VerifyOtp"
 
 
 let kAppDelegate = UIApplication.shared.delegate as! AppDelegate;
@@ -66,43 +67,56 @@ let APP_DATE_FORMAT             = "MM/dd/yyyy"
 let APP_DATE_TIMEZONE_FORMAT    = "yyyy-MM-dd'T'HH:mm:ss"
 let TIMZONE_Z_DATE_FORMAT       = "yyyy-MM-dd'T'HH:mm:ss'Z'"
 
-
 struct Constant {
-    
-    
+
     // Email
     static let email = "Email"
     static let emailPlaceholder = "Enter your email"
     static let invalidEmail = "Invalid Email"
     static let emptyEmail = "Email required"
-    
+
     // Password
     static let password = "Password"
     static let passwordPlaceholder = "Enter your password"
     static let invalidPassword = "Invalid Password"
     static let emptyPassword = "Password required"
-    
+
     // First Name
     static let firstName = "First Name"
     static let firstNamePlaceholder = "First Name"
     static let invalidFirstName = "Invalid first name"
     static let emptyFirstName = "First name required"
-    
+
     // Last Name
     static let lastName = "Last Name"
     static let lastNamePlaceholder = "Last Name"
     static let invalidLastName = "Invalid last name"
     static let emptyLastName = "Last name required"
-    
-    //Create a Password
+
+    // Create a Password
     static let createPasswordPlaceholder = "Create a password"
-    
+
+    // Success
     static let success = "Success!"
+
+    struct OTP {
+           static let defaultEmail = "ndsgdsg@gmail.com"
+           static let infoPrefix = "A 6-digit verification code has been sent to your email address "
+           static let otpTitle = "Please enter the code here"
+           static let otpPlaceholder = "Enter Verification Code"
+           static let otpRequiredMsg = "Please enter verification code"
+           static let otpInvalidMsg = "Enter 6-digit code"
+           static let timerText = "Resend Code in 00:%02d"
+       }
 }
+
 
 #if DEBUG
 struct DebugCredentials {
     static let email = "jon.mac@yopmail.com"
     static let password = "Jon@1234"
+    static let fname = "Luffy"
+    static let lName = "Zoro"
+    static let mobile  = "9797979797"
 }
 #endif

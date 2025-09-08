@@ -83,3 +83,22 @@ class DescriptionLabel: UILabel {
         self.adjustsFontSizeToFitWidth = true
     }
 }
+class TitleLabel: UILabel {
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        applyPrimaryStyle()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        applyPrimaryStyle()
+    }
+
+    private func applyPrimaryStyle() {
+        self.font = UIFont.ubuntuRegular(ofSize: 17)
+        self.textColor = AppThemeColors.PrimaryTextColor
+        self.numberOfLines = 0
+        self.adjustsFontSizeToFitWidth = true
+    }
+}

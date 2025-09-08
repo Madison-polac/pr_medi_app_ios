@@ -41,6 +41,14 @@ private extension RegisterVC {
         passwordField.setTitle(Constant.password)
         passwordField.textField.placeholder = Constant.createPasswordPlaceholder
         passwordField.trailingButtonType = .eye
+        
+        #if DEBUG
+        firstNameField.textField.text = DebugCredentials.fname
+        lastNameField.textField.text = DebugCredentials.lName
+        emailField.textField.text = "nnnn@gmal.com"
+        passwordField.textField.text = "12345678"
+        
+        #endif
     }
 }
 

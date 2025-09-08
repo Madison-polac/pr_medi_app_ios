@@ -86,6 +86,9 @@ extension CompleteProfileVC {
             return ValidationHelper.isValidMobileNumber(t, minLength: 8, maxLength: 15)
                 ? nil : ValidationMessages.validMobileNumber
         }
+    #if DEBUG
+        mobileField.textField.text = DebugCredentials.mobile
+    #endif
         
         clearAllBorders()
         setSelectedBorder(for: imgMale)
@@ -144,22 +147,30 @@ extension CompleteProfileVC {
     private func performUnifiedRegister() {
         let isdCode = isdCodeField.textField.text ?? ""
         let phone = mobileField.textField.text ?? ""
-        let dob = dobField.textField.text ?? ""
-        
-        var gender = "Male"
-        if imgFemale.layer.borderWidth > 0 { gender = "Female" }
-        if imgOther.layer.borderWidth > 0 { gender = "Other" }
-        
+        let dobText = dobField.textField.text ?? "" // e.g. "08/09/2025"
+
+        // ✅ Safe and clean DOB conversion using Date extension
+        let formattedDOB = DateFormatter.dobFormatter.date(from: dobText)?.iso8601String ?? ""
+
+        // Gender mapping
+        let genderId: Int = imgFemale.layer.borderWidth > 0 ? 2 :
+                             imgOther.layer.borderWidth > 0 ? 3 : 1
+
+        // Build params
         var params: [String: Any] = GlobalUtils.getInstance().getBodyParams()
         params["firstName"] = initialFirstName
         params["lastName"] = initialLastName
-        params["emailId"] = initialEmail
+        params["userTypeId"] = 0
+        params["email"] = initialEmail
         params["password"] = initialPassword
         params["isdCode"] = isdCode
         params["mobileNo"] = phone
-        params["dob"] = dob
-        params["gender"] = gender
-        
+        params["birthDate"] = formattedDOB
+        params["genderId"] = genderId
+        params["otp"] = ""
+        params["roleId"] = 0
+        params["roleIdEnc"] = ""
+
         HUD.show(on: view)
         AuthController.register(param: params) { success, _, message, _ in
             DispatchQueue.main.async { [weak self] in
@@ -167,11 +178,19 @@ extension CompleteProfileVC {
                 HUD.hide(from: self.view)
                 let displayMsg = message.isEmpty ? (success ? Constant.success : "Something went wrong") : message
                 self.view.makeToast(displayMsg)
-                if success { Redirect.pop(from: self) }
+                if success {
+                    Redirect.to("VerifyOTPVC", from: self) { (vc: VerifyOTPVC) in
+                        vc.email = self.initialEmail
+                    }
+                } else {
+                    print("Failed")
+                }
             }
         }
     }
 }
+
+
 
 // MARK: - Actions
 extension CompleteProfileVC {
@@ -209,10 +228,24 @@ extension CompleteProfileVC {
                     && mobileField.errorLabel.isHidden
                     && dobField.errorLabel.isHidden
         
-        if allValid {
+        // ✅ New condition: check if privacy and marketing checkboxes are ticked
+        let privacyAccepted = btnPrivacy.isSelected
+        let marketingAccepted = btnMarketing.isSelected
+        
+        if allValid && privacyAccepted && marketingAccepted {
             performUnifiedRegister()
+//            Redirect.to("VerifyOTPVC", from: self) { (vc: VerifyOTPVC) in
+//                vc.email = self.initialEmail
+//            }
         } else {
-            print("Validation failed, some fields are missing!")
+            if !privacyAccepted {
+                view.makeToast("Please accept Privacy Policy")
+            } else if !marketingAccepted {
+                view.makeToast("Please accept Marketing Policy")
+            } else {
+                view.makeToast("Validation failed, some fields are missing!")
+            }
+            print("Validation failed - checkboxes not selected or fields missing")
         }
     }
 }

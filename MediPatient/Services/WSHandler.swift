@@ -1,8 +1,9 @@
 
 import Foundation
 
+// MARK: - Dictionary Merge
 extension Dictionary {
-    func merge(_ dict: Dictionary<Key,Value>) -> Dictionary<Key,Value> {
+    func merge(_ dict: Dictionary<Key, Value>) -> Dictionary<Key, Value> {
         var mutableCopy = self
         for (key, value) in dict {
             mutableCopy[key] = value
@@ -10,233 +11,232 @@ extension Dictionary {
         return mutableCopy
     }
 }
+
+// MARK: - API Status Codes
+enum APIStatusCode: Int {
+    case success = 200
+    case error = 201
+    case badRequest = 400
+    case unauthorized = 401
+    case forbidden = 403
+    case notFound = 404
+    case conflictError = 409
+    case internalServerError = 500
+    case serviceUnavailable = 503
+    case unknown = -1
+    
+    var defaultMessage: String {
+        switch self {
+        case .success: return "✅ Success"
+        case .error: return "❌ Invalid user credentials."
+        case .badRequest: return "❌ Bad request."
+        case .unauthorized: return "❌ Unauthorized."
+        case .forbidden: return "❌ Forbidden."
+        case .notFound: return "❌ Not found."
+        case .conflictError: return "❌ Conflict."
+        case .internalServerError: return "❌ Internal server error."
+        case .serviceUnavailable: return "❌ Service unavailable."
+        case .unknown: return "❌ Unknown error."
+        }
+    }
+}
+
 //---------------------------------------------------------------------
-// MARK: PSRequest
+// MARK: - PSRequest
 //---------------------------------------------------------------------
 class PSRequest: NSObject {
+    var reqUrlComponent: String?
+    var reqParam: [String: Any] = [:]
+    var reqParamArr: [[String: Any]] = []
+    var headerParam: [String: String] = [:]
     
-    var reqUrlComponent:String?
-    var reqParam:Dictionary<String, Any> = [:]
-    var reqParamArr:Array<Dictionary<String, Any>> = []
-    var headerParam:Dictionary<String,String> = [:]
-    
-    init(reqUrlComponent:String) {
+    init(reqUrlComponent: String) {
         self.reqUrlComponent = reqUrlComponent
     }
 }
 
+//---------------------------------------------------------------------
+// MARK: - PSResponse
+//---------------------------------------------------------------------
 class PSResponse: NSObject {
-    var response:URLResponse?
-    var resData:Data?
-    var error:Error?
-    var jsonType:Int?
+    var response: URLResponse?
+    var resData: Data?
+    var error: Error?
+    
+    var statusCode: Int = -1
+    var message: String = ""
+    var dataDict: [String: Any]?
+    
+    func parse() {
+        guard let resData = resData else { return }
+        do {
+            if let json = try JSONSerialization.jsonObject(with: resData, options: []) as? [String: Any] {
+                self.statusCode = json["statusCode"] as? Int ?? -1
+                self.message = json["message"] as? String ?? ""
+                self.dataDict = json["data"] as? [String: Any]
+            }
+        } catch {
+            print("⚠️ JSON Parse Error: \(error.localizedDescription)")
+        }
+    }
+    
+    func readableMessage() -> String {
+        if let code = APIStatusCode(rawValue: statusCode) {
+            return message.isEmpty ? code.defaultMessage : message
+        }
+        return message.isEmpty ? APIStatusCode.unknown.defaultMessage : message
+    }
 }
 
 //---------------------------------------------------------------------
-// MARK: WebService Handler
+// MARK: - WSHandler
 //---------------------------------------------------------------------
-class WSHandler: NSObject,URLSessionDelegate {
-    fileprivate static var obj:WSHandler?
-    let kBASEURL  = BASE_URL
+class WSHandler: NSObject, URLSessionDelegate {
+    fileprivate static var obj: WSHandler?
+    let kBASEURL = BASE_URL
     let kTimeOutValue = 60
-   
-   let sessionToken:String? = nil
-    var apiUrl:URL?
     
-    static func create() -> WSHandler{
-        if(obj == nil){
-            obj = WSHandler()
-        }
+    var apiUrl: URL?
+    
+    // Singleton
+    static func sharedInstance() -> WSHandler {
+        if obj == nil { obj = WSHandler() }
         return obj!
     }
     
-    static func sharedInstance() -> WSHandler{
-        if(obj == nil){
-            return create()
-        }
-        else{
-            return obj!
-        }
+    //---------------------------------------------------------------------
+    // MARK: Headers
+    //---------------------------------------------------------------------
+    func appDefaultHeader() -> [String: String] {
+        ["Content-Type": "application/json"]
     }
     
     //---------------------------------------------------------------------
-    // MARK: appDefaultHedaer
+    // MARK: POST
     //---------------------------------------------------------------------
-    func appDefaultHedaer() -> Dictionary<String,String>{
-        let dic:Dictionary<String,String> = ["Content-Type":"application/json"]
-        return dic
-    }
-    
-    //---------------------------------------------------------------------
-    // MARK: POST Web Service methods
-    //---------------------------------------------------------------------
-    
-    func post(_ psRequest:PSRequest,completionHandler:@escaping (PSResponse?) -> Void) -> Void {
-        post(psRequest,true, completionHandler: completionHandler )
-    }
-    
-    func post(_ psRequest:PSRequest,_ isShowDialog:Bool,completionHandler:@escaping (PSResponse?) -> Void) -> Void {
-        let urlComponent = psRequest.reqUrlComponent
+    func post(_ psRequest: PSRequest, completionHandler: @escaping (PSResponse?) -> Void) {
+        guard let urlComponent = psRequest.reqUrlComponent else { return }
         
-        if urlComponent == nil {return}
-        
-        var urlSTR = ""
-        
-        urlSTR = kBASEURL + urlComponent!
-        urlSTR = urlSTR.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)!
+        let urlSTR = (kBASEURL + urlComponent).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         self.apiUrl = URL(string: urlSTR)
+        
         var request = URLRequest(url: self.apiUrl!)
         request.httpMethod = "POST"
-        request.timeoutInterval =  TimeInterval(kTimeOutValue);
-        request.allHTTPHeaderFields = psRequest.headerParam
-
-        // Set request param
-        let reqParam = psRequest.reqParam
-        let reqParamArray = psRequest.reqParamArr
-        if (reqParam.count > 0) {
-            do{
-                let postData = try JSONSerialization.data(withJSONObject: reqParam, options:.prettyPrinted)
-                let decoded = try JSONSerialization.jsonObject(with: postData, options: [])
-                // here "decoded" is of type `Any`, decoded from JSON data
-                let jsonString = String(data: postData, encoding: .utf8)
-                
-                print(jsonString!)
-
-                // you can now cast it with the right type
-                if decoded is [String:AnyObject] {
-                    // use dictFromJSON
-                }
-                request.httpBody = postData
-            } catch {
-                let res = PSResponse()
-                res.error = nil
-                completionHandler(nil)
+        request.timeoutInterval = TimeInterval(kTimeOutValue)
+        request.allHTTPHeaderFields = psRequest.headerParam.isEmpty ? appDefaultHeader() : psRequest.headerParam
+        
+        // Set body
+        do {
+            let bodyData: Data
+            if psRequest.reqParam.count > 0 {
+                bodyData = try JSONSerialization.data(withJSONObject: psRequest.reqParam, options: [])
+            } else {
+                bodyData = try JSONSerialization.data(withJSONObject: psRequest.reqParamArr, options: [])
             }
-        } else {
-            do {
-                let postData = try JSONSerialization.data(withJSONObject: reqParamArray, options:.prettyPrinted)
-                let jsonString = String(data: postData, encoding: .utf8)
-                print(jsonString!)
-                request.httpBody = postData
-            } catch {
-                let res = PSResponse()
-                res.error = nil
-                completionHandler(nil)
-            }
+            request.httpBody = bodyData
+            print("📤 PARAM: \(String(data: bodyData, encoding: .utf8) ?? "")")
+        } catch {
+            print("⚠️ Request JSON Encoding Error: \(error.localizedDescription)")
         }
         
-        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)        
-        let dataTask = session.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-            
-            if data != nil{
-                let datastring = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                print("@API: RESPONCE:\(datastring!)")
-                print("\n@API: -----------------------------------------------")
-            }
-            
+        logRequest(request)
+        
+        let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+        let dataTask = session.dataTask(with: request) { data, response, error in
             let res = PSResponse()
             res.response = response
+            res.error = error
+            res.resData = data
+            res.parse()
             
-            if let resError = error {
-                res.error = resError
-            }
+            self.logResponse(res)
             
-            if let resData = data {
-                res.resData = resData
-            }
-             completionHandler(res)
-        })
-        print("@API: -----------------------------------------------\n")
-        print("@API: URL:\(urlSTR)\n")
-        print("@API: PARAM:\(reqParam)\n")
-        
+            completionHandler(res)
+        }
         dataTask.resume()
     }
     
-    
     //---------------------------------------------------------------------
-    // MARK: GET Web Service methods
+    // MARK: GET
     //---------------------------------------------------------------------
-    
-    //==============================================================
-    public func makeQueryString(values: Dictionary<String,Any>) -> String {
-        var querySTR = ""
-        if values.count > 0 {
-            querySTR = "?"
-            for item in values {
-                let key = item.key
-                let value = item.value as! String
-                let keyValue = key + "=" + value + "&"
-                querySTR = querySTR.appending(keyValue)
-            }
-            querySTR.removeLast()
-        }
-        return querySTR
-    }
-    
-    func get(_ psRequest:PSRequest,_ isShowDialog:Bool,completionHandler:@escaping (PSResponse?) -> Void) -> Void {
+    func get(_ psRequest: PSRequest, completionHandler: @escaping (PSResponse?) -> Void) {
+        guard let urlComponent = psRequest.reqUrlComponent else { return }
         
-        let urlComponent = psRequest.reqUrlComponent
-        
-        if urlComponent == nil {return}
-        
-        let param = psRequest.reqParam
-        let querySTR = makeQueryString(values: param)
-    
-        var urlSTR = kBASEURL + urlComponent! + querySTR
-        
-        urlSTR = urlSTR.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)!
+        let querySTR = makeQueryString(values: psRequest.reqParam)
+        let urlSTR = (kBASEURL + urlComponent + querySTR).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let url = URL(string: urlSTR)
+        
         var request = URLRequest(url: url!)
-        
         request.httpMethod = "GET"
-        request.allHTTPHeaderFields = psRequest.headerParam
-        request.timeoutInterval =  180;
-
+        request.timeoutInterval = TimeInterval(kTimeOutValue)
+        request.allHTTPHeaderFields = psRequest.headerParam.isEmpty ? appDefaultHeader() : psRequest.headerParam
         
-        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
-        let dataTask = session.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-            
-            if data != nil{
-                let datastring = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                print("@API: RESPONCE:\(datastring!)")
-                print("\n@API: -----------------------------------------------\n")
-            }
-            
+        logRequest(request)
+        
+        let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+        let dataTask = session.dataTask(with: request) { data, response, error in
             let res = PSResponse()
             res.response = response
+            res.error = error
+            res.resData = data
+            res.parse()
             
-            if let resError = error {
-                res.error = resError
-            }
+            self.logResponse(res)
             
-            if let resData = data {
-                res.resData = resData
-            }
-            
-            //TODO: Send response back in BG thread and shift to main therad in controller only
-            //DispatchQueue.main.async {
-                completionHandler(res)
-            //}
-        })
-        
-        print("@API: -----------------------------------------------\n")
-        print("@API: URL:\(urlSTR)\n")
-        //print("@API: PARAM:\(params!)\n")
+            completionHandler(res)
+        }
         dataTask.resume()
     }
     
     //---------------------------------------------------------------------
-    // MARK: URL Session methods
+    // MARK: Helper
     //---------------------------------------------------------------------
-    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+    private func logRequest(_ request: URLRequest) {
+        print("\n🌍 API REQUEST --------------------------------")
+        print("URL: \(request.url?.absoluteString ?? "")")
+        print("METHOD: \(request.httpMethod ?? "")")
+        print("HEADERS: \(request.allHTTPHeaderFields ?? [:])")
+    }
+    
+    private func logResponse(_ res: PSResponse) {
+        print("\n📩 API RESPONSE -------------------------------")
+        
+        if let httpRes = res.response as? HTTPURLResponse {
+            print("STATUS: \(httpRes.statusCode)")
+        }
+        
+        if let error = res.error {
+            print("❌ ERROR: \(error.localizedDescription)")
+        } else if let data = res.resData {
+            let jsonStr = String(data: data, encoding: .utf8) ?? ""
+            print("BODY: \(jsonStr)")
+        }
+        
+        print("MESSAGE: \(res.readableMessage())")
+        print("------------------------------------------------\n")
+    }
+    
+    func makeQueryString(values: [String: Any]) -> String {
+        guard !values.isEmpty else { return "" }
+        return "?" + values.map { "\($0.key)=\($0.value)" }.joined(separator: "&")
+    }
+    
+    //---------------------------------------------------------------------
+    // MARK: SSL Pinning (Optional)
+    //---------------------------------------------------------------------
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge,
+                    completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
             let url = URL(string: kBASEURL)
             let domain = url?.host
             if challenge.protectionSpace.host == domain {
-                let credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
-                completionHandler(.useCredential,credential);
+                if let trust = challenge.protectionSpace.serverTrust {
+                    let credential = URLCredential(trust: trust)
+                    completionHandler(.useCredential, credential)
+                    return
+                }
             }
         }
+        completionHandler(.performDefaultHandling, nil)
     }
 }
