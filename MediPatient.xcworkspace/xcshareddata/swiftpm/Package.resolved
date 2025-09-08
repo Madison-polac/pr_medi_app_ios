@@ -1,0 +1,15 @@
+{
+  "originHash" : "d68b240b69480f781f68f4f56d3eaa5a0e622c060e7007d5b4fd48e889d901f2",
+  "pins" : [
+    {
+      "identity" : "rappleprogresshud",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rjeprasad/RappleProgressHUD.git",
+      "state" : {
+        "revision" : "1ef701c43feb0990e0d5e3521a4efa8a2ac40f7e",
+        "version" : "4.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}
