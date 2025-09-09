@@ -21,7 +21,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="kTt-r2-KQZ" kind="relationship" relationship="rootViewController" id="8Q5-Pw-N8u"/>
+                        <segue destination="6wY-IG-9nc" kind="relationship" relationship="rootViewController" id="4Sb-N5-lfK"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xox-Kr-wkB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
