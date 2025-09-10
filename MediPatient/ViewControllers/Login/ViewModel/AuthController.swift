@@ -48,8 +48,30 @@ class AuthController {
         ServiceManager.post(method: methodWithQuery, param: [:], callback: callback)
     }
     
-    // MARK: - Unified Register
-    static func register(param: [String: Any], callback: @escaping (Bool, Any?, String, Int) -> Void) {
+    // MARK: - Validate SignUP
+    static func validateSignUP(param: [String: Any], callback: @escaping (Bool, Any?, String, Int) -> Void) {
+        ServiceManager.post(method: ValidateSignUp, param: param) { success, response, message, statusCode in
+            if success {
+                let responseDict = response as? [String: Any] ?? [:]
+
+                // Handle OTP required case
+                if statusCode == 205 {
+                    // Pass back raw data so caller can redirect to Verify OTP screen
+                    callback(true, responseDict["data"], message, statusCode)
+                    return
+                }
+
+                // Normal case: map to User
+                self.convertResponsetoUserObj(responseDict, statusCode: statusCode, message: message, callback: callback)
+            } else {
+                callback(success, response, message, statusCode)
+            }
+        }
+    }
+
+    
+    // MARK: -  SignUP
+    static func signUP(param: [String: Any], callback: @escaping (Bool, Any?, String, Int) -> Void) {
         ServiceManager.post(method: SignUp, param: param) { success, response, message, statusCode in
             if success {
                 let responseDict = response as? [String: Any] ?? [:]
@@ -59,19 +81,26 @@ class AuthController {
             }
         }
     }
-    
     // MARK: - Verify OTP
     static func verifyOTP(param: [String: Any], callback: @escaping (Bool, Any?, String, Int) -> Void) {
         ServiceManager.post(method: VerifyOtp, param: param) { success, response, message, statusCode in
             if success {
                 let responseDict = response as? [String: Any] ?? [:]
-                // If backend returns user object after verification
-                self.convertResponsetoUserObj(responseDict, statusCode: statusCode, message: message, callback: callback)
+                // Try mapping to User
+                self.convertResponsetoUserObj(responseDict, statusCode: statusCode, message: message) { mappedSuccess, user, msg, code in
+                    if mappedSuccess {
+                        callback(true, user, msg, code)
+                    } else {
+                        // fallback: return raw dict if not full user
+                        callback(true, responseDict, msg, code)
+                    }
+                }
             } else {
                 callback(success, response, message, statusCode)
             }
         }
     }
+
     
     // MARK: - Resend OTP
     static func resendOTP(param: [String: Any], callback: @escaping (Bool, Any?, String, Int) -> Void) {

@@ -88,25 +88,44 @@ extension LoginVC {
         params["appleId"] = ""
         params["isFromMobile"] = true
 
-       // HUD.show(on: view)
         RappleActivityIndicatorView.startAnimating()
-        //self.startAnimatingWithIgnoringInteraction()
         AuthController.getLogin(param: params) { [weak self] success, response, message, statusCode in
             DispatchQueue.main.async {
                 guard let self = self else { return }
-               // HUD.hide(from: self.view)
                 RappleActivityIndicatorView.stopAnimation()
-               // self.startAnimatingWithIgnoringInteraction()
-                if success, let userObj = response as? User {
+                
+                let displayMsg = message.isEmpty ? "Something went wrong" : message
+                self.view.makeToast(displayMsg)
+
+                if statusCode == 205, let userObj = response as? User {
+                    // ✅ Login success
                     print("Login successful for: \(userObj.userName)")
-                } else {
+                    Redirect.to("HomeVC", from: self) { _ in }
+                    
+                } else if statusCode == 200 {
+                    Redirect.to("VerifyOTPVC", from: self) { (vc: VerifyOTPVC) in
+                        vc.email = username
+                        vc.flow = .login
+                        if let data = response as? [String: Any], let patientIdEnc = data["patientIdEnc"] as? String {
+                            vc.patientIdEnc = patientIdEnc
+                        }
+                        // Or, if you have a User instance:
+                        if let user = response as? User {
+                            vc.patientIdEnc = user.patientIdEnc ?? ""
+                        }
+                    }
+                }
+ else {
+                    // ❌ Invalid login
                     let fallbackMsg = LocalizedString(message: "login.invalidUP.alert")
-                    let displayMsg = message.isEmpty ? fallbackMsg : message
-                    self.view.makeToast(displayMsg)
+                    let errorMsg = message.isEmpty ? fallbackMsg : message
+                    self.view.makeToast(errorMsg)
+                    print("Login failed - statusCode: \(statusCode)")
                 }
             }
         }
     }
+
 }
 
 // MARK: - Actions

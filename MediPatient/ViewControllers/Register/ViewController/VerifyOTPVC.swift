@@ -4,9 +4,13 @@
 //
 //  Created by Nick Joliya on 08/09/25.
 //
-
+enum OTPFlow {
+    case login
+    case signup
+}
 
 import UIKit
+import RappleProgressHUD
 
 class VerifyOTPVC: UIViewController {
     
@@ -14,6 +18,19 @@ class VerifyOTPVC: UIViewController {
     var email = ""
     private var counter = 60
     private var timer: Timer?
+    var flow: OTPFlow = .signup
+    var patientIdEnc: String = ""
+    // 👇 individual fields needed for SignUp API
+        var firstName: String = ""
+        var lastName: String = ""
+        var password: String = ""
+        var isdCode: String = ""
+        var mobileNo: String = ""
+        var birthDate: String = ""   // ISO8601 string
+        var genderId: Int = 1
+        var roleId: Int = 301
+        var roleIdEnc: String = ""
+        var userTypeId: Int = 3
     
     // MARK: - Outlets
     @IBOutlet weak var lblInfo: UILabel!
@@ -103,43 +120,76 @@ extension VerifyOTPVC {
         lblTimer.attributedText = attributed
     }
 }
-//// MARK: - API
+
+// MARK: - API
 extension VerifyOTPVC {
     private func performVerifyOTP() {
         let otp = otpField.textField.text ?? ""
         
-        var params: [String: Any] = GlobalUtils.getInstance().getBodyParams()
-        params["email"] = email
-        params["otp"] = otp
+        RappleActivityIndicatorView.startAnimating()
         
-        HUD.show(on: view)
-        AuthController.verifyOTP(param: params) { success, _, message, _ in
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                HUD.hide(from: self.view)
-                let displayMsg = message.isEmpty ? (success ? Constant.success : "Something went wrong") : message
-                self.view.makeToast(displayMsg)
-                if success {
-                    Redirect.to("HomeVC", from: self) // Navigate to home or next screen
-                }
+        switch flow {
+        case .login:
+            var params: [String: Any] = GlobalUtils.getInstance().getBodyParams()
+            params["userIdEnc"] = patientIdEnc // TODO: set if backend gives this in login response
+            params["mobileNumber"] = "" // TODO: pass phone if verifying mobile
+            params["email"] = email
+            params["otp"] = ""
+            params["otpCategory"] = 1 // MobileVerification (or 2 if TwoStepLogin)
+            params["loginIfMatch"] = true
+            
+            AuthController.verifyOTP(param: params) { success, _, message, _ in
+                self.handleOTPResponse(success: success, message: message)
+            }
+
+            
+        case .signup:
+            var params: [String: Any] = GlobalUtils.getInstance().getBodyParams()
+            params["firstName"] = firstName
+            params["lastName"] = lastName
+            params["userTypeId"] = userTypeId
+            params["email"] = email
+            params["password"] = password
+            params["isdCode"] = isdCode
+            params["mobileNo"] = mobileNo
+            params["birthDate"] = birthDate
+            params["genderId"] = genderId
+            params["otp"] = otp
+            params["roleId"] = roleId
+            params["roleIdEnc"] = roleIdEnc
+            
+            AuthController.signUP(param: params) { success, _, message, _ in
+                self.handleOTPResponse(success: success, message: message)
             }
         }
     }
-    
+
     private func performResendOTP() {
         var params: [String: Any] = GlobalUtils.getInstance().getBodyParams()
         params["email"] = email
         
-        HUD.show(on: view)
+        RappleActivityIndicatorView.startAnimating()
         AuthController.resendOTP(param: params) { success, _, message, _ in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                HUD.hide(from: self.view)
+                RappleActivityIndicatorView.stopAnimation()
                 let displayMsg = message.isEmpty ? (success ? Constant.success : "Something went wrong") : message
                 self.view.makeToast(displayMsg)
                 if success {
                     self.startTimer()
                 }
+            }
+        }
+    }
+    
+    private func handleOTPResponse(success: Bool, message: String) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            RappleActivityIndicatorView.stopAnimation()
+            let displayMsg = message.isEmpty ? (success ? Constant.success : "Something went wrong") : message
+            self.view.makeToast(displayMsg)
+            if success {
+                Redirect.to("HomeVC", from: self)
             }
         }
     }

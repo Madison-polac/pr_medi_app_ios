@@ -43,11 +43,7 @@ private extension RegisterVC {
         passwordField.trailingButtonType = .eye
         
         #if DEBUG
-        firstNameField.textField.text = DebugCredentials.fname
-        lastNameField.textField.text = DebugCredentials.lName
-        emailField.textField.text = "nnnn@gmal.com"
-        passwordField.textField.text = "12345678"
-        
+        passwordField.textField.text = "123456"
         #endif
     }
 }

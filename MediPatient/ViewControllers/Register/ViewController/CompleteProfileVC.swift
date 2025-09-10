@@ -8,6 +8,7 @@
 
 import UIKit
 import CountryPickerView
+import RappleProgressHUD
 
 class CompleteProfileVC: UIViewController {
     
@@ -86,9 +87,6 @@ extension CompleteProfileVC {
             return ValidationHelper.isValidMobileNumber(t, minLength: 8, maxLength: 15)
                 ? nil : ValidationMessages.validMobileNumber
         }
-    #if DEBUG
-        mobileField.textField.text = DebugCredentials.mobile
-    #endif
         
         clearAllBorders()
         setSelectedBorder(for: imgMale)
@@ -152,7 +150,7 @@ extension CompleteProfileVC {
         // ✅ Safe and clean DOB conversion using Date extension
         let formattedDOB = DateFormatter.dobFormatter.date(from: dobText)?.iso8601String ?? ""
 
-        // Gender mapping
+        // Gender mapping (1=Male, 2=Female, 3=Unknown)
         let genderId: Int = imgFemale.layer.borderWidth > 0 ? 2 :
                              imgOther.layer.borderWidth > 0 ? 3 : 1
 
@@ -160,30 +158,47 @@ extension CompleteProfileVC {
         var params: [String: Any] = GlobalUtils.getInstance().getBodyParams()
         params["firstName"] = initialFirstName
         params["lastName"] = initialLastName
-        params["userTypeId"] = 0
+        params["userTypeId"] = 3 // Patient
         params["email"] = initialEmail
         params["password"] = initialPassword
         params["isdCode"] = isdCode
         params["mobileNo"] = phone
         params["birthDate"] = formattedDOB
         params["genderId"] = genderId
-        params["otp"] = ""
-        params["roleId"] = 0
+        params["otp"] = "123456"
+        params["otpCategory"] = 1 // MobileVerification
+        params["roleId"] = 301 // Patient role
         params["roleIdEnc"] = ""
 
-        HUD.show(on: view)
-        AuthController.register(param: params) { success, _, message, _ in
+        RappleActivityIndicatorView.startAnimating()
+        AuthController.validateSignUP(param: params) { success, data, message, statusCode in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                HUD.hide(from: self.view)
-                let displayMsg = message.isEmpty ? (success ? Constant.success : "Something went wrong") : message
+                RappleActivityIndicatorView.stopAnimation()
+
+                let displayMsg = message.isEmpty ? "Something went wrong" : message
                 self.view.makeToast(displayMsg)
-                if success {
+
+                if statusCode == 200 {
+                    // Success with full user object
+                    Redirect.to("HomeVC", from: self) { _ in }
+                } else if statusCode == 205 {
                     Redirect.to("VerifyOTPVC", from: self) { (vc: VerifyOTPVC) in
-                        vc.email = self.initialEmail
+                        vc.email = (data as? [String: Any])?["email"] as? String ?? self.initialEmail
+                        vc.firstName = self.initialFirstName
+                        vc.lastName = self.initialLastName
+                        vc.password = self.initialPassword
+                        vc.isdCode = isdCode
+                        vc.mobileNo = phone
+                        vc.birthDate = formattedDOB
+                        vc.genderId = genderId
+                        vc.roleId = 301
+                        vc.roleIdEnc = ""
+                        vc.userTypeId = 3
+                        vc.flow = .signup
                     }
-                } else {
-                    print("Failed")
+                }else {
+                    print("Failed - statusCode: \(statusCode)")
                 }
             }
         }
