@@ -66,14 +66,14 @@ class AppHelper: NSObject {
     
     // MARK: - Storyboard methods
     static var isSplashTrack: Bool {
-        return (GlobalUtils.getInstance().getBundal() == BUNDLE_ID)
+        return (GlobalUtils.getInstance().getBundal() == AppConfig.bundleId)
     }
     
     static var mainStoryboard: UIStoryboard {
         if isSplashTrack {
-            return UIStoryboard(name: MAIN_STORYBOARD, bundle: nil)
+            return UIStoryboard(name: AppConfig.mainStoryboard, bundle: nil)
         } else {
-            return UIStoryboard(name: MAINDEV_STORYBOARD, bundle: nil)
+            return UIStoryboard(name: AppConfig.mainDevStoryboard, bundle: nil)
         }
     }
     

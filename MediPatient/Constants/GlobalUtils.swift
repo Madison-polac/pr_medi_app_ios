@@ -106,17 +106,17 @@ class GlobalUtils {
     
     func setWantToRefer(firstname:String,lastname:String,email:String,phone:String)-> Void {
         let dict:Dictionary = ["firstname":firstname,"lastname":lastname,"email":email,"phone":phone]
-        UserDefaults.standard.set(dict, forKey: WANT_TO_REFER)
+        UserDefaults.standard.set(dict, forKey: AppConfig.wantToRefer)
         UserDefaults.standard.synchronize()
     }
     
     func getWantToRefer() -> Dictionary<String, String>  {
-        let dict:Dictionary = UserDefaults.standard.value(forKey: WANT_TO_REFER) as! Dictionary<String, String>
+        let dict:Dictionary = UserDefaults.standard.value(forKey: AppConfig.wantToRefer) as! Dictionary<String, String>
         return dict
     }
     
     func removeWantToRefer() {
-        UserDefaults.standard.removeObject(forKey: WANT_TO_REFER)
+        UserDefaults.standard.removeObject(forKey: AppConfig.wantToRefer)
     }
     
     func email() -> String {
@@ -307,7 +307,7 @@ class GlobalUtils {
     //---------------------------------------------------------------------
     
     func getHeaderParam() -> Dictionary<String,String> {
-            var headerParam =  [CONTENT_TYPE: CONTENTTYPE_VALUE]
+        var headerParam =  [APIHeaders.contentType: APIHeaders.contentTypeVal]
             headerParam["accept"] = "text/plain"
             
             let apiSecret = GlobalUtils.getInstance().APISecret()
@@ -335,9 +335,9 @@ class GlobalUtils {
         var params : Dictionary<String,Any> = [:]
 //        params[APP_KEY] = APPKEY_VALUE
 //        params[APP_VERSION] = APPVERSION_VALUE
-        params[APP_PLATFORM] = APP_PLATFORM_VALUE
-        params[APP_TYPE] = APPTYPE_VALUE
-        params[DEVICE_ID] = DEVICEID_VALUE
+        params[APIHeaders.appPlatform] = APIHeaders.appPlatformVal
+        params[APIHeaders.appType] = APIHeaders.appTypeVal
+        params[APIHeaders.deviceId] = APIHeaders.deviceIdVal
         return params
     }
     
@@ -362,11 +362,11 @@ class GlobalUtils {
     }
     
     func setLoginDateTime(datelogind:Date) -> Void {
-        UserDefaults.standard.set(datelogind, forKey: kSecurityAlertKey)
+        UserDefaults.standard.set(datelogind, forKey: AppConfig.kSecurityAlertKey)
         UserDefaults.standard.synchronize()
     }
     func getLoginDateTime() -> Date {
-        return UserDefaults.standard.value(forKey: kSecurityAlertKey) as! Date
+        return UserDefaults.standard.value(forKey: AppConfig.kSecurityAlertKey) as! Date
     }
     func setLogoutAlert(islogout:Bool) -> Void {
         UserDefaults.standard.set(islogout, forKey: "securityLogout")

@@ -93,7 +93,7 @@ class PSResponse: NSObject {
 //---------------------------------------------------------------------
 class WSHandler: NSObject, URLSessionDelegate {
     fileprivate static var obj: WSHandler?
-    let kBASEURL = BASE_URL
+    let kBASEURL = API.baseURL
     let kTimeOutValue = 60
     
     var apiUrl: URL?

@@ -14,7 +14,7 @@ class AuthController {
     
     // MARK: - User methods
     static func getLogin(param: [String: Any], callback: @escaping (Bool, Any?, String, Int) -> Void) {
-        ServiceManager.post(method: LOGIN, param: param) { success, response, message, statusCode in
+        ServiceManager.post(method:API.Endpoints.login, param: param) { success, response, message, statusCode in
             if success {
                 let responseDict = response as? [String: Any] ?? [:]
                 self.convertResponsetoUserObj(responseDict, statusCode: statusCode, message: message, callback: callback)
@@ -44,13 +44,13 @@ class AuthController {
     static func forgotPassword(param: [String: Any], callback: @escaping (Bool, Any?, String, Int) -> Void) {
         let emailValue: String = (param["emailId"] as? String) ?? (param["email"] as? String) ?? ""
         let encodedEmail = emailValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let methodWithQuery = "\(ForgotPassword)?emailId=\(encodedEmail)"
+        let methodWithQuery = "\(API.Endpoints.forgotPassword)?emailId=\(encodedEmail)"
         ServiceManager.post(method: methodWithQuery, param: [:], callback: callback)
     }
     
     // MARK: - Validate SignUP
     static func validateSignUP(param: [String: Any], callback: @escaping (Bool, Any?, String, Int) -> Void) {
-        ServiceManager.post(method: ValidateSignUp, param: param) { success, response, message, statusCode in
+        ServiceManager.post(method: API.Endpoints.validateSignUp, param: param) { success, response, message, statusCode in
             if success {
                 let responseDict = response as? [String: Any] ?? [:]
 
@@ -72,7 +72,7 @@ class AuthController {
     
     // MARK: -  SignUP
     static func signUP(param: [String: Any], callback: @escaping (Bool, Any?, String, Int) -> Void) {
-        ServiceManager.post(method: SignUp, param: param) { success, response, message, statusCode in
+        ServiceManager.post(method: API.Endpoints.signUp, param: param) { success, response, message, statusCode in
             if success {
                 let responseDict = response as? [String: Any] ?? [:]
                 self.convertResponsetoUserObj(responseDict, statusCode: statusCode, message: message, callback: callback)
@@ -83,7 +83,7 @@ class AuthController {
     }
     // MARK: - Verify OTP
     static func verifyOTP(param: [String: Any], callback: @escaping (Bool, Any?, String, Int) -> Void) {
-        ServiceManager.post(method: VerifyOtp, param: param) { success, response, message, statusCode in
+        ServiceManager.post(method: API.Endpoints.verifyOtp, param: param) { success, response, message, statusCode in
             if success {
                 let responseDict = response as? [String: Any] ?? [:]
                 // Try mapping to User
@@ -104,7 +104,7 @@ class AuthController {
     
     // MARK: - Resend OTP
     static func resendOTP(param: [String: Any], callback: @escaping (Bool, Any?, String, Int) -> Void) {
-        ServiceManager.post(method: ResendOtp, param: param) { success, response, message, statusCode in
+        ServiceManager.post(method: API.Endpoints.resendOtp, param: param) { success, response, message, statusCode in
             callback(success, response, message, statusCode)
         }
     }

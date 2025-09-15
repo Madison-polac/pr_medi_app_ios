@@ -28,17 +28,17 @@ private extension RegisterVC {
     func setupUI() {
         btnContinue.applyPrimaryStyle()
         
-        firstNameField.setTitle(Constant.firstName)
-        firstNameField.textField.placeholder = Constant.firstName
+        firstNameField.setTitle(Constant.FirstName.label)
+        firstNameField.textField.placeholder = Constant.FirstName.placeholder
         
-        lastNameField.setTitle(Constant.lastName)
-        lastNameField.textField.placeholder = Constant.lastName
+        lastNameField.setTitle(Constant.LastName.label)
+        lastNameField.textField.placeholder = Constant.LastName.placeholder
         
-        emailField.setTitle(Constant.email)
-        emailField.textField.placeholder = Constant.emailPlaceholder
+        emailField.setTitle(Constant.Email.label)
+        emailField.textField.placeholder = Constant.Email.placeholder
         emailField.textField.keyboardType = .emailAddress
         
-        passwordField.setTitle(Constant.password)
+        passwordField.setTitle(Constant.Password.label)
         passwordField.textField.placeholder = Constant.createPasswordPlaceholder
         passwordField.trailingButtonType = .eye
         
@@ -54,42 +54,42 @@ private extension RegisterVC {
         var isValid = true
         
         // First Name
-        let firstName = firstNameField.textField.text
+        let firstName = firstNameField.textField.text ?? ""
         if ValidationHelper.isEmpty(firstName) {
-            firstNameField.showError(Constant.emptyFirstName)
+            firstNameField.showError(Constant.FirstName.empty)
             isValid = false
         } else {
             firstNameField.hideError()
         }
         
         // Last Name
-        let lastName = lastNameField.textField.text
+        let lastName = lastNameField.textField.text ?? ""
         if ValidationHelper.isEmpty(lastName) {
-            lastNameField.showError(Constant.lastName)
+            lastNameField.showError(Constant.LastName.empty)
             isValid = false
         } else {
             lastNameField.hideError()
         }
         
         // Email
-        let email = emailField.textField.text
+        let email = emailField.textField.text ?? ""
         if ValidationHelper.isEmpty(email) {
-            emailField.showError(Constant.emptyEmail)
+            emailField.showError(Constant.Email.empty)
             isValid = false
         } else if !ValidationHelper.isValidEmail(email) {
-            emailField.showError(Constant.invalidEmail)
+            emailField.showError(Constant.Email.invalid)
             isValid = false
         } else {
             emailField.hideError()
         }
         
         // Password
-        let password = passwordField.textField.text
+        let password = passwordField.textField.text ?? ""
         if ValidationHelper.isEmpty(password) {
-            passwordField.showError(Constant.emptyPassword)
+            passwordField.showError(Constant.Password.empty)
             isValid = false
         } else if !ValidationHelper.isValidPassword(password) {
-            passwordField.showError(Constant.invalidPassword)
+            passwordField.showError(Constant.Password.invalid)
             isValid = false
         } else {
             passwordField.hideError()
@@ -98,10 +98,10 @@ private extension RegisterVC {
         // Navigation
         if isValid {
             navigateToCompleteProfile(
-                firstName: firstName ?? "",
-                lastName: lastName ?? "",
-                email: email ?? "",
-                password: password ?? ""
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password
             )
         }
     }
@@ -115,6 +115,8 @@ private extension RegisterVC {
         navigationController?.pushViewController(vc, animated: true)
     }
 }
+
+
 
 // MARK: - Actions
 extension RegisterVC {

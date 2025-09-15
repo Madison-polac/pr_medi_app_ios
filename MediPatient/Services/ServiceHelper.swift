@@ -24,7 +24,7 @@ class ServiceHelper {
                         let datastring = NSString(data: resData!, encoding: String.Encoding.utf8.rawValue)
                         if (datastring?.contains("Unauthorized"))! {
                             // Go to login page
-                            callback(false, nil, AppHelper.localizedtext(key: "login.inactivity.alert"), INVALID_TOKEN_CODE)
+                            callback(false, nil, AppHelper.localizedtext(key: "login.inactivity.alert"), AppConfig.invalidTokenCode)
                         }
                     }
                 }

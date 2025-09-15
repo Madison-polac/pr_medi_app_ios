@@ -52,7 +52,7 @@ public extension UIColor {
     }
     
     static func barColor() -> UIColor {
-        if GlobalUtils.getInstance().getBundal() == BUNDLE_ID {
+        if GlobalUtils.getInstance().getBundal() == AppConfig.bundleId {
             return UIColor(red: 0.0/255.0, green: 44.0/255.0, blue: 77.0/255.0, alpha: 1.0)
         } else {
             return UIColor.hexString(hex: "#2CA2E6")
@@ -60,7 +60,7 @@ public extension UIColor {
     }
     
     static func buttonBackColor() -> UIColor {
-        if GlobalUtils.getInstance().getBundal() == BUNDLE_ID {
+        if GlobalUtils.getInstance().getBundal() == AppConfig.bundleId {
             return UIColor(red: 17.0/255.0, green: 148.0/255.0, blue: 243.0/255.0, alpha: 1.0)
         } else {
             return UIColor.hexString(hex: "#2E6DA4")
@@ -84,7 +84,7 @@ public extension UIColor {
     }
     
     static var themeColor: UIColor {
-        if GlobalUtils.getInstance().getBundal() == BUNDLE_ID {
+        if GlobalUtils.getInstance().getBundal() == AppConfig.bundleId {
             return UIColor.hexString(hex: "#305D85")
         } else {
             return UIColor.hexString(hex: "#2CA2E6")

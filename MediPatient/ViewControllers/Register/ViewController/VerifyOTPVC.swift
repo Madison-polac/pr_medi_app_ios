@@ -65,13 +65,13 @@ extension VerifyOTPVC {
         }
         lblInfo.attributedText = attributedInfo
         
-        otpField.setTitle(Constant.OTP.otpTitle)
-        otpField.textField.placeholder = Constant.OTP.otpPlaceholder
+        otpField.setTitle(Constant.OTP.title)
+        otpField.textField.placeholder = Constant.OTP.placeholder
         otpField.textField.keyboardType = .numberPad
-        otpField.requiredMessage = Constant.OTP.otpRequiredMsg
+        otpField.requiredMessage = Constant.OTP.requiredMsg
         otpField.customValidator = { text in
             guard let t = text, !t.isEmpty else { return nil }
-            return t.count == 6 ? nil : Constant.OTP.otpInvalidMsg
+            return t.count == 6 ? nil : Constant.OTP.invalidMsg
         }
         otpField.textChangedCallback = { [weak self] text in
             guard let self = self else { return }

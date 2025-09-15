@@ -56,7 +56,7 @@ extension UIFont {
     }
     
     public static func normalFont(size: CGFloat) -> UIFont {
-        if GlobalUtils.getInstance().getBundal() == BUNDLE_ID {
+        if GlobalUtils.getInstance().getBundal() == AppConfig.bundleId {
             return UIFont(name: "Avenir-Medium", size: size)!
         } else {
             return UIFont(name: "Calibri", size: size)!
@@ -64,7 +64,7 @@ extension UIFont {
     }
     
     public static func navTitleFont(size: CGFloat) -> UIFont {
-        if GlobalUtils.getInstance().getBundal() == BUNDLE_ID {
+        if GlobalUtils.getInstance().getBundal() == AppConfig.bundleId {
             return UIFont(name: "Avenir-Medium", size: size)!
         } else {
             return UIFont(name: "Calibri", size: size)!

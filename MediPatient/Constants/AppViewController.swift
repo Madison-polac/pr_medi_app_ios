@@ -233,10 +233,10 @@ class AppViewController: UIViewController {
         let action = UIAlertAction(title: "OK", style: .destructive, handler: { (action) in
             AppHelper.setifUserLoggedIn(islogin: false)
             var main:UIStoryboard?
-            if GlobalUtils.getInstance().getBundal() == BUNDLE_ID {
-                main = UIStoryboard(name: MAIN_STORYBOARD, bundle: nil)
+            if GlobalUtils.getInstance().getBundal() == AppConfig.bundleId {
+                main = UIStoryboard(name: AppConfig.mainStoryboard, bundle: nil)
             } else {
-                main = UIStoryboard(name: MAINDEV_STORYBOARD, bundle: nil)
+                main = UIStoryboard(name: AppConfig.mainDevStoryboard, bundle: nil)
             }
        
             let rootViewController = main?.instantiateViewController(withIdentifier: "LoginVC")  as! LoginVC

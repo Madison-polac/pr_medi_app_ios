@@ -25,8 +25,8 @@ class ForgotPasswordVC: UIViewController {
 private extension ForgotPasswordVC {
     func setupUI() {
         btnSendReset.applyPrimaryStyle()
-        tfEmail.setTitle(Constant.email)
-        tfEmail.textField.placeholder = Constant.emailPlaceholder
+        tfEmail.setTitle(Constant.Email.label)
+        tfEmail.textField.placeholder = Constant.Email.placeholder
     }
 }
 
@@ -37,10 +37,10 @@ private extension ForgotPasswordVC {
         let email = tfEmail.textField.text
         
         if ValidationHelper.isEmpty(email) {
-            tfEmail.showError(Constant.emptyEmail)
+            tfEmail.showError(Constant.Email.empty)
             isValid = false
         } else if !ValidationHelper.isValidEmail(email) {
-            tfEmail.showError(Constant.invalidEmail)
+            tfEmail.showError(Constant.Email.invalid)
             isValid = false
         } else {
             tfEmail.hideError()

@@ -8,114 +8,132 @@
 import Foundation
 import UIKit
 
-// MARK: - Base URL
-    let BASE_URL = "https://securemedsoft.com/api/patients/Auth/"
-
-//Live
-//  let BASE_URL = "https://account.uat.splashtrack.com/api/"
-
-
-//API
-let LOGIN = "Login"
-let ForgotPassword = "ForgotPassword"
-let ValidateSignUp = "ValidateSignUp"
-let SignUp = "SignUp"
-let ResendOtp = "ResendOtp"
-let VerifyOtp = "VerifyOtp"
-
-let kAppDelegate = UIApplication.shared.delegate as! AppDelegate;
-let kSecurityAlertKey = "logindate"
-let WANT_TO_REFER = "wantTorefer"
-
-let CLIENT_KEY = "5cc64b0a-1a26-48d3-8911-935624374b9a"
-let CONTENT_TYPE = "Content-Type"
-let CONTENTTYPE_VALUE = "application/json"
-let APP_KEY = "Key"
-let APPKEY_VALUE  = "WaLtuHxXSkqVQswbTcGQWg=="
-let APP_VERSION = "AppVersion"
-let APPVERSION_VALUE  = "1.0"
-let APP_PLATFORM = "AppPlatForm"
-let APP_PLATFORM_VALUE  = "4"
-let APP_TYPE = "AppType"
-let APPTYPE_VALUE  = "2"
-let ISTOKEN_EXPIRED = "IsTokenExpired"
-let ISTOKEN_EXPIRED_VALUE  = false
-let CLIENT_ID = "ClientId"
-let CLIENTID_VALUE  = "00000000-0000-0000-0000-000000000000"
-let USER_ID = "UserId"
-let DEVICE_ID = "DeviceId"
-let DEVICEID_VALUE  = UIDevice.current.identifierForVendor!.uuidString
-let TOKEN_ID = "TokenId"
-let REQUEST_DATA = "RequestData";
-let TOKEN = "token"
-let USER_PREFERENCES = "UserPreferences"
-let TITLE_KEY = "title"
-let SUBTITLE_KEY = "subtitle"
-let VALUE_KEY = "value"
-
-let INVALID_TOKEN_CODE = 1009
-
-let MAIN_STORYBOARD = "Main"
-let MAINDEV_STORYBOARD = "Main"
-let BUNDLE_ID = "com.vipulshiyal.MediPatient"
-
-let SERVER_SHORT_DATE_FORMAT    = "yyyy-MM-dd"
-let SERVER_LONG_DATE_FORMAT     = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-let LOGIN_DATE_FORMAT           = "yyyy-MM-dd HH:mm"
-let APP_DATE_FORMAT             = "MM/dd/yyyy"
-let APP_DATE_TIMEZONE_FORMAT    = "yyyy-MM-dd'T'HH:mm:ss"
-let TIMZONE_Z_DATE_FORMAT       = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-
-struct Constant {
-
-    // Email
-    static let email = "Email"
-    static let emailPlaceholder = "Enter your email"
-    static let invalidEmail = "Invalid Email"
-    static let emptyEmail = "Email required"
-
-    // Password
-    static let password = "Password"
-    static let passwordPlaceholder = "Enter your password"
-    static let invalidPassword = "Invalid Password"
-    static let emptyPassword = "Password required"
-
-    // First Name
-    static let firstName = "First Name"
-    static let firstNamePlaceholder = "First Name"
-    static let invalidFirstName = "Invalid first name"
-    static let emptyFirstName = "First name required"
-
-    // Last Name
-    static let lastName = "Last Name"
-    static let lastNamePlaceholder = "Last Name"
-    static let invalidLastName = "Invalid last name"
-    static let emptyLastName = "Last name required"
-
-    // Create a Password
-    static let createPasswordPlaceholder = "Create a password"
-
-    // Success
-    static let success = "Success!"
-
-    struct OTP {
-           static let defaultEmail = "ndsgdsg@gmail.com"
-           static let infoPrefix = "A 6-digit verification code has been sent to your email address "
-           static let otpTitle = "Please enter the code here"
-           static let otpPlaceholder = "Enter Verification Code"
-           static let otpRequiredMsg = "Please enter verification code"
-           static let otpInvalidMsg = "Enter 6-digit code"
-           static let timerText = "Resend Code in 00:%02d"
-       }
+// MARK: - API Configuration
+struct API {
+    static let baseURL = "https://securemedsoft.com/api/patients/Auth/"
+    // Live
+    // static let baseURL = "https://account.uat.splashtrack.com/api/"
+    
+    struct Endpoints {
+        static let login = "Login"
+        static let forgotPassword = "ForgotPassword"
+        static let validateSignUp = "ValidateSignUp"
+        static let signUp = "SignUp"
+        static let resendOtp = "ResendOtp"
+        static let verifyOtp = "VerifyOtp"
+    }
 }
 
+// MARK: - Headers & Keys
+struct APIHeaders {
+    static let clientKey       = "5cc64b0a-1a26-48d3-8911-935624374b9a"
+    static let contentType     = "Content-Type"
+    static let contentTypeVal  = "application/json"
+    static let appKey          = "Key"
+    static let appKeyVal       = "WaLtuHxXSkqVQswbTcGQWg=="
+    static let appVersion      = "AppVersion"
+    static let appVersionVal   = "1.0"
+    static let appPlatform     = "AppPlatForm"
+    static let appPlatformVal  = "4"
+    static let appType         = "AppType"
+    static let appTypeVal      = "2"
+    static let isTokenExpired  = "IsTokenExpired"
+    static let clientId        = "ClientId"
+    static let clientIdVal     = "00000000-0000-0000-0000-000000000000"
+    static let userId          = "UserId"
+    static let deviceId        = "DeviceId"
+    static let deviceIdVal     = UIDevice.current.identifierForVendor?.uuidString ?? ""
+    static let tokenId         = "TokenId"
+    static let requestData     = "RequestData"
+    static let token           = "token"
+}
 
+// MARK: - App Config
+struct AppConfig {
+    static let bundleId = "com.vipulshiyal.MediPatient"
+    static let mainStoryboard = "Main"
+    static let mainDevStoryboard = "Main"
+    static let invalidTokenCode = 1009
+    
+    // Keys
+    static let kSecurityAlertKey = "logindate"
+    static let wantToRefer = "wantTorefer"
+    static let userPreferences = "UserPreferences"
+    static let titleKey = "title"
+    static let subtitleKey = "subtitle"
+    static let valueKey = "value"
+    
+    // Date Formats
+    struct DateFormat {
+        static let serverShort = "yyyy-MM-dd"
+        static let serverLong = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        static let loginDate = "yyyy-MM-dd HH:mm"
+        static let appDate = "MM/dd/yyyy"
+        static let appDateTimeZone = "yyyy-MM-dd'T'HH:mm:ss"
+        static let timeZoneZ = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+    }
+}
+
+// MARK: - Constants (UI / Messages)
+struct Constant {
+    // Email
+    struct Email {
+        static let label = "Email"
+        static let placeholder = "Enter your email"
+        static let invalid = "Invalid Email"
+        static let empty = "Email required"
+    }
+    
+    // Password
+    struct Password {
+        static let label = "Password"
+        static let placeholder = "Enter your password"
+        static let invalid = "Invalid Password"
+        static let empty = "Password required"
+    }
+    
+    // First Name
+    struct FirstName {
+        static let label = "First Name"
+        static let placeholder = "First Name"
+        static let invalid = "Invalid first name"
+        static let empty = "First name required"
+    }
+    
+    // Last Name
+    struct LastName {
+        static let label = "Last Name"
+        static let placeholder = "Last Name"
+        static let invalid = "Invalid last name"
+        static let empty = "Last name required"
+    }
+    
+    // General
+    static let createPasswordPlaceholder = "Create a password"
+    static let success = "Success!"
+    
+    // OTP
+    struct OTP {
+        static let defaultEmail = "ndsgdsg@gmail.com"
+        static let infoPrefix = "A 6-digit verification code has been sent to your email address "
+        static let title = "Please enter the code here"
+        static let placeholder = "Enter Verification Code"
+        static let requiredMsg = "Please enter verification code"
+        static let invalidMsg = "Enter 6-digit code"
+        static let timerText = "Resend Code in 00:%02d"
+    }
+}
+
+// MARK: - Debug Credentials (only DEBUG build)
 #if DEBUG
 struct DebugCredentials {
     static let email = "jon.mac@yopmail.com"
     static let password = "Jon@1234"
     static let fname = "Luffy"
     static let lName = "Zoro"
-    static let mobile  = "9797979797"
+    static let mobile = "9797979797"
 }
 #endif
+
+// MARK: - App Delegate Shortcut
+let kAppDelegate = UIApplication.shared.delegate as! AppDelegate
