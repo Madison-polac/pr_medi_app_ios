@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 // MARK: - Base URL
-
     let BASE_URL = "https://securemedsoft.com/api/patients/Auth/"
 
 //Live
@@ -23,7 +22,6 @@ let ValidateSignUp = "ValidateSignUp"
 let SignUp = "SignUp"
 let ResendOtp = "ResendOtp"
 let VerifyOtp = "VerifyOtp"
-
 
 let kAppDelegate = UIApplication.shared.delegate as! AppDelegate;
 let kSecurityAlertKey = "logindate"
