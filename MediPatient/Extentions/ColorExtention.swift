@@ -37,5 +37,12 @@ extension UIColor {
 
         self.init(red: r, green: g, blue: b, alpha: a)
     }
+    
+    static func randomLightColor() -> UIColor {
+            let hue = CGFloat.random(in: 0...1)
+            let saturation = CGFloat.random(in: 0.3...0.6) // keep it light
+            let brightness = CGFloat.random(in: 0.8...1.0) // bright colors
+        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 0.5)
+    }
 }
 

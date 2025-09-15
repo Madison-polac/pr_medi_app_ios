@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import MBProgressHUD
+import RappleProgressHUD
 
 class ForgotPasswordVC: UIViewController {
     
@@ -47,7 +47,7 @@ private extension ForgotPasswordVC {
         }
         
         if isValid {
-            HUD.show(on: view)
+            RappleActivityIndicatorView.startAnimating()
             sendResetLink(email: email ?? "")
         }
     }
@@ -58,7 +58,7 @@ private extension ForgotPasswordVC {
         AuthController.forgotPassword(param: params) { success, _, message, _ in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                HUD.hide(from: self.view)
+                RappleActivityIndicatorView.stopAnimation()
                 
                 let displayMsg = message.isEmpty
                     ? (success ? Constant.success : "Something went wrong")
