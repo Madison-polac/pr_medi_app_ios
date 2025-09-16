@@ -26,6 +26,7 @@ class PrimaryLabel: UILabel {
         self.adjustsFontSizeToFitWidth = true
     }
 }
+
 class HeadingLabel: UILabel {
 
     override init(frame: CGRect) {

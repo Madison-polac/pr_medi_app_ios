@@ -1,11 +1,3 @@
-//
-//  CommonCardTableViewCell.swift
-//  MediPatient
-//
-//  Created by Nick Joliya on 15/09/25.
-//
-
-
 import UIKit
 
 class CommonCardTableViewCell: UITableViewCell {
@@ -21,7 +13,8 @@ class CommonCardTableViewCell: UITableViewCell {
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var btnView: UIView!
     
-    // Keep a reference to gradient
+    @IBOutlet weak var shadowView: UIView!
+    // Keep a reference to gradient layer
     private var gradientLayer: CAGradientLayer?
     
     // MARK: - Lifecycle
@@ -30,24 +23,39 @@ class CommonCardTableViewCell: UITableViewCell {
         setupUI()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        // Remove old gradient
+        gradientLayer?.sublayers?.removeAll(where: { $0 is CAGradientLayer })
+        gradientLayer = nil
+        
+        // Reset UI
+        ivIcon.image = nil
+        lblTitle.text = nil
+        lblSubtitle.text = nil
+        lblDesc.text = nil
+        lblStatus.text = nil
+        lblStatus.isHidden = true
+        btnView.isHidden = true
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        // Update gradient frame instead of recreating
-        gradientLayer?.frame = bgView.bounds
+        // Apply shadow (always update frame)
+        addShadow(to: bgView)
+        // Add a new gradient with a random light color for this cell
+        //addTopRightGradient(to: bgView, color: UIColor.randomLightColor())
         
-        addShadow(to: bgView,
-                  color: .black,
-                  opacity: 0.25,
-                  radius: 6,
-                  offset: CGSize(width: 0, height: 3))
     }
     
     // MARK: - UI Setup
     private func setupUI() {
         selectionStyle = .none
-        bgView.layer.cornerRadius = 12
-        bgView.layer.masksToBounds = false // important for shadow
+        
+       // bgView.layer.cornerRadius = 12
+        //bgView.layer.masksToBounds = false // needed for shadow
         
         // Fonts
         lblTitle.font = UIFont.ubuntuMedium(ofSize: 17)
@@ -58,8 +66,6 @@ class CommonCardTableViewCell: UITableViewCell {
         // Button
         btnJoin.layer.cornerRadius = 6
         btnJoin.titleLabel?.font = UIFont.ubuntuMedium(ofSize: 12)
-        
-        addTopRightGradient(to: bgView)
     }
     
     // MARK: - Config
@@ -82,38 +88,43 @@ class CommonCardTableViewCell: UITableViewCell {
         }
         
         btnView.isHidden = !item.showJoinButton
+        
+       
     }
     
-    
-    func addTopRightGradient(to view: UIView, cornerRadius: CGFloat = 12) {
-        gradientLayer?.removeFromSuperlayer()
+    // MARK: - Gradient
+    private func addTopRightGradient(to view: UIView, color: UIColor, cornerRadius: CGFloat = 12) {
+        gradientLayer?.removeFromSuperlayer() // remove old gradient
         
         let gradient = CAGradientLayer()
         gradient.frame = view.bounds
-        
-        // Spread further across card
         gradient.startPoint = CGPoint(x: 1, y: 0)     // top-right
-        gradient.endPoint   = CGPoint(x: 0.7, y: 0.5) // fade diagonally toward center/bottom
-        
-        let color1 = UIColor.randomLightColor().cgColor
-        let color2 = UIColor.white.cgColor
-        gradient.colors = [color1, color2]
-        
-        // Make fade smoother & longer
+        gradient.endPoint   = CGPoint(x: 0.7, y: 0.5) // fade
+        gradient.colors = [color.cgColor, UIColor.white.cgColor]
         gradient.locations = [0.0, 0.8]
         
-        gradient.cornerRadius = cornerRadius
-        view.layer.insertSublayer(gradient, at: 0)
+        // Corner radius mask
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = UIBezierPath(roundedRect: view.bounds, cornerRadius: cornerRadius).cgPath
+        gradient.mask = maskLayer
         
+        view.layer.insertSublayer(gradient, at: 0)
         gradientLayer = gradient
     }
-
-
-    func addShadow(to view: UIView, color: UIColor = .black, opacity: Float = 0.2, radius: CGFloat = 4, offset: CGSize = CGSize(width: 0, height: 2)) {
+    
+    // MARK: - Shadow
+    private func addShadow(
+        to view: UIView,
+        color: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1), // #0000001A
+        opacity: Float = 1.0,      // set to 1.0 because alpha is already in color
+        radius: CGFloat = 6,        // blur
+        offset: CGSize = CGSize(width: 0, height: 4) // x:0, y:4
+    ) {
         view.layer.shadowColor = color.cgColor
         view.layer.shadowOpacity = opacity
         view.layer.shadowRadius = radius
         view.layer.shadowOffset = offset
         view.layer.masksToBounds = false
     }
+
 }
