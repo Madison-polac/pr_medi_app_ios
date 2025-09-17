@@ -311,3 +311,46 @@ extension UIView {
         return all
     }
 }
+
+extension UIView {
+    func applyShadow(
+        color: UIColor = UIColor.black.withAlphaComponent(0.1),
+        opacity: Float = 1.0,
+        radius: CGFloat = 6,
+        offset: CGSize = CGSize(width: 0, height: 4)
+    ) {
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowRadius = radius
+        layer.shadowOffset = offset
+        layer.masksToBounds = false
+    }
+    
+    func applyTopRightGradient(
+        primaryColor: UIColor,
+        cornerRadius: CGFloat = 12
+    ) {
+        // Remove old gradients
+        layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
+        
+        layoutIfNeeded()
+        
+        let gradient = CAGradientLayer()
+        gradient.frame = bounds
+        gradient.startPoint = CGPoint(x: 1, y: 0)     // top-right
+        gradient.endPoint   = CGPoint(x: 0.7, y: 0.5) // fade
+        gradient.colors = [primaryColor.cgColor, UIColor.white.cgColor]
+        gradient.locations = [0.0, 0.8]
+        
+        // Rounded corners
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = UIBezierPath(
+            roundedRect: bounds,
+            cornerRadius: cornerRadius
+        ).cgPath
+        gradient.mask = maskLayer
+        
+        layer.insertSublayer(gradient, at: 0)
+    }
+}
+

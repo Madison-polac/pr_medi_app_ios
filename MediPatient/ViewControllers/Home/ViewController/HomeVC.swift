@@ -209,4 +209,5 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             toggleSideMenu()
         }
     }
+
 }
