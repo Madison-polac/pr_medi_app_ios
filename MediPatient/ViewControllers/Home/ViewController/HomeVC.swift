@@ -17,6 +17,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var tblHeight: NSLayoutConstraint!
     @IBOutlet weak var menuTableView: UITableView!
     
+    @IBOutlet weak var blackSideMenuView: UIView!
     // MARK: - Data
     private var items: [CardItem] = []
     private var sideMenuData: SideMenuData = SideMenuData.getMenuData()
@@ -43,6 +44,11 @@ class HomeVC: UIViewController {
         if sideMenuView.frame.origin.x == 0 {
             setupSideMenu()
         }
+    }
+    
+    
+    @IBAction func btnFilterTapped(_ sender: UIButton) {
+        Redirect.to("FilterVC", from: self)
     }
 }
 
@@ -109,7 +115,16 @@ private extension HomeVC {
         // Add pan gesture
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         sideMenuView.addGestureRecognizer(panGesture)
+        
+        // Add tap gesture
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
+        blackSideMenuView.addGestureRecognizer(tapGesture)
     }
+
+    @objc private func handleTapGesture(_ gesture: UITapGestureRecognizer) {
+        toggleSideMenu()
+    }
+
 
     
     @IBAction func btnMenuTapped(_ sender: UIButton) {
@@ -205,8 +220,9 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             } else {
                 let item = sideMenuData.items[indexPath.row - 1]
                 print("Tapped menu: \(item.title)")
+                toggleSideMenu()
             }
-            toggleSideMenu()
+           
         }
     }
 

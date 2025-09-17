@@ -97,12 +97,12 @@ extension LoginVC {
                 let displayMsg = message.isEmpty ? "Something went wrong" : message
                 self.view.makeToast(displayMsg)
 
-                if statusCode == 205, let userObj = response as? User {
+                if statusCode == 200, let userObj = response as? User {
                     // ✅ Login success
                     print("Login successful for: \(userObj.userName)")
                     Redirect.to("HomeVC", from: self) { _ in }
                     
-                } else if statusCode == 200 {
+                } else if statusCode == 205 {
                     Redirect.to("VerifyOTPVC", from: self) { (vc: VerifyOTPVC) in
                         vc.email = username
                         vc.flow = .login

@@ -127,8 +127,8 @@ struct Constant {
 // MARK: - Debug Credentials (only DEBUG build)
 #if DEBUG
 struct DebugCredentials {
-    static let email = "jon.mac@yopmail.com"
-    static let password = "Jon@1234"
+    static let email = "vipulshiyalmca@gmail.com"
+    static let password = "123456"
     static let fname = "Luffy"
     static let lName = "Zoro"
     static let mobile = "9797979797"
