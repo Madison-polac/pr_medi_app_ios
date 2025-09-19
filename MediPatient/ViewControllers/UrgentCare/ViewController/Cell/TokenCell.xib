@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TokenCell" rowHeight="170" id="KGk-i7-Jjw" customClass="TokenCell" customModule="MediPatient" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1L9-cu-PHz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="jCw-AH-Yly">
+                                <rect key="frame" x="16" y="26.333333333333336" width="264" height="20.333333333333336"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 17, 2024  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPe-5y-IgU" customClass="Regular14" customModule="MediPatient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="264" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="#677294"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="customSize">
+                                                <real key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="fontType" value="regular"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="mYJ-eM-Lzc">
+                                <rect key="frame" x="16" y="50.666666666666664" width="211" height="20.333333333333336"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facility:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OY-0a-TLX" customClass="Regular14" customModule="MediPatient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="57.333333333333336" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="#677294"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="customSize">
+                                                <real key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="fontType" value="regular"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medical Health Hub" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bw-Od-Cj4" customClass="Regular14" customModule="MediPatient" customModuleProvider="target">
+                                        <rect key="frame" x="61.333333333333329" y="0.0" width="149.66666666666669" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="#101010"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9OB-Z9-LNc">
+                                <rect key="frame" x="15.999999999999993" y="75" width="113.33333333333331" height="20.333333333333329"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Provider:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYU-Oa-azh" customClass="Regular14" customModule="MediPatient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="68" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="#677294"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="customSize">
+                                                <real key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="fontType" value="regular"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1p-r0-T69">
+                                        <rect key="frame" x="72" y="0.0" width="41.333333333333343" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="#101010"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="0WB-sI-cxK">
+                                <rect key="frame" x="15.999999999999986" y="99.333333333333329" width="230.66666666666663" height="20.333333333333329"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token number:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfc-T3-8t6" customClass="Regular14" customModule="MediPatient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="113.33333333333333" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="#677294"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="customSize">
+                                                <real key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="fontType" value="regular"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yG-Dj-pVh" customClass="Regular14" customModule="MediPatient" customModuleProvider="target">
+                                        <rect key="frame" x="117.33333333333334" y="0.0" width="113.33333333333334" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="#101010"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GlI-nC-tJC">
+                                <rect key="frame" x="285" y="73" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="kbw-Aa-K7i"/>
+                                    <constraint firstAttribute="height" constant="24" id="ylP-cs-sbE"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="icRight"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="QjC-Ed-fxf">
+                                <rect key="frame" x="16" y="123.66666666666667" width="99" height="20.333333333333329"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMa-G1-gEo" customClass="Regular14" customModule="MediPatient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="53.666666666666664" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="#677294"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="customSize">
+                                                <real key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="fontType" value="regular"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9d0-gx-gsF" customClass="Medium14" customModule="MediPatient" customModuleProvider="target">
+                                        <rect key="frame" x="57.666666666666686" y="0.0" width="41.333333333333314" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GlI-nC-tJC" firstAttribute="centerY" secondItem="1L9-cu-PHz" secondAttribute="centerY" id="1gk-hH-4oA"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mYJ-eM-Lzc" secondAttribute="trailing" constant="40" id="3cO-a5-gbp"/>
+                            <constraint firstItem="QjC-Ed-fxf" firstAttribute="leading" secondItem="1L9-cu-PHz" secondAttribute="leading" constant="16" id="6Pn-0Z-gFU"/>
+                            <constraint firstItem="9OB-Z9-LNc" firstAttribute="centerY" secondItem="GlI-nC-tJC" secondAttribute="centerY" id="DJI-32-vXa"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0WB-sI-cxK" secondAttribute="trailing" constant="40" id="DNS-1W-XeV"/>
+                            <constraint firstItem="9OB-Z9-LNc" firstAttribute="leading" secondItem="1L9-cu-PHz" secondAttribute="leading" constant="16" id="KtW-26-SxL"/>
+                            <constraint firstAttribute="trailing" secondItem="jCw-AH-Yly" secondAttribute="trailing" constant="40" id="PZu-mI-arc"/>
+                            <constraint firstItem="QjC-Ed-fxf" firstAttribute="top" secondItem="0WB-sI-cxK" secondAttribute="bottom" constant="4" id="Ysr-DS-rst"/>
+                            <constraint firstItem="GlI-nC-tJC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9OB-Z9-LNc" secondAttribute="trailing" constant="40" id="aRX-1D-OqT"/>
+                            <constraint firstItem="jCw-AH-Yly" firstAttribute="leading" secondItem="1L9-cu-PHz" secondAttribute="leading" constant="16" id="bMX-7D-7FA"/>
+                            <constraint firstItem="0WB-sI-cxK" firstAttribute="leading" secondItem="1L9-cu-PHz" secondAttribute="leading" constant="16" id="eOD-Tj-uAj"/>
+                            <constraint firstItem="mYJ-eM-Lzc" firstAttribute="top" secondItem="jCw-AH-Yly" secondAttribute="bottom" constant="4" id="frj-xK-xmH"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QjC-Ed-fxf" secondAttribute="trailing" constant="40" id="hVe-ek-p77"/>
+                            <constraint firstItem="9OB-Z9-LNc" firstAttribute="top" secondItem="mYJ-eM-Lzc" secondAttribute="bottom" constant="4" id="iYg-Q4-XjE"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QjC-Ed-fxf" secondAttribute="bottom" constant="16" id="k4Q-MO-RlD"/>
+                            <constraint firstItem="0WB-sI-cxK" firstAttribute="top" secondItem="9OB-Z9-LNc" secondAttribute="bottom" constant="4" id="lhF-gd-JdJ"/>
+                            <constraint firstAttribute="trailing" secondItem="GlI-nC-tJC" secondAttribute="trailing" constant="11" id="niQ-iU-rd4"/>
+                            <constraint firstItem="jCw-AH-Yly" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1L9-cu-PHz" secondAttribute="top" constant="16" id="oUC-Es-3xx"/>
+                            <constraint firstItem="mYJ-eM-Lzc" firstAttribute="leading" secondItem="1L9-cu-PHz" secondAttribute="leading" constant="16" id="zzm-oQ-B0N"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="1L9-cu-PHz" secondAttribute="bottom" id="CBT-tE-YWD"/>
+                    <constraint firstItem="1L9-cu-PHz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="DOk-1s-RJ8"/>
+                    <constraint firstAttribute="trailing" secondItem="1L9-cu-PHz" secondAttribute="trailing" id="wY2-Pd-yNt"/>
+                    <constraint firstItem="1L9-cu-PHz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xty-q2-TWA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="jPe-5y-IgU" id="A0O-rS-rXo"/>
+                <outlet property="facilityLabel" destination="5Bw-Od-Cj4" id="dau-cb-cis"/>
+                <outlet property="providerLabel" destination="c1p-r0-T69" id="ig3-gv-vEm"/>
+                <outlet property="statusLabel" destination="9d0-gx-gsF" id="F5f-sV-z0d"/>
+                <outlet property="tokenLabel" destination="1yG-Dj-pVh" id="PDK-su-9Nt"/>
+            </connections>
+            <point key="canvasLocation" x="-4.5801526717557248" y="-7.746478873239437"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icRight" width="20" height="20"/>
+        <namedColor name="#101010">
+            <color red="0.062745098039215685" green="0.062745098039215685" blue="0.062745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="#677294">
+            <color red="0.40392156862745099" green="0.44705882352941179" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

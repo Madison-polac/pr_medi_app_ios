@@ -221,6 +221,12 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
                 let item = sideMenuData.items[indexPath.row - 1]
                 print("Tapped menu: \(item.title)")
                 toggleSideMenu()
+                
+                if indexPath.row == 7{
+                    Redirect.to("UrgentCareVC", from: self)
+                }else if indexPath.row == 8{
+                    Redirect.to("AllergiesVC", from: self)
+                }
             }
            
         }

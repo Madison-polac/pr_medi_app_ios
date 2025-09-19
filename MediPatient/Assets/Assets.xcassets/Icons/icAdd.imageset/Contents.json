@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ic_gen_prefer not.png",
+      "filename" : "Action Button.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ic_gen_prefer not@2x.png",
+      "filename" : "Action Button@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ic_gen_prefer not@3x.png",
+      "filename" : "Action Button@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

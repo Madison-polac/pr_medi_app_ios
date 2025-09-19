@@ -1,318 +1,90 @@
 import UIKit
-import Foundation
 
-enum LINE_POSITION {
-    case LINE_POSITION_TOP
-    case LINE_POSITION_BOTTOM
+// MARK: - UIFont Helpers
+extension UIFont {
+    static func ubuntuRegular(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: "Ubuntu-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
+    }
+    static func ubuntuBold(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: "Ubuntu-Bold", size: size) ?? UIFont.boldSystemFont(ofSize: size)
+    }
+    static func ubuntuMedium(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: "Ubuntu-Medium", size: size) ?? UIFont.systemFont(ofSize: size)
+    }
+    static func ubuntuLight(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: "Ubuntu-Light", size: size) ?? UIFont.systemFont(ofSize: size)
+    }
 }
 
-// MARK: - Designable Extension
+// MARK: - IBDesignable Font Label
+@IBDesignable
+class FontLabel: UILabel {
+    @IBInspectable var fontType: String = "regular" {
+        didSet { updateFont() }
+    }
+    @IBInspectable var customSize: CGFloat = 14 {
+        didSet { updateFont() }
+    }
+    
+    private func updateFont() {
+        let fontName: String
+        switch fontType.lowercased() {
+        case "medium": fontName = "Ubuntu-Medium"
+        case "bold":   fontName = "Ubuntu-Bold"
+        case "light":  fontName = "Ubuntu-Light"
+        default:       fontName = "Ubuntu-Regular"
+        }
+        self.font = UIFont(name: fontName, size: customSize) ?? UIFont.systemFont(ofSize: customSize)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        updateFont()
+    }
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        updateFont()
+    }
+}
 
+// MARK: - UIView Styling
 @IBDesignable
 extension UIView {
     
-    func dropShadow () {
-        self.dropShadow(color: UIColor.appBackColor)
+    // Corner + Border
+    @IBInspectable var cornerRadius: CGFloat {
+        get { layer.cornerRadius }
+        set { layer.cornerRadius = newValue; layer.masksToBounds = newValue > 0 }
     }
     
-    func dropShadow(color: UIColor) {
-        self.layer.masksToBounds = false
-        self.layer.shadowOffset = CGSize(width: 0, height: 4)  // positive y → bottom
-        self.layer.shadowColor = color.cgColor
-        self.layer.shadowOpacity = 0.1                          // subtle
-        self.layer.shadowRadius = 3                             // blur
+    @IBInspectable var borderWidth: CGFloat {
+        get { layer.borderWidth }
+        set { layer.borderWidth = newValue }
     }
     
-    func applyShadow(view:UIView) {
-        view.layer.cornerRadius = 8 //set corner radius here
-        view.layer.masksToBounds = false
-        view.layer.shadowOffset = CGSize(width: 0, height: 0.5)
-        view.layer.shadowColor = UIColor.gray.cgColor
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowRadius = 2
+    @IBInspectable var borderColor: UIColor? {
+        get { layer.borderColor.map(UIColor.init(cgColor:)) }
+        set { layer.borderColor = newValue?.cgColor }
     }
     
-    func addLineToView(position : LINE_POSITION, color: UIColor, width: Double) {
-        let lineView = UIView()
-        lineView.backgroundColor = color
-        lineView.translatesAutoresizingMaskIntoConstraints = false // This is important!
-        self.addSubview(lineView)
-        
-        let metrics = ["width" : NSNumber(value: width)]
-        let views = ["lineView" : lineView]
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[lineView]|", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics:metrics, views:views))
-        
-        switch position {
-        case .LINE_POSITION_TOP:
-            self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[lineView(width)]", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics:metrics, views:views))
-            break
-        case .LINE_POSITION_BOTTOM:
-            self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[lineView(width)]|", options:NSLayoutConstraint.FormatOptions(rawValue: 0), metrics:metrics, views:views))
-            break
-        }
+    // Shadow
+    @IBInspectable var shadowColor: UIColor? {
+        get { layer.shadowColor.map(UIColor.init(cgColor:)) }
+        set { layer.shadowColor = newValue?.cgColor }
     }
-
-    
-    @IBInspectable
-    /// Should the corner be as circle
-    public var circleCorner: Bool {
-        get {
-            return min(bounds.size.height, bounds.size.width) / 2 == cornerRadius
-        }
-        set {
-            cornerRadius = newValue ? min(bounds.size.height, bounds.size.width) / 2 : cornerRadius
-        }
+    @IBInspectable var shadowOpacity: Float {
+        get { layer.shadowOpacity }
+        set { layer.shadowOpacity = newValue }
+    }
+    @IBInspectable var shadowOffset: CGSize {
+        get { layer.shadowOffset }
+        set { layer.shadowOffset = newValue }
+    }
+    @IBInspectable var shadowRadius: CGFloat {
+        get { layer.shadowRadius }
+        set { layer.shadowRadius = newValue }
     }
     
-    @IBInspectable
-    /// Corner radius of view; also inspectable from Storyboard.
-    public var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.cornerRadius = circleCorner ? min(bounds.size.height, bounds.size.width) / 2 : newValue
-                //abs(CGFloat(Int(newValue * 100)) / 100)
-        }
-    }
-    
-    @IBInspectable
-    /// Border color of view; also inspectable from Storyboard.
-    public var borderColor: UIColor? {
-        get {
-            guard let color = layer.borderColor else {
-                return nil
-            }
-            return UIColor(cgColor: color)
-        }
-        set {
-            guard let color = newValue else {
-                layer.borderColor = nil
-                return
-            }
-            layer.borderColor = color.cgColor
-        }
-    }
-    
-    @IBInspectable
-    /// Border width of view; also inspectable from Storyboard.
-    public var borderWidth: CGFloat {
-        get {
-            return layer.borderWidth
-        }
-        set {
-            layer.borderWidth = newValue
-        }
-    }
-    
-    @IBInspectable
-    /// Shadow color of view; also inspectable from Storyboard.
-    public var shadowColor: UIColor? {
-        get {
-            guard let color = layer.shadowColor else {
-                return nil
-            }
-            return UIColor(cgColor: color)
-        }
-        set {
-            layer.shadowColor = newValue?.cgColor
-        }
-    }
-    
-    @IBInspectable
-    /// Shadow offset of view; also inspectable from Storyboard.
-    public var shadowOffset: CGSize {
-        get {
-            return layer.shadowOffset
-        }
-        set {
-            layer.shadowOffset = newValue
-        }
-    }
-    
-    @IBInspectable
-    /// Shadow opacity of view; also inspectable from Storyboard.
-    public var shadowOpacity: Double {
-        get {
-            return Double(layer.shadowOpacity)
-        }
-        set {
-            layer.shadowOpacity = Float(newValue)
-        }
-    }
-    
-    @IBInspectable
-    /// Shadow radius of view; also inspectable from Storyboard.
-    public var shadowRadius: CGFloat {
-        get {
-            return layer.shadowRadius
-        }
-        set {
-            layer.shadowRadius = newValue
-        }
-    }
-    
-    @IBInspectable
-    /// Shadow path of view; also inspectable from Storyboard.
-    public var shadowPath: CGPath? {
-        get {
-            return layer.shadowPath
-        }
-        set {
-            layer.shadowPath = newValue
-        }
-    }
-    
-    @IBInspectable
-    /// Should shadow rasterize of view; also inspectable from Storyboard.
-    /// cache the rendered shadow so that it doesn't need to be redrawn
-    public var shadowShouldRasterize: Bool {
-        get {
-            return layer.shouldRasterize
-        }
-        set {
-            layer.shouldRasterize = newValue
-        }
-    }
-    
-    @IBInspectable
-    /// Should shadow rasterize of view; also inspectable from Storyboard.
-    /// cache the rendered shadow so that it doesn't need to be redrawn
-    public var shadowRasterizationScale: CGFloat {
-        get {
-            return layer.rasterizationScale
-        }
-        set {
-            layer.rasterizationScale = newValue
-        }
-    }
-    
-    @IBInspectable
-    /// Corner radius of view; also inspectable from Storyboard.
-    public var maskToBounds: Bool {
-        get {
-            return layer.masksToBounds
-        }
-        set {
-            layer.masksToBounds = newValue
-        }
-    }
-}
-
-
-// MARK: - Properties
-
-public extension UIView {
-    
-    /// Size of view.
-    var size: CGSize {
-        get {
-            return self.frame.size
-        }
-        set {
-            self.width = newValue.width
-            self.height = newValue.height
-        }
-    }
-    
-    /// Width of view.
-    var width: CGFloat {
-        get {
-            return self.frame.size.width
-        }
-        set {
-            self.frame.size.width = newValue
-        }
-    }
-    
-    /// Height of view.
-    var height: CGFloat {
-        get {
-            return self.frame.size.height
-        }
-        set {
-            self.frame.size.height = newValue
-        }
-    }
-}
-
-extension UIView {
-    
-    func superview<T>(of type: T.Type) -> T? {
-        return superview as? T ?? superview.flatMap { $0.superview(of: T.self) }
-    }
-    
-}
-
-
-// MARK: - Methods
-
-public extension UIView {
-    
-    typealias Configuration = (UIView) -> Swift.Void
-    
-    func config(configurate: Configuration?) {
-        configurate?(self)
-    }
-    
-    /// Set some or all corners radiuses of view.
-    ///
-    /// - Parameters:
-    ///   - corners: array of corners to change (example: [.bottomLeft, .topRight]).
-    ///   - radius: radius for selected corners.
-    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
-        let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let shape = CAShapeLayer()
-        shape.path = maskPath.cgPath
-        layer.mask = shape
-    }
-}
-
-extension UIView {
-    
-    func searchVisualEffectsSubview() -> UIVisualEffectView? {
-        if let visualEffectView = self as? UIVisualEffectView {
-            return visualEffectView
-        } else {
-            for subview in subviews {
-                if let found = subview.searchVisualEffectsSubview() {
-                    return found
-                }
-            }
-        }
-        return nil
-    }
-    
-    /// This is the function to get subViews of a view of a particular type
-    /// https://stackoverflow.com/a/45297466/5321670
-    func subViews<T : UIView>(type : T.Type) -> [T]{
-        var all = [T]()
-        for view in self.subviews {
-            if let aView = view as? T{
-                all.append(aView)
-            }
-        }
-        return all
-    }
-    
-    
-    /// This is a function to get subViews of a particular type from view recursively. It would look recursively in all subviews and return back the subviews of the type T
-    /// https://stackoverflow.com/a/45297466/5321670
-    func allSubViewsOf<T : UIView>(type : T.Type) -> [T]{
-        var all = [T]()
-        func getSubview(view: UIView) {
-            if let aView = view as? T{
-                all.append(aView)
-            }
-            guard view.subviews.count>0 else { return }
-            view.subviews.forEach{ getSubview(view: $0) }
-        }
-        getSubview(view: self)
-        return all
-    }
-}
-
-extension UIView {
     func applyShadow(
         color: UIColor = UIColor.black.withAlphaComponent(0.1),
         opacity: Float = 1.0,
@@ -326,31 +98,74 @@ extension UIView {
         layer.masksToBounds = false
     }
     
-    func applyTopRightGradient(
-        primaryColor: UIColor,
-        cornerRadius: CGFloat = 12
-    ) {
-        // Remove old gradients
+    func dropShadow () {
+        self.dropShadow(color: UIColor.appBackColor)
+    }
+    
+    func dropShadow(color: UIColor) {
+        self.layer.masksToBounds = false
+        self.layer.shadowOffset = CGSize(width: 0, height: 4)  // positive y → bottom
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOpacity = 0.1                          // subtle
+        self.layer.shadowRadius = 3                             // blur
+    }
+    
+    // Gradient
+    func applyTopRightGradient(primaryColor: UIColor, cornerRadius: CGFloat = 12) {
         layer.sublayers?.removeAll(where: { $0 is CAGradientLayer })
-        
         layoutIfNeeded()
         
         let gradient = CAGradientLayer()
         gradient.frame = bounds
-        gradient.startPoint = CGPoint(x: 1, y: 0)     // top-right
-        gradient.endPoint   = CGPoint(x: 0.7, y: 0.5) // fade
-        gradient.colors = [primaryColor.cgColor, UIColor.white.cgColor]
-        gradient.locations = [0.0, 0.8]
+        gradient.startPoint = CGPoint(x: 1, y: 0)
+        gradient.endPoint   = CGPoint(x: 0.7, y: 0.5)
+        gradient.colors     = [primaryColor.cgColor, UIColor.white.cgColor]
+        gradient.locations  = [0.0, 0.8]
         
-        // Rounded corners
         let maskLayer = CAShapeLayer()
-        maskLayer.path = UIBezierPath(
-            roundedRect: bounds,
-            cornerRadius: cornerRadius
-        ).cgPath
+        maskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
         gradient.mask = maskLayer
         
         layer.insertSublayer(gradient, at: 0)
     }
+    
+    // Corner rounding
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds,
+                                byRoundingCorners: corners,
+                                cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
 }
 
+// MARK: - UIView Utilities
+extension UIView {
+    var size: CGSize {
+        get { frame.size }
+        set { frame.size = newValue }
+    }
+    var width: CGFloat {
+        get { frame.size.width }
+        set { frame.size.width = newValue }
+    }
+    var height: CGFloat {
+        get { frame.size.height }
+        set { frame.size.height = newValue }
+    }
+    
+    func subViews<T: UIView>(of type: T.Type) -> [T] {
+        return subviews.compactMap { $0 as? T }
+    }
+    
+    func allSubViewsOf<T: UIView>(type: T.Type) -> [T] {
+        var all = [T]()
+        func getSubviews(from view: UIView) {
+            if let v = view as? T { all.append(v) }
+            view.subviews.forEach { getSubviews(from: $0) }
+        }
+        getSubviews(from: self)
+        return all
+    }
+}

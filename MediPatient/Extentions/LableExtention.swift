@@ -103,3 +103,39 @@ class TitleLabel: UILabel {
         self.adjustsFontSizeToFitWidth = true
     }
 }
+class Regular14: UILabel {
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        applyPrimaryStyle()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        applyPrimaryStyle()
+    }
+
+    private func applyPrimaryStyle() {
+        self.font = UIFont.ubuntuRegular(ofSize: 14)
+        //self.numberOfLines = 0
+        //self.adjustsFontSizeToFitWidth = true
+    }
+}
+class Medium14: UILabel {
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        applyPrimaryStyle()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        applyPrimaryStyle()
+    }
+
+    private func applyPrimaryStyle() {
+        self.font = UIFont.ubuntuMedium(ofSize: 14)
+        //self.numberOfLines = 0
+       // self.adjustsFontSizeToFitWidth = true
+    }
+}

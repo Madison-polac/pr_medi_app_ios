@@ -42,9 +42,7 @@ private extension RegisterVC {
         passwordField.textField.placeholder = Constant.createPasswordPlaceholder
         passwordField.trailingButtonType = .eye
         
-        #if DEBUG
-        passwordField.textField.text = "123456"
-        #endif
+       
     }
 }
 
